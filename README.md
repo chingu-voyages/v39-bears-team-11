@@ -10,3 +10,15 @@ Litetalk is a lightweight social media app for connecting with family and friend
 
 ![<img src="./assets/mobile_mockup.png" />](./assets/mobile_mockup.png)
 ![<img src="./assets/desktop_mockup.png" />](./assets/desktop_mockup.png)
+
+<br>
+
+## FEATURES ✨✨✨
+
+The features of the `litetalk` app are -
+- create user account
+- chat with other users
+- share media files like photos and videos
+- send and receive messages in real time
+- add contacts
+- and many more
