@@ -7,14 +7,12 @@ Litetalk is a lightweight social media app for connecting with family and friend
 <br>
 
 ## SCREENSHOTS 📸📸📸
-
 ![<img src="./assets/mobile_mockup.png" />](./assets/mobile_mockup.png)
 ![<img src="./assets/desktop_mockup.png" />](./assets/desktop_mockup.png)
 
 <br>
 
 ## FEATURES ✨✨✨
-
 The features of the `litetalk` app are -
 - create user account
 - chat with other users
@@ -26,7 +24,6 @@ The features of the `litetalk` app are -
 <br>
 
 ## DEPENDENCIES 📦📦📦
-
 The list of dependencies used in the frontend are :
 
 ```javascript
@@ -52,3 +49,17 @@ The list of dependencies used in the backend are :
     "mongoose"
 ```
 <br>
+
+## HOW TO RUN 🚀🚀🚀
+* First, copy the url of this project
+* Then open your terminal on your local computer and -
+    - navigate to the location you want to create the project in (eg - home or c:/)
+    - enter the command `git clone <url-of-this-project>`. Alternatively, you can provide the name of the folder you want git to clone the project to with `git clone <url-of-this-project> <name-of-folder>`
+    - `cd` into the project folder
+    - `cd` into the frontend folder
+    - Run `npm install`
+    - `cd` into the backend folder
+    - Run `npm install`
+    - Remain in the backend folder and run `npm run serve'
+
+In the package.json file you will find the scripts for development and production. To be sure, for production build run `npm run build`.
