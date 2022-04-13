@@ -2,6 +2,8 @@
 ![](https://img.shields.io/badge/Name-Litetalk-brightgreen?style=plastic&labelColor=inactive)
 ![](https://img.shields.io/badge/Version-v0.0.1-blueviolet?style=plastic&labelColor=inactive)
 ![](https://img.shields.io/badge/Languages-Golang_&_JavaScript-critical?style=plastic&labelColor=inactive)
+![](https://img.shields.io/badge/Frameworks-React_&_Expressjs-important?style=plastic&labelColor=inactive)
+![](https://img.shields.io/badge/Team-chingu.v39.bears.11-informational?style=plastic&labelColor=inactive)
 
 Litetalk is a lightweight social media app for connecting with family and friends. You can chat, share media and make calls with family and friends for free. Litetalk uses less bandwidth so it supports 2G network areas pretty well.
 
