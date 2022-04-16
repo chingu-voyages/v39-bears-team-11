@@ -1,0 +1,23 @@
+{
+  "name": "litetalk",
+  "version": "1.0.0",
+  "description": "a lightweight app for connecting with friends",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chingu-voyages/v39-bears-team-11.git"
+  },
+  "keywords": [
+    "chat",
+    "litetalk"
+  ],
+  "author": "v39-bears-team-11",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chingu-voyages/v39-bears-team-11/issues"
+  },
+  "homepage": "https://github.com/chingu-voyages/v39-bears-team-11#readme"
+}
