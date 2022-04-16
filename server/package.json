@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/chingu-voyages/v39-bears-team-11/issues"
   },
-  "homepage": "https://github.com/chingu-voyages/v39-bears-team-11#readme"
+  "homepage": "https://github.com/chingu-voyages/v39-bears-team-11#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
 }
