@@ -7,6 +7,7 @@ function App() {
       <header className={styles.App}>
         
       </header>
+      <Button />
     </div>
   );
 }
