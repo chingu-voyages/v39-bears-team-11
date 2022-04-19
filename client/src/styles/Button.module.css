@@ -2,7 +2,9 @@
     background-color: #4169e1;
     border: none;
     border-radius: 0.7rem;
+    color: #f8f8ff;
     display: inline-block;
+    font-size: inherit;
     padding: 1rem 1.5rem;
     width: 15rem;
 }
