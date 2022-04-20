@@ -1,1 +1,1 @@
-// this is the redux store config file
+import { configureStore } from '@reduxjs/toolkit'
