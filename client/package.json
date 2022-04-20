@@ -16,6 +16,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "server": "json-server --port 5000 --watch data/MOCK_DATA.json",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
