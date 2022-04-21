@@ -1,38 +1,46 @@
 import React, { Fragment } from 'react'
-import styles from '../../styles/Button.module.css'
 import { useSelector, useDispatch } from 'react-redux'
+import { nanoid } from '@reduxjs/toolkit'
 import { login, logout } from '../../store/features/users/usersSlice'
-import { nanoid } from '@reduxjs/toolkit';
+import styles from '../../styles/Button.module.css'
 
 function Button() {
-  const users = useSelector(state => state.users);
-  const dispatch = useDispatch();
+  const users = useSelector((state) => state.users)
+  const dispatch = useDispatch()
 
   const handleLogin = () => {
     dispatch(login({
       id: nanoid(),
-      name: "Moody Mudiaga",
-    }));
+      name: 'Moody Mudiaga',
+    }))
   }
 
   const handleLogout = () => {
-    dispatch(logout());
+    dispatch(logout())
   }
 
-  return <Fragment>
-      <h1>Welcome, {users.name}</h1>
-      <button 
-      className={styles.Button}
-      onClick={handleLogin}
-      >Log In
+  return (
+    <>
+      <h1>
+        Welcome,
+        {users.name}
+      </h1>
+      <button
+        type="button"
+        className={styles.Button}
+        onClick={handleLogin}
+      >
+        Log In
       </button>
-      <button 
-      className={styles.Button}
-      onClick={handleLogout}
-      >Log Out
+      <button
+        type="button"
+        className={styles.Button}
+        onClick={handleLogout}
+      >
+        Log Out
       </button>
-    </Fragment>
-
+    </>
+  )
 }
 
 export default Button
