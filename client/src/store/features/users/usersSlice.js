@@ -22,7 +22,11 @@ export const usersSlice = createSlice({
             }
         },
         logout: (state) => {
-            return state.isOffline = true;
+            return {
+                ...state,
+                isOnline: false,
+                isOffline: true
+            }
         }
     }
 });
