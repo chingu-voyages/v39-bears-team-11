@@ -1,3 +1,5 @@
+/* eslint-disable import/no-named-as-default-member */
+/* eslint-disable import/no-named-as-default */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable semi */
 import React from 'react';
