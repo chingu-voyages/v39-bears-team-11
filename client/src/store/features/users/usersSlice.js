@@ -16,7 +16,9 @@ export const usersSlice = createSlice({
 
         },
         logout: (state) => {
-            
+
         }
     }
 });
+
+export const { login, logout } = usersSlice.actions
