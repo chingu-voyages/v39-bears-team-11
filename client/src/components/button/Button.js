@@ -6,8 +6,24 @@ import { login, logout } from '../../store/features/users/usersSlice'
 function Button() {
   const users = useSelector(state => state.users.value);
 
+  const handleLogin = () => {
+
+  }
+
+  const handleLogout = () => {
+
+  }
+
   return (
-    <button className={styles.Button}>Button</button>
+    <button 
+    className={styles.Button}
+    onClick={handleLogin}
+    >Log In
+    </button>
+    <button 
+    className={styles.Button}
+    onClick={handleLogin}
+    >Log Out</button>
   )
 }
 
