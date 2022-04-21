@@ -22,7 +22,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint . --fix"
+    "lint": "eslint . --fix",
+    "dev": "concurrently --kill-others-on-fail \"npm start\" \"npm run server\""
   },
   "eslintConfig": {
     "extends": [
