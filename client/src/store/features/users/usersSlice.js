@@ -12,11 +12,17 @@ export const usersSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        login: (state) => {
-
+        login: (state, action) => {
+            return {
+                ...state,
+                id: action.payload._id,
+                name: action.payload.name,
+                isOnline: true,
+                isOffline: false
+            }
         },
         logout: (state) => {
-
+            return state.isOffline = true;
         }
     }
 });
