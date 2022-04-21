@@ -7,3 +7,16 @@ const initialState = {
     isOnline: false,
     isOffline: true
 };
+
+export const usersSlice = createSlice({
+    name: 'user',
+    initialState,
+    reducers: {
+        login: (state) => {
+
+        },
+        logout: (state) => {
+            
+        }
+    }
+});
