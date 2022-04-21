@@ -1,15 +1,13 @@
-import styles from './styles/App.module.css';
-import Button from './components/button/Button';
+import styles from './styles/App.module.css'
+import Button from './components/button/Button'
 
 function App() {
   return (
     <div className="App">
-      <header className={styles.App}>
-        
-      </header>
+      <header className={styles.App} />
       <Button />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
