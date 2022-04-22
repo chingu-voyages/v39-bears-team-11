@@ -15,27 +15,35 @@ function App() {
 
       <Router>
         <Routes>
-          <Route exact path="/">
-            <Signup />
-          </Route>
-          <Route path="signup">
-            <Signup />
-          </Route>
-          <Route path="/chats">
-            <Chats />
-          </Route>
-          <Route path="/chatroom">
-            <ChatRoom />
-          </Route>
-          <Route path="/search">
-            <Search />
-          </Route>
-          <Route path="/profile">
-            <Profile />
-          </Route>
-          <Route path="/friends">
-            <Friends />
-          </Route>
+          <Route
+            exact
+            path="/"
+            element={<Signup />}
+          />
+          <Route
+            path="signup"
+            element={<Signup />}
+          />
+          <Route
+            path="/chats"
+            element={<Chats />}
+          />
+          <Route
+            path="/chatroom"
+            element={<ChatRoom />}
+          />
+          <Route
+            path="/search"
+            element={<Search />}
+          />
+          <Route
+            path="/profile"
+            element={<Profile />}
+          />
+          <Route
+            path="/friends"
+            element={<Friends />}
+          />
         </Routes>
       </Router>
 
