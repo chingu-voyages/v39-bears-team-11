@@ -9,23 +9,23 @@
 *::before {
     box-sizing: border-box;
     margin: 0;
-    padding: 0,
+    padding: 0;
 }
 
 :root {
     /* colors */
     --clr-white           : hsl(0, 0%, 100%);
     --clr-black           : hsl(0, 0%, 0%);
-    --clr-grey            : hsl(0, 0%, 59%);
-    --clr-light-grey      : hsl(0, 0%, 77%);
-    --clr-pampas-pink     : hsl(0, 17%, 98%);
-    --clr-greyish-pampas  : hsl(0, 33%, 96%);
-    --clr-royal-blue      : hsl(241, 83%, 65%);
-    --clr-light-royal-blue: hsl(241, 80%, 70%);
-    --clr-light-blue      : hsl(240, 100%, 97%);
-    --clr-apricot         : hsl(4, 100%, 74%);
-    --clr-london-hue      : hsl(287, 23%, 68%);
-    --clr-danger-red      : hsl(0, 98%, 64%);
+    --clr-grey            : hsl(0, 0%, 58.8%);
+    --clr-light-grey      : hsl(0, 0%, 76.9%);
+    --clr-pampas-pink     : hsl(0, 16.7%, 97.6%);
+    --clr-greyish-pampas  : hsl(0, 33.3%, 96.5%);
+    --clr-royal-blue      : hsl(241.2, 83%, 65.5%);
+    --clr-light-royal-blue: hsl(241, 80.4%, 70%);
+    --clr-light-blue      : hsl(240, 100%, 97.1%);
+    --clr-apricot         : hsl(3.6, 100%, 74.1%);
+    --clr-london-hue      : hsl(287.4, 23.5%, 68.2%);
+    --clr-danger-red      : hsl(0, 97.8%, 63.5%);
 
     /* font families */
     --ff-text: 'Hind', sans-serif;

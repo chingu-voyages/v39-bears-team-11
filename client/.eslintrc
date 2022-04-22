@@ -7,10 +7,6 @@
       "error",
       2
     ],
-    "linebreak-style": [
-      "error",
-      "unix"
-    ],
     "semi": [
       "error",
       "never"
@@ -23,6 +19,15 @@
           ".js", ".jsx"
         ]
       }
-    ]
+    ],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+      "js": "never",
+      "jsx": "never"
+      }
+    ],
+    "react/react-in-jsx-scope": "off"
   }
 }
