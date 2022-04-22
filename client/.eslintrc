@@ -8,12 +8,12 @@
       2
     ],
     "linebreak-style": [
-        "error",
-        "unix"
+      "error",
+      "unix"
     ],
     "semi": [
-        "error",
-        "never"
+      "error",
+      "never"
     ],
     "no-console": 0,
     "react/jsx-filename-extension": [
