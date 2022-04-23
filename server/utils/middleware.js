@@ -1,5 +1,9 @@
 const logger = require('./logger')
 
+/* A middleware that logs information of each request */
+/* received by the server. Mainly, the request        */
+/* method, route, and body, if provided.              */
+
 const requestLogger = (request, _, next) => {
   logger.info('---')
   logger.info('Method:', request.method)
@@ -9,9 +13,19 @@ const requestLogger = (request, _, next) => {
   next()
 }
 
+/* A middleware that intercepts all     */
+/* requests that are not defined in our */
+/* app and returns a 404 response code  */
+
 const unknownEndpoint = (_, response) => {
   response.status(404).send({ error: 'unknown endpoint' })
 }
+
+/* A middleware that handles errors thrown,     */
+/* by routers, and returns approprite responses */
+/* If the thrown error is not defined here,     */
+/* it is passed to the next middleware through  */
+/* the next() call.                             */
 
 const errorHandler = (error, _, response, next) => {
   logger.error(error.message)
@@ -42,11 +56,6 @@ const errorHandler = (error, _, response, next) => {
   else if (error.name === 'TokenExpiredError') {
     return response.status(401).json({
       error: 'token expired'
-    })
-  }
-  else if  (error.name === 'InternalServerError') {
-    return response.status(500).json({
-      error: 'Internal Server Error'
     })
   }
 
