@@ -1,0 +1,30 @@
+.logo {
+  /* border: 1px solid yellow; */
+  padding: 1.5rem 0;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+}
+
+.logo__name {
+  padding-top: .5rem;
+}
+
+.logo__icon {
+  padding-left: .5rem;
+}
+
+@media (max-width: 580px) {
+  .logo { 
+    padding: .8rem 0;
+  }
+  .logo__name {
+    width: 74px;
+    height: 30px;
+  }
+
+  .logo__icon {
+    width: 44px;
+    height: 32px;
+  }
+} 

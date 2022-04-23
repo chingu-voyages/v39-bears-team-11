@@ -59,7 +59,7 @@ ul {
 }
 
 img {
-    width: 100%;
+    max-width: 100%;
 }
 
 /* ------------------- */
@@ -83,6 +83,6 @@ img {
   
 @media (max-width: 580px) {
     .container {
-        margin: 0 32px;
+        margin: 0 24px;
     }
 }

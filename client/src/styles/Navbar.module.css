@@ -1,0 +1,23 @@
+.navbar {
+  width: 100%;
+  background-color: var(--clr-white);
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.25);
+}
+
+.navbar__inner {
+  /* border: 1px solid red; */
+}
+
+.navbar__links {
+  /* border: 1px solid blue; */
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 768px) { 
+  .navbar__links {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+  }
+}

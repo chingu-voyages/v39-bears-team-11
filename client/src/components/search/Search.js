@@ -1,6 +1,10 @@
+import Navbar from '../navbar/Navbar'
+
 function Search() {
   return (
-    <div />
+    <div>
+      <Navbar />
+    </div>
   )
 }
 
