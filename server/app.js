@@ -1,23 +1,23 @@
-const config = require('./utils/config')
 const express = require('express')
-require('express-async-errors')
-const app = express()
+const mongoose = require('mongoose')
 const cors = require('cors')
+require('express-async-errors')
 
 // Require routers here //
 
+const { MONGODB_URI } = require('./utils/config')
+const { infoLogger, errorLogger } = require('./utils/logger')
 const middleware = require('./utils/middleware')
-const logger = require('./utils/logger')
-const mongoose = require('mongoose')
 
-logger.info('connecting to', config.MONGODB_URI)
+const app = express()
+logger.info('connecting to', MONGODB_URI)
 
-mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
-    logger.info('connected to database')
+    infoLogger('connected to database')
   })
   .catch((error) => {
-    logger.error('error connecting to database:', error.message)
+    errorLogger('error connecting to database:', error.message)
   })
 
 app.use(cors())
