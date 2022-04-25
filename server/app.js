@@ -12,7 +12,7 @@ const middleware = require('./utils/middleware')
 const app = express()
 
 /* Database Connection */
-logger.info('connecting to', MONGODB_URI)
+infoLogger('connecting to', MONGODB_URI)
 
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
