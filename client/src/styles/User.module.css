@@ -1,3 +1,18 @@
 .user {
+  width: calc(var(--sz-navlink-container) + 2px);
+  height: calc(var(--sz-navlink-container) + 2px);
+  border-radius: 50%;
+  border: 2px solid var(--clr-royal-blue);
+  overflow: hidden;
+}
 
+.user img {
+  object-fit: cover;
+}
+
+@media (max-width: 768px) { 
+  .user {
+    width: calc(var(--sz-navlink-container-small) + 2px);
+    height: calc(var(--sz-navlink-container-small) + 2px);
+  }
 }
