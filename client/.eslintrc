@@ -23,6 +23,15 @@
           ".js", ".jsx"
         ]
       }
-    ]
+    ],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+      "js": "never",
+      "jsx": "never"
+      }
+    ],
+    "react/react-in-jsx-scope": "off"
   }
 }

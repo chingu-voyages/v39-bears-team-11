@@ -2,13 +2,13 @@
 /* eslint-disable import/no-named-as-default */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable semi */
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import { Provider } from 'react-redux';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { store } from './store/store';
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import './index.css'
+import { Provider } from 'react-redux'
+import App from './App'
+import reportWebVitals from './reportWebVitals'
+import { store } from './store/store'
 
 // eslint-disable-next-line no-undef
 const root = ReactDOM.createRoot(document.getElementById('root'))
@@ -18,7 +18,7 @@ root.render(
       <App />
     </React.StrictMode>
   </Provider>,
-);
+)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
