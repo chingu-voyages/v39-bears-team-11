@@ -16,8 +16,8 @@ infoLogger('connecting to', MONGODB_URI)
 
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
-  })
+  useUnifiedTopology: true,
+})
   .then(() => {
     infoLogger('connected to database')
   })
@@ -25,13 +25,12 @@ mongoose.connect(MONGODB_URI, {
     errorLogger('error connecting to database:', error.message)
   })
 
-
-/* Use app middleware in this order*/
+/* Use app middleware in this order */
 app.use(cors())
 app.use(express.json())
 app.use(middleware.requestLogger)
 
-//use routers here //
+// use routers here //
 
 /* These two middleware must be used last */
 app.use(middleware.unknownEndpoint)

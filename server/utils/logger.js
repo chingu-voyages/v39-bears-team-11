@@ -6,7 +6,7 @@ const infoLogger = (...params) => {
     console.log(...params)
   }
 }
-const errorLogger= (...params) => {
+const errorLogger = (...params) => {
   if (process.env.NODE_ENV !== 'test') {
     console.error(...params)
   }
@@ -14,5 +14,5 @@ const errorLogger= (...params) => {
 
 module.exports = {
   infoLogger,
-  errorLogger
+  errorLogger,
 }
