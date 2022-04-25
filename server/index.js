@@ -1,5 +1,5 @@
-const app = require('./app')
 const http = require('http')
+const app = require('./app')
 const { infoLogger } = require('./utils/logger')
 const { PORT } = require('./utils/config')
 
