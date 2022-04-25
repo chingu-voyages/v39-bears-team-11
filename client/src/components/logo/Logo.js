@@ -4,7 +4,10 @@ import styles from '../../styles/Logo.module.css'
 
 function Logo() {
   return (
-    <div className={styles.logo}>
+    <a
+      href="/"
+      className={styles.logo}
+    >
       <img
         src={logoName}
         alt="Litetalk"
@@ -15,7 +18,7 @@ function Logo() {
         alt="message icon emitting rays"
         className={styles.logo__icon}
       />
-    </div>
+    </a>
   )
 }
 
