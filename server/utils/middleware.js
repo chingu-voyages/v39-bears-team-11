@@ -1,5 +1,9 @@
 const logger = require('./logger')
 
+/* A middleware that logs information of each request */
+/* received by the server. Mainly, the request        */
+/* method, route, and body, if provided.              */
+
 const requestLogger = (request, _, next) => {
   logger.info('---')
   logger.info('Method:', request.method)
@@ -9,44 +13,50 @@ const requestLogger = (request, _, next) => {
   next()
 }
 
+/* A middleware that intercepts all     */
+/* requests that are not defined in our */
+/* app and returns a 404 response code  */
+
 const unknownEndpoint = (_, response) => {
   response.status(404).send({ error: 'unknown endpoint' })
 }
 
+/* A middleware that handles errors thrown,     */
+/* by routers, and returns approprite responses */
+/* If the thrown error is not defined here,     */
+/* it is passed to the next middleware through  */
+/* the next() call.                             */
+
+// eslint-disable-next-line consistent-return
 const errorHandler = (error, _, response, next) => {
   logger.error(error.message)
 
   if (error.name === 'CastError' && error.kind === 'ObjectId') {
     return response.status(400).json({
-      error: 'malformatted id'
+      error: 'malformatted id',
     })
   }
-  else if (error.name === 'ValidationError') {
+  if (error.name === 'ValidationError') {
     return response.status(400).json({
-      error: error.message
+      error: error.message,
     })
   }
-  else if (error.name === 'MongoServerError' && error.code === 11000) {
+  if (error.name === 'MongoServerError' && error.code === 11000) {
     const field = Object.keys(error.keyValue)[0]
     const value = Object.values(error.keyValue)[0]
 
     return response.status(409).json({
-      error: `${ field }: ${ value } already exists`
+      error: `${field}: ${value} already exists`,
     })
   }
-  else if (error.name === 'JsonWebTokenError') {
+  if (error.name === 'JsonWebTokenError') {
     return response.status(401).json({
-      error: 'invalid token'
+      error: 'invalid token',
     })
   }
-  else if (error.name === 'TokenExpiredError') {
+  if (error.name === 'TokenExpiredError') {
     return response.status(401).json({
-      error: 'token expired'
-    })
-  }
-  else if  (error.name === 'InternalServerError') {
-    return response.status(500).json({
-      error: 'Internal Server Error'
+      error: 'token expired',
     })
   }
 
@@ -56,5 +66,5 @@ const errorHandler = (error, _, response, next) => {
 module.exports = {
   requestLogger,
   unknownEndpoint,
-  errorHandler
+  errorHandler,
 }
