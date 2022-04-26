@@ -32,8 +32,15 @@
     --ff-heading: 'Hind Guntur', sans-serif;
 
     /* font-sizes */
-        font-size: 62.5%;
-    }
+    font-size: 62.5%;
+    
+    /* element sizing */
+    --sz-navlink-container: 46px;
+    --sz-navlink-container-small: 42px;
+    --sz-navlink-small: 30px;
+}
+
+
 
 body {
     font-size: 1.8rem;
@@ -75,7 +82,7 @@ img {
     margin: 0 200px;
 }
 
-@media (max-width:768px) {
+@media (max-width:1024px) {
     .container {
       margin: 0 80px;
     }

@@ -1,5 +1,4 @@
 .logo {
-  /* border: 1px solid yellow; */
   padding: 1.5rem 0;
   margin-right: auto;
   display: flex;
@@ -14,7 +13,7 @@
   padding-left: .5rem;
 }
 
-@media (max-width: 580px) {
+@media (max-width: 768px) {
   .logo { 
     padding: .8rem 0;
   }
