@@ -1,31 +1,38 @@
-const config = require('./utils/config')
 const express = require('express')
-require('express-async-errors')
-const app = express()
+const mongoose = require('mongoose')
 const cors = require('cors')
+require('express-async-errors')
 
 // Require routers here //
 
+const { MONGODB_URI } = require('./utils/config')
+const { infoLogger, errorLogger } = require('./utils/logger')
 const middleware = require('./utils/middleware')
-const logger = require('./utils/logger')
-const mongoose = require('mongoose')
 
-logger.info('connecting to', config.MONGODB_URI)
+const app = express()
 
-mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+/* Database Connection */
+infoLogger('connecting to', MONGODB_URI)
+
+mongoose.connect(MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
   .then(() => {
-    logger.info('connected to database')
+    infoLogger('connected to database')
   })
   .catch((error) => {
-    logger.error('error connecting to database:', error.message)
+    errorLogger('error connecting to database:', error.message)
   })
 
+/* Use app middleware in this order */
 app.use(cors())
 app.use(express.json())
 app.use(middleware.requestLogger)
 
-//use routers here //
+// use routers here //
 
+/* These two middleware must be used last */
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)
 
