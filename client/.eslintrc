@@ -12,6 +12,7 @@
       "error",
       "never"
     ],
+    "react/prop-types": "off",
     "no-console": 0,
     "react/jsx-filename-extension": [
       1,
