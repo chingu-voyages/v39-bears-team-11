@@ -42,3 +42,20 @@
   width: 30px;
   height: 30px;
 }
+
+.searchbox__btn:active {
+  box-shadow: inset 0 0 0.2rem var(--clr-royal-blue);
+}
+
+@media(max-width: 375px) {
+  .searchbox {
+    width: 100%;
+    margin-top: 24px;
+  }
+}
+
+@media(max-width: 768px) {
+  .searchbox {
+    margin-top: 24px;
+  }
+}
