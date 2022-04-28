@@ -1,6 +1,6 @@
 import Navbar from '../navbar/Navbar'
 import Footer from '../footer/Footer'
-import SearchBox from './searchbox/SearchBox'
+import SearchBox from '../searchbox/SearchBox'
 
 function Search() {
   const handleSearch = (event) => {
