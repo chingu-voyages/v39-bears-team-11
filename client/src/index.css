@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Guntur:wght@700&family=Hind:wght@300;400;600&display=swap');
+
+/* ------------------- */
+/* Custom properties   */
+/* ------------------- */
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    /* colors */
+    --clr-white           : hsl(0, 0%, 100%);
+    --clr-black           : hsl(0, 0%, 0%);
+    --clr-grey            : hsl(0, 0%, 58.8%);
+    --clr-light-grey      : hsl(0, 0%, 76.9%);
+    --clr-pampas-pink     : hsl(0, 16.7%, 97.6%);
+    --clr-greyish-pampas  : hsl(0, 33.3%, 96.5%);
+    --clr-royal-blue      : hsl(241.2, 83%, 65.5%);
+    --clr-light-royal-blue: hsl(241, 80.4%, 70%);
+    --clr-light-blue      : hsl(240, 100%, 97.1%);
+    --clr-apricot         : hsl(3.6, 100%, 74.1%);
+    --clr-london-hue      : hsl(287.4, 23.5%, 68.2%);
+    --clr-danger-red      : hsl(0, 97.8%, 63.5%);
+
+    /* font families */
+    --ff-text: 'Hind', sans-serif;
+    --ff-heading: 'Hind Guntur', sans-serif;
+
+    /* font-sizes */
+    font-size: 62.5%;
+    
+    /* element sizing */
+    --sz-navlink-container: 46px;
+    --sz-navlink-container-small: 42px;
+    --sz-navlink-small: 30px;
+}
+
+
+
+body {
+    font-size: 1.8rem;
+    font-family: var(--ff-text);
+    color: var(--clr-black);
+    background-color: var(--clr-pampas-pink);
+    min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--ff-heading);
+    color: var(--clr-london-hue);
+}
+
+ul {
+    padding-left: 0;
+    list-style-type: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* ------------------- */
+/* Utility Classes   */
+/* ------------------- */
+
+.hidden {
+    display: none;
+}
+
+.container {
+    max-width: 1080px;
+    margin: 0 200px;
+}
+
+@media (max-width:1024px) {
+    .container {
+      margin: 0 80px;
+    }
+}
+  
+@media (max-width: 580px) {
+    .container {
+        margin: 0 24px;
+    }
+}

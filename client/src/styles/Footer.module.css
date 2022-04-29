@@ -1,0 +1,20 @@
+.footer {
+  position: absolute;
+  bottom: 3rem;
+}
+
+.footer p {
+  color: var(--clr-grey);
+  margin: 0;
+  padding: 0;
+}
+
+@media(max-width: 768px) {
+  .footer {
+    bottom: 6rem;
+  }
+
+  .footer p {
+    font-size: 1.5rem;
+  }
+}
