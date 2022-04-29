@@ -1,11 +1,21 @@
 import Navbar from '../navbar/Navbar'
 import Footer from '../footer/Footer'
 import SearchBox from '../searchbox/SearchBox'
+import SearchResults from '../search_results/SearchResults'
+// import peopleService from '../../services/people'
+
+const axios = require('axios')
 
 function Search() {
-  const handleSearch = (event) => {
+  let results = []
+
+  const handleSearch = async (event) => {
     event.preventDefault()
-    // make request here and handle response
+    const searchKeywords = event.target.search.value
+    console.log(searchKeywords)
+    const response = await axios.get('http://localhost:5000/users')
+    results = response.data.slice(0, 10)
+    // const results = await peopleService.search(searchKeywords)
   }
 
   return (
@@ -16,7 +26,7 @@ function Search() {
         className="container"
       >
         <SearchBox searchHandler={handleSearch} />
-        {/* <SearchResults /> */}
+        <SearchResults results={results} />
       </div>
       <Footer />
     </>
