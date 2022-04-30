@@ -10,7 +10,8 @@ const getMessageController = async (req, res, next) => {
   // throw client error
   if (!id) {
     const error = new Error({
-      message: 'user_id field is required!',
+      name: 'ValidationError',
+      message: 'User_id field is required!',
       statusCode: 400,
     })
     next(error)
@@ -36,7 +37,12 @@ const postMessageController = async (req, res, next) => {
   // check if there is no message,
   // and if so end the response
   if (!message) {
-    res.status(400).end()
+    const error = new Error({
+      name: 'ValidationError',
+      message: 'Message object cannot be empty!',
+      statusCode: 400,
+    })
+    next(error)
   }
 
   // if there is a message in the request, then
