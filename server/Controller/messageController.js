@@ -2,22 +2,30 @@
 const Message = require('../models/message')
 
 // controller to fetch user messages
-const getMessageController = (req, res, next) => {
+const getMessageController = async (req, res, next) => {
   // get the user id from the request body
   const { user_id: id } = req.body
 
-  // search database with received user_id
-  Message.findOne({ user_id: id }, (error, result) => {
-    // if there is error, pass it to the
-    // error handler middleware
-    if (error) {
-      next(error)
-    }
+  // if there is no user id in the request,
+  // throw client error
+  if (!id) {
+    const error = new Error({
+      message: 'user_id field is required!',
+      statusCode: 400,
+    })
+    next(error)
+  }
 
-    // if there is a match, set the statusCode
-    // and send the returned result
+  // if there is an id, then
+  try {
+    // query the database for a match
+    const result = await Message.find({ user_id: id })
+    // if there is a match, send 200 status with result
     res.status(200).send(result)
-  })
+  } catch (error) {
+    // if there is an error, pass it to the error middleware
+    next(error)
+  }
 }
 
 // controller to send user messages
