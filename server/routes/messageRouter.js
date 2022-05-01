@@ -11,7 +11,7 @@ const {
 const router = Router()
 
 // set up a get route
-router.get('/', getMessageController)
+router.get('/:user_id', getMessageController)
 
 // set up a post route
 router.post('/', postMessageController)
