@@ -51,8 +51,8 @@ const postMessageController = async (req, res, next) => {
   try {
     // create messageSchema object
     const message = {
-      user_id: userId,
-      friend_id: friendId,
+      reciever: userId,
+      sender: friendId,
       content,
       timestamp,
     }
