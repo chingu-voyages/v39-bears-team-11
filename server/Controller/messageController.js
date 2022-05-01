@@ -4,7 +4,7 @@ const Message = require('../models/message')
 // controller to fetch user messages
 const getMessageController = async (req, res, next) => {
   // get the user id from the request body
-  const { user_id: id } = req.body
+  const { user_id: id } = req.params
 
   // if there is no user id in the request,
   // throw client error
@@ -20,7 +20,7 @@ const getMessageController = async (req, res, next) => {
   // if there is an id, then
   try {
     // query the database for a match
-    const result = await Message.find({ user_id: id })
+    const result = await Message.find({ sender: id, reciever: id })
     // if there is a match, send 200 status with result
     res.status(200).send(result)
   } catch (error) {
@@ -32,11 +32,13 @@ const getMessageController = async (req, res, next) => {
 // controller to send user messages
 const postMessageController = async (req, res, next) => {
   // get the request payload
-  const { message } = req.body
+  const {
+    userId, friendId, content, timestamp,
+  } = req.body.message
 
   // check if there is no message,
-  // and if so end the response
-  if (!message) {
+  // and if so pass control to the error handling middleware
+  if (![userId, friendId, content, timestamp].every(Boolean)) {
     const error = new Error({
       name: 'ValidationError',
       message: 'Message object cannot be empty!',
@@ -47,6 +49,13 @@ const postMessageController = async (req, res, next) => {
 
   // if there is a message in the request, then
   try {
+    // create messageSchema object
+    const message = {
+      user_id: userId,
+      friend_id: friendId,
+      content,
+      timestamp,
+    }
     // create a new message based on messageSchema
     const newMessage = new Message(message)
     // save the message in the database
