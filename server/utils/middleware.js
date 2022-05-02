@@ -1,4 +1,4 @@
-const {infoLogger, errorLogger} = require('./logger')
+const { infoLogger, errorLogger } = require('./logger')
 
 /* A middleware that logs information of each request */
 /* received by the server. Mainly, the request        */
