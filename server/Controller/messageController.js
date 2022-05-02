@@ -34,7 +34,7 @@ const postMessageController = async (req, res, next) => {
   // get the request payload
   const {
     userId, friendId, content, timestamp,
-  } = req.body.message
+  } = req.body
 
   // check if there is no message,
   // and if so pass control to the error handling middleware
