@@ -28,6 +28,8 @@ const userSchema = new mongoose.Schema({
       ref: 'User',
     },
   ],
+  createdAt: mongoose.Schema.Types.String,
+  updatedAt: mongoose.Schema.Types.String,
 })
 
 // Format the returned document
