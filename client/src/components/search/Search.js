@@ -1,35 +1,38 @@
-import Navbar from '../navbar/Navbar'
-import Footer from '../footer/Footer'
+import { useState } from 'react'
 import SearchBox from '../searchbox/SearchBox'
 import SearchResults from '../search_results/SearchResults'
+import MainPage from '../main_page/MainPage'
 // import peopleService from '../../services/people'
 
 const axios = require('axios')
 
 function Search() {
-  let results = []
+  const container = 'people'
+  const [currentResults, setCurrentResults] = useState([])
 
   const handleSearch = async (event) => {
     event.preventDefault()
     const searchKeywords = event.target.search.value
     console.log(searchKeywords)
     const response = await axios.get('http://localhost:5000/users')
-    results = response.data.slice(0, 10)
+    setCurrentResults(response.data.slice(0, 10))
+    console.log(currentResults)
     // const results = await peopleService.search(searchKeywords)
   }
 
   return (
-    <>
-      <Navbar />
+    <MainPage>
       <div
         id="search"
-        className="container"
+        className="container main"
       >
         <SearchBox searchHandler={handleSearch} />
-        <SearchResults results={results} />
+        <SearchResults
+          results={currentResults}
+          container={container}
+        />
       </div>
-      <Footer />
-    </>
+    </MainPage>
   )
 }
 
