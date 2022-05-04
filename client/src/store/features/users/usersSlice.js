@@ -3,7 +3,11 @@ import { createSlice } from '@reduxjs/toolkit'
 // dummy user state
 const initialState = {
   id: null,
-  name: 'John Doe',
+  username: '',
+  email: '',
+  token: '',
+  picture: '',
+  friends: [],
   isOnline: false,
   isOffline: true,
 }
@@ -15,7 +19,7 @@ export const usersSlice = createSlice({
     login: (state, action) => ({
       ...state,
       id: action.payload.id,
-      name: action.payload.name,
+      username: action.payload.username,
       isOnline: true,
       isOffline: false,
     }),
