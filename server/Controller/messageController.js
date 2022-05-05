@@ -1,6 +1,9 @@
-// import the Message model
+// import the models
 const Message = require('../models/message')
 const User = require('../models/user')
+
+// import helper function
+const errorConfig = require('../utils/helper')
 
 // controller to fetch user messages
 const getMessageController = async (req, res, next) => {
@@ -10,11 +13,11 @@ const getMessageController = async (req, res, next) => {
   // if there is no user id in the request,
   // throw client error
   if (!id) {
-    const error = new Error({
-      name: 'ValidationError',
-      message: 'User_id field is required!',
-      statusCode: 400,
-    })
+    const error = errorConfig(
+      'ValidationError',
+      'User id field is required',
+      400,
+    )
     next(error)
   }
 
@@ -51,11 +54,11 @@ const postMessageController = async (req, res, next) => {
   // check if there is no message,
   // and if so pass control to the error handling middleware
   if (![userId, friendId, content, timestamp].every(Boolean)) {
-    const error = new Error({
-      name: 'ValidationError',
-      message: 'Message object cannot be empty!',
-      statusCode: 400,
-    })
+    const error = errorConfig(
+      'ValidationError',
+      'Require userId, friendId, content and timestamp to not be null or undefined',
+      400,
+    )
     next(error)
   }
 
