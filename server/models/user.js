@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
     unique: true,
     required: [true, 'email is required'],
   },
-  passwordHash: {
+  password: {
     type: String,
     required: [true, 'Password is required'],
   },
@@ -29,6 +29,8 @@ const userSchema = new mongoose.Schema({
     },
   ],
   createdAt: mongoose.Schema.Types.String,
+  refreshToken: mongoose.Schema.Types.String,
+  token: mongoose.Schema.Types.String,
   updatedAt: mongoose.Schema.Types.String,
 })
 
@@ -39,7 +41,7 @@ userSchema.set('toJSON', {
     delete returnedObject._id
     delete returnedObject.__v
     // the passwordHash should not be revealed
-    delete returnedObject.passwordHash
+    delete returnedObject.password
   },
 })
 
