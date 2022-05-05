@@ -1,5 +1,7 @@
+import { Fragment } from 'react'
+
 function Profile() {
-  return <div>Profile Component</div>
+  return <div data-testid="empty"></div>
 }
 
 export default Profile
