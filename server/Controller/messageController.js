@@ -45,6 +45,7 @@ const getMessageController = async (req, res, next) => {
 // controller to send user messages
 const postMessageController = async (req, res, next) => {
   // get the request payload
+  // eslint-disable-next-line object-curly-newline
   const { userId, friendId, content, timestamp } = req.body
 
   // check if there is no message,
