@@ -5,13 +5,13 @@ import styles from '../../styles/Navbar.module.css'
 
 function Navbar() {
   return (
-    <div className={styles.navbar}>
+    <nav className={styles.navbar}>
       <div className={`container ${styles.navbar__inner}`}>
         <Logo />
         <NavbarLinks />
         <User />
       </div>
-    </div>
+    </nav>
   )
 }
 
