@@ -1,13 +1,26 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, nanoid } from '@reduxjs/toolkit'
+import dummyManPic from '../../../icons/profile-picture-man-unsplash.jpg'
+import dummyWomanPic from '../../../icons/profile-picture-woman-unsplash.jpg'
 
-// dummy user state
+/* dummy user state */
 const initialState = {
-  id: null,
-  username: '',
-  email: '',
-  token: '',
-  picture: '',
-  friends: [],
+  id: '61cdd39a5a14f24e4f2f89c7',
+  username: 'adalovelace',
+  email: 'adalove@gamilcom',
+  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjYyMDEyM2UwMjg1ZDI2MWIwNWQ1OWY2NyIsImlhdCI6MTY0NDI1NzM3MywiZXhwIjoxNjQ0NTE2NTczfQ.VPUWHlYqzhOkU9UsyfWdhpkH3pS3GMeNkpFVct8Mtms',
+  picture: dummyManPic,
+  friends: [
+    {
+      id: 3,
+      username: 'jredmille2',
+      picture: dummyWomanPic,
+    },
+    {
+      id: 6,
+      username: 'gleband5',
+      picture: dummyWomanPic,
+    },
+  ],
   isOnline: false,
   isOffline: true,
 }
@@ -28,8 +41,42 @@ export const usersSlice = createSlice({
       isOnline: false,
       isOffline: true,
     }),
+    appendFriend: (state, action) => ({
+      ...state,
+      friends: state.friends.concat(action.payload),
+    }),
   },
 })
 
-export const { login, logout } = usersSlice.actions
+export const { login, logout, appendFriend } = usersSlice.actions
+
+export function addFriend(userToUpdate, id, token) {
+  return async (dispatch, getState) => {
+    console.log(id, token, nanoid())
+    // const updatedUser = await userService.addFriend(userToUpdate, id, token)
+    const currentFriends = getState().user.friends
+
+    /* Dummy updatedUser for testing */
+    const updatedUser = {
+      ...userToUpdate,
+      friends: currentFriends.concat({
+        id: 1,
+        username: 'marywoo',
+        picture: dummyWomanPic,
+      }),
+    }
+    const updatedFriends = updatedUser.friends
+
+    /* Find the friend that is in updatedFriends but not in currentFriends */
+    const newFriend = updatedFriends.find((friend) => (
+      !currentFriends.some((f) => f.id === friend.id)
+    ))
+    dispatch(appendFriend({
+      id: newFriend.id,
+      username: newFriend.username,
+      picture: newFriend.picture,
+    }))
+  }
+}
+
 export default usersSlice.reducer
