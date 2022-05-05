@@ -1,5 +1,6 @@
 // import the Message model
 const Message = require('../models/message')
+const User = require('../models/user')
 
 // controller to fetch user messages
 const getMessageController = async (req, res, next) => {
@@ -19,10 +20,22 @@ const getMessageController = async (req, res, next) => {
 
   // if there is an id, then
   try {
-    // query the database for a match
-    const result = await Message.find({ sender: id, reciever: id })
+    // query the database for every messages where user is sender or receiver
+    const userMessages = await Message.find().or([
+      { sender: id },
+      { reciever: id },
+    ])
+    // get user friends
+    const userFriends = await User.findById(id).contacts
+    // map the userFriends array into objects with friend_id and messages for each friend
+    const userChats = userFriends.map((friend) => {
+      const chats = userMessages.filter(
+        (message) => message.sender === friend || message.reciever === friend,
+      )
+      return { friend_id: friend, messages: chats }
+    })
     // if there is a match, send 200 status with result
-    res.status(200).send(result)
+    res.status(200).send(userChats)
   } catch (error) {
     // if there is an error, pass it to the error middleware
     next(error)
@@ -32,9 +45,7 @@ const getMessageController = async (req, res, next) => {
 // controller to send user messages
 const postMessageController = async (req, res, next) => {
   // get the request payload
-  const {
-    userId, friendId, content, timestamp,
-  } = req.body
+  const { userId, friendId, content, timestamp } = req.body
 
   // check if there is no message,
   // and if so pass control to the error handling middleware
