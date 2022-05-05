@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-underscore-dangle */
 const mongoose = require('mongoose')
 
 const messageSchema = new mongoose.Schema({
@@ -27,7 +29,7 @@ messageSchema.set('toJSON', {
     delete returnedObject._id
     delete returnedObject.__v
     // the passwordHash should not be revealed
-    delete returnedObject.passwordHash
+    // delete returnedObject.password
   },
 })
 
