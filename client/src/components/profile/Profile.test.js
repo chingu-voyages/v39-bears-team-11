@@ -7,4 +7,11 @@ describe('Profile Page Feature', () => {
     render(<Profile />)
     expect(screen.getByTestId('empty')).toBeEmptyDOMElement()
   })
+
+  test('render the navbar in profile component', () => {
+    render(<Profile />)
+    expect(screen.getByTestId('empty')).toContainHTML(
+      '<div className={styles.navbar}></div>',
+    )
+  })
 })
