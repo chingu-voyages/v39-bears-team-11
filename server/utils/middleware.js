@@ -1,15 +1,15 @@
-const logger = require('./logger')
+const { infoLogger, errorLogger } = require('./logger')
 
 /* A middleware that logs information of each request */
 /* received by the server. Mainly, the request        */
 /* method, route, and body, if provided.              */
 
 const requestLogger = (request, _, next) => {
-  logger.info('---')
-  logger.info('Method:', request.method)
-  logger.info('Path:  ', request.path)
-  logger.info('Body:  ', request.body)
-  logger.info('---')
+  infoLogger('---')
+  infoLogger('Method:', request.method)
+  infoLogger('Path:  ', request.path)
+  infoLogger('Body:  ', request.body)
+  infoLogger('---')
   next()
 }
 
@@ -29,7 +29,7 @@ const unknownEndpoint = (_, response) => {
 
 // eslint-disable-next-line consistent-return
 const errorHandler = (error, _, response, next) => {
-  logger.error(error.message)
+  errorLogger(error.message)
 
   if (error.name === 'CastError' && error.kind === 'ObjectId') {
     return response.status(400).json({

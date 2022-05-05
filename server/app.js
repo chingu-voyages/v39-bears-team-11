@@ -3,8 +3,10 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 require('express-async-errors')
 
-// Require routers here //
+// Require routers here
+const messageRouter = require('./routes/messageRouter')
 
+// Import middlewares
 const { MONGODB_URI } = require('./utils/config')
 const { infoLogger, errorLogger } = require('./utils/logger')
 const middleware = require('./utils/middleware')
@@ -31,6 +33,7 @@ app.use(express.json())
 app.use(middleware.requestLogger)
 
 // use routers here //
+app.use('/message', messageRouter)
 
 /* These two middleware must be used last */
 app.use(middleware.unknownEndpoint)
