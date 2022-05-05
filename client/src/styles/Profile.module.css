@@ -1,0 +1,16 @@
+.profile {
+  background-color: var(--clr-light-grey);
+}
+
+.profile-CTA {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 11px 23px;
+
+  position: absolute;
+  width: 254px;
+  height: 64px;
+  left: 195px;
+  top: 116px;
+}
