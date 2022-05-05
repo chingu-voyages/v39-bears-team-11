@@ -6,12 +6,11 @@ describe('Profile Page Feature', () => {
   beforeEach(() => render(<Profile />))
 
   test('render the empty Profile component', () => {
-    expect(screen.getByTestId('empty')).toBeEmptyDOMElement()
+    expect(screen.getByTestId('empty')).not.toBeEmptyDOMElement()
   })
 
   test('render the navbar in profile component', () => {
-    expect(screen.getByTestId('empty')).toContainHTML(
-      '<div className={styles.navbar}></div>',
-    )
+    const navbar = screen.getByRole('navigation')
+    expect(screen.getByTestId('empty')).toContainElement(navbar)
   })
 })
