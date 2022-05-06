@@ -82,7 +82,12 @@ img {
 }
 
 .main {
+<<<<<<< HEAD
   min-height: 70vh;
+=======
+    min-height: 70vh;
+    padding-top: 42px;
+>>>>>>> Added padding for the main utility css class
 }
 
 @media (max-width: 1024px) {
@@ -91,6 +96,15 @@ img {
   }
 }
 
+<<<<<<< HEAD
+=======
+@media(max-width: 768px) {
+    .main {
+      padding-top: 24px;
+    }
+  }
+  
+>>>>>>> Added padding for the main utility css class
 @media (max-width: 580px) {
   .container {
     margin: 0 24px;

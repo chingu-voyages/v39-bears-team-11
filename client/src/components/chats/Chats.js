@@ -6,7 +6,9 @@ function Chats() {
       <div
         id="chats"
         className="container main"
-      />
+      >
+        test
+      </div>
     </MainPage>
   )
 }
