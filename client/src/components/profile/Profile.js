@@ -1,12 +1,7 @@
-import { Fragment } from 'react'
-import Navbar from '../navbar/Navbar'
+/* eslint-disable react/self-closing-comp */
 
 function Profile() {
-  return (
-    <div data-testid="empty">
-      <Navbar />
-    </div>
-  )
+  return <>Profile Page</>
 }
 
 export default Profile
