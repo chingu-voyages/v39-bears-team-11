@@ -33,6 +33,9 @@
   background-color: var(--clr-light-blue);
 }
 
+.navlink--active {
+  background-color: var(--clr-light-blue);
+}
 .nav-icon {
   fill: var(--clr-london-hue);
 }
@@ -46,7 +49,16 @@
   fill: var(--clr-royal-blue)
 }
 
-.navlink:hover #nav-icon__search {
+.navlink--active .nav-icon {
+  fill: var(--clr-royal-blue)
+}
+
+.navlink:hover #nav-icon__search,
+.navlink:active #nav-icon__search {
+  stroke: var(--clr-royal-blue);
+}
+
+.navlink--active #nav-icon__search {
   stroke: var(--clr-royal-blue);
 }
 
@@ -55,6 +67,7 @@
     height: 60px;
   }
   .navbar__links {
+    background-color: var(--clr-white);
     position: fixed;
     bottom: 0;
     left: 0;

@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import styles from './styles/App.module.css'
+import { useSelector } from 'react-redux'
 import Signup from './components/signup/Signup'
 import Chats from './components/chats/Chats'
 import ChatRoom from './components/chatroom/ChatRoom'
@@ -9,16 +9,19 @@ import Profile from './components/profile/Profile'
 import Friends from './components/friends/Friends'
 
 function App() {
+  const currentUser = useSelector(({ user }) => user)
+  console.log(currentUser)
+  const isLogged = () => currentUser.username && currentUser.token
+
   return (
     <div className="App">
-      <header className={styles.App} />
 
       <Router>
         <Routes>
           <Route
             exact
             path="/"
-            element={<Signup />}
+            element={isLogged() ? <Chats /> : <Signup />}
           />
           <Route
             path="signup"

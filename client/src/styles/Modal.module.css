@@ -1,0 +1,33 @@
+.modal {
+  width: 450px;
+  height: 250px;
+  top: 30%;
+  left: 35%;
+  border: 0;
+  border-radius: 15px;
+  background-color: var(--clr-white);
+  box-shadow: 2px 2px 1em rgba(0, 0, 0, .3);
+  padding: 2rem;
+}
+
+.modal::backdrop {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal h4 {
+  color: var(--clr-black);
+}
+
+@media (max-width: 768px) {
+  .modal {
+    width: 80vw;
+    height: 200px;
+    left: 10%;
+  }
+}
+
+@media(max-width: 580px) {
+  .modal {
+    height: 230px;
+  }  
+}

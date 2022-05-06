@@ -1,6 +1,5 @@
 .footer {
-  position: absolute;
-  bottom: 3rem;
+  padding: 6rem 0;
 }
 
 .footer p {
@@ -10,10 +9,6 @@
 }
 
 @media(max-width: 768px) {
-  .footer {
-    bottom: 6rem;
-  }
-
   .footer p {
     font-size: 1.5rem;
   }

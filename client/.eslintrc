@@ -12,6 +12,7 @@
       "error",
       "never"
     ],
+    "react/prop-types": "off",
     "no-console": 0,
     "react/jsx-filename-extension": [
       1,
@@ -29,6 +30,7 @@
       "jsx": "never"
       }
     ],
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-props-no-spreading": "off"
   }
 }

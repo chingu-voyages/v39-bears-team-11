@@ -1,6 +1,6 @@
 function Signup() {
   return (
-    <div />
+    <div>You are at the Signup page</div>
   )
 }
 
