@@ -5,7 +5,10 @@ import Profile from './Profile'
 describe('Profile Page Feature', () => {
   beforeEach(() => render(<Profile />))
 
-  test('render the profile component', () => {
-    expect(screen.getByText('Profile Page')).toBeInTheDocument()
+  test('renders the profile component', () => {
+    const profileHeading = screen.getByText('Profile')
+    const dummyText = screen.getByText('Component')
+    expect(screen.getByRole('heading')).toContainElement(profileHeading)
+    expect(screen.getByRole('main')).toContainElement(dummyText)
   })
 })
