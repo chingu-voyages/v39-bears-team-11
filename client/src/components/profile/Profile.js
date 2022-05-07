@@ -15,7 +15,6 @@ function Profile() {
         </div>
       </header>
       <main>
-        <p>Component</p>
         <div>
           <img src={profilePicture} alt="profile user icon" />
           <img src={updateIcon} alt="profile user update icon " />

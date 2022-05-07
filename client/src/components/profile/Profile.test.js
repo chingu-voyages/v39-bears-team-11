@@ -7,9 +7,7 @@ describe('Profile Page Feature', () => {
 
   test('renders the profile component', () => {
     const profileHeading = screen.getByText('Profile')
-    const dummyText = screen.getByText('Component')
     expect(screen.getByRole('heading')).toContainElement(profileHeading)
-    expect(screen.getByRole('main')).toContainElement(dummyText)
   })
 
   test('should render the profile icons', () => {
@@ -27,4 +25,6 @@ describe('Profile Page Feature', () => {
     expect(screen.getByRole('main')).toContainElement(profilePicture)
     expect(screen.getByRole('main')).toContainElement(profilePictureEditIcon)
   })
+
+  test('should render profile')
 })
