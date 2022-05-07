@@ -1,3 +1,4 @@
+import StartAChatButton from '../button/StartAChatButton'
 import MainPage from '../main_page/MainPage'
 
 function Chats() {
@@ -7,7 +8,7 @@ function Chats() {
         id="chats"
         className="container main"
       >
-        test
+        <StartAChatButton />
       </div>
     </MainPage>
   )
