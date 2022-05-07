@@ -3,7 +3,6 @@ import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import SearchBox from '../searchbox/SearchBox'
 import SearchResults from '../search_results/SearchResults'
-import MainPage from '../main_page/MainPage'
 import { addFriend } from '../../store/features/users/usersSlice'
 // import peopleService from '../../services/people'
 
@@ -33,20 +32,23 @@ function Search() {
 
   const handleAdd = (personId) => {
     /* Dispatch a addFriend action to user store */
-    dispatch(addFriend({
-      username,
-      email,
-      picture,
-      friends: friends.map((friend) => friend.id).concat(personId),
-    }, id, token))
+    dispatch(
+      addFriend(
+        {
+          username,
+          email,
+          picture,
+          friends: friends.map((friend) => friend.id).concat(personId),
+        },
+        id,
+        token,
+      ),
+    )
   }
 
   return (
-    <MainPage>
-      <div
-        id="search"
-        className="container main"
-      >
+      <div id="search" className="container main">
+
         <SearchBox searchHandler={handleSearch} />
         <SearchResults
           results={currentResults}
@@ -56,8 +58,8 @@ function Search() {
           confirmButtonText="Add"
           formHandler={handleAdd}
         />
+
       </div>
-    </MainPage>
   )
 }
 

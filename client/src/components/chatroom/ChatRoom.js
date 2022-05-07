@@ -1,7 +1,5 @@
 function ChatRoom() {
-  return (
-    <div />
-  )
+  return <div>ChatRoom Component</div>
 }
 
 export default ChatRoom

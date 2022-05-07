@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import SearchBox from '../searchbox/SearchBox'
 import SearchResults from '../search_results/SearchResults'
-import MainPage from '../main_page/MainPage'
 import { unFriend } from '../../store/features/users/usersSlice'
 
 function Friends() {
@@ -35,22 +34,20 @@ function Friends() {
   }
 
   return (
-    <MainPage>
-      <div id="friends" className="container main">
+    <div id="friends" className="container main">
 
-        <SearchBox searchHandler={handleSearch} />
+      <SearchBox searchHandler={handleSearch} />
+      <SearchResults
+        results={currentResults}
+        container={container}
+        modalTitle="Confirm Unfriend"
+        getModalText={(name) => `Are you sure you want to unfriend ${name} ?`}
+        confirmButtonText="Unfriend"
+        buttonClasses="button--danger"
+        formHandler={handleUnfriend}
+      />
 
-        <SearchResults
-          results={currentResults}
-          container={container}
-          modalTitle="Confirm Unfriend"
-          getModalText={(name) => `Are you sure you want to unfriend ${name} ?`}
-          confirmButtonText="Unfriend"
-          buttonClasses="button--danger"
-          formHandler={handleUnfriend}
-        />
-      </div>
-    </MainPage>
+    </div>
   )
 }
 
