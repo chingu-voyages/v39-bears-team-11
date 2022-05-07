@@ -32,7 +32,8 @@
 .button--cancel {
   position: absolute;
   bottom: 2rem;
-  border-radius: 15px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
 }
 
 .button--confirm {
