@@ -1,7 +1,5 @@
 function Friends() {
-  return (
-    <div />
-  )
+  return <div>Friends Component</div>
 }
 
 export default Friends

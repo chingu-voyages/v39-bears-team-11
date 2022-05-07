@@ -17,29 +17,28 @@ function SearchResult({
   const friends = useSelector(({ user }) => user.friends)
   const modalRef = useRef()
 
-  const showButton = function () {
+  const showButton = () => {
     if (container === 'people') {
       const friend = friends.find((f) => f.id === result.id)
 
       if (friend) {
-        return (
-          <FriendTag />
-        )
+        return <FriendTag />
       }
       return (
-        <AddFriendButton handleAddFriendClick={() => modalRef.current.showModal()} />
+        <AddFriendButton
+          handleAddFriendClick={() => modalRef.current.showModal()}
+        />
       )
     }
     return (
-      <UnfriendButton handleUnfriendClick={() => modalRef.current.showModal()} />
+      <UnfriendButton
+        handleUnfriendClick={() => modalRef.current.showModal()}
+      />
     )
   }
 
   return (
-    <div
-      className={styles['search-result']}
-      data-id={result.id}
-    >
+    <div className={styles['search-result']} data-id={result.id}>
       <div className={styles['search-result__description']}>
         <div className={styles['search-result__image']}>
           <img src={result.picture} alt={result.username} />
@@ -48,9 +47,7 @@ function SearchResult({
           <p>{result.username}</p>
         </div>
       </div>
-      {
-        showButton()
-      }
+      {showButton()}
 
       <Modal
         ref={modalRef}
