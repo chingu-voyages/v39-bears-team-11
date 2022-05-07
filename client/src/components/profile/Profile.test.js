@@ -18,4 +18,9 @@ describe('Profile Page Feature', () => {
     expect(screen.getByRole('banner')).toContainElement(editIcon)
     expect(screen.getByRole('banner')).toContainElement(deleteIcon)
   })
+
+  test('should render profile picture', () => {
+    const profilePicture = screen.getByAltText('profile user icon')
+    expect(screen.getByRole('main')).toContainElement(profilePicture)
+  })
 })
