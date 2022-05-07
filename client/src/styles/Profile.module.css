@@ -4,6 +4,7 @@
 
 .profile-heading {
   position: absolute;
+
   bottom: 80.66%;
   left: 5.33%;
   right: 78.93%;
@@ -13,6 +14,15 @@
   font-weight: 700;
   font-size: 2rem;
   line-height: 3.8rem;
+}
+
+.profile-picture {
+  position: absolute;
+
+  height: 12.9rem;
+  left: 12.3rem;
+  top: 16.1rem;
+  width: 12.9rem;
 }
 
 .profile-cta-btn {
