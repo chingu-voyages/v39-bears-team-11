@@ -1,6 +1,7 @@
 /* eslint-disable react/self-closing-comp */
 import editIcon from '../../icons/profile/profile-edit-icon.svg'
 import deleteIcon from '../../icons/profile/profile-delete-icon.svg'
+import profilePicture from '../../icons/profile/profile-user-icon.svg'
 
 function Profile() {
   return (
@@ -14,6 +15,7 @@ function Profile() {
       </header>
       <main>
         <p>Component</p>
+        <img src={profilePicture} alt="profile user icon" />
       </main>
     </>
   )
