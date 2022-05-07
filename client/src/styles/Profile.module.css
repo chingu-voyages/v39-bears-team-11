@@ -66,3 +66,15 @@
   top: 46.8rem;
   width: 31.7rem;
 }
+
+.profile-line {
+  position: absolute;
+
+  bottom: 79.91%;
+  left: 4.8%;
+  right: 7.2%;
+  top: 20.09%;
+
+  border: 1px solid #c4c4c4;
+  transform: rotate(0.17deg);
+}
