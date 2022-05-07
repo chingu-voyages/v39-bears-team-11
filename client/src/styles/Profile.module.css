@@ -1,8 +1,8 @@
-.profile {
+.Profile {
   border-radius: 2rem;
 }
 
-.profile-heading {
+.Profile-heading {
   position: absolute;
 
   bottom: 80.66%;
@@ -16,7 +16,7 @@
   line-height: 3.8rem;
 }
 
-.profile-picture {
+.Profile-picture {
   position: absolute;
 
   height: 12.9rem;
@@ -25,7 +25,7 @@
   width: 12.9rem;
 }
 
-.profile-cta-btn {
+.Profile-cta-btn {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -38,11 +38,11 @@
   top: 11.6rem;
 }
 
-.profile-form {
+.Profile-form {
   display: flex;
 }
 
-.profile-form label {
+.Profile-form label {
   position: absolute;
 
   height: 2.1rem;
@@ -58,7 +58,7 @@
   line-height: 150%;
 }
 
-.profile-form input {
+.Profile-form input {
   position: absolute;
 
   height: 4rem;
@@ -67,7 +67,7 @@
   width: 31.7rem;
 }
 
-.profile-line {
+.Profile-line {
   position: absolute;
 
   bottom: 79.91%;
@@ -77,4 +77,13 @@
 
   border: 1px solid #c4c4c4;
   transform: rotate(0.17deg);
+}
+
+.Profile-editBtn {
+  position: absolute;
+
+  height: 3.1rem;
+  left: 22.8rem;
+  top: 25.9rem;
+  width: 3.1rem;
 }
