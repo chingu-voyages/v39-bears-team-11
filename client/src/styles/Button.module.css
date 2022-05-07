@@ -52,6 +52,10 @@
   background-color: var(--clr-danger-red);
 }
 
+.button--start-a-chat {
+  background-color: var(--clr-royal-blue);
+}
+
 @media(max-width:668px) {
   .button {
     font-size: 14px;
