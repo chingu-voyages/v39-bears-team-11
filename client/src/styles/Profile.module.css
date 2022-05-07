@@ -29,11 +29,11 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  padding: 11px 23px;
+  padding: 1.1rem 2.3rem;
 
   position: absolute;
-  width: 254px;
-  height: 64px;
-  left: 195px;
-  top: 116px;
+  width: 25.4rem;
+  height: 6.4rem;
+  left: 19.5rem;
+  top: 11.6rem;
 }
