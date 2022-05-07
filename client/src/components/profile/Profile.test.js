@@ -21,6 +21,10 @@ describe('Profile Page Feature', () => {
 
   test('should render profile picture', () => {
     const profilePicture = screen.getByAltText('profile user icon')
+    const profilePictureEditIcon = screen.getByAltText(
+      'profile user update icon',
+    )
     expect(screen.getByRole('main')).toContainElement(profilePicture)
+    expect(screen.getByRole('main')).toContainElement(profilePictureEditIcon)
   })
 })
