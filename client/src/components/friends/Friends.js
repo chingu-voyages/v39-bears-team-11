@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import SearchBox from '../searchbox/SearchBox'
 import SearchResults from '../search_results/SearchResults'
@@ -11,8 +11,19 @@ function Friends() {
   } = userState
   const dispatch = useDispatch()
 
-  const [currentResults, setCurrentResults] = useState(friends)
+  const [currentResults, setCurrentResults] = useState([...friends])
   const container = 'Friends'
+
+  useEffect(() => {
+    const removedFriend = currentResults.find((friend) => (
+      !friends.some((f) => f.id === friend.id)
+    ))
+    const updatedResults = removedFriend
+      ? currentResults.filter((f) => f.id !== removedFriend.id)
+      : friends
+
+    setCurrentResults(updatedResults)
+  }, [friends])
 
   const handleSearch = (event) => {
     event.preventDefault()
@@ -36,7 +47,7 @@ function Friends() {
   return (
     <div id="friends" className="container main">
 
-      <SearchBox searchHandler={handleSearch} />
+      <SearchBox searchHandler={handleSearch} container={container} />
       <SearchResults
         results={currentResults}
         container={container}
