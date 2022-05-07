@@ -53,7 +53,23 @@
 }
 
 .button--start-a-chat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: var(--clr-royal-blue);
+  margin-top: 0px;
+  text-transform: none;
+  color: var(--clr-pampas-pink);  
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  height: 64px;
+  width: 254px;
+  font-size: 26px;
+  font-family: var(--ff-text);
+  /* For some reason font-weight: 400, the same as on figma is too bold in browser.
+     That's why I had to lower it to 300 to achieve the same effect as in figma*/
+  font-weight: 300;
+  padding: 0 23px 0 23px;
 }
 
 @media(max-width:668px) {
