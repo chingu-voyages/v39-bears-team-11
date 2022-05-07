@@ -69,7 +69,7 @@
   /* For some reason font-weight: 400, the same as on figma is too bold in browser.
      That's why I had to lower it to 300 to achieve the same effect as in figma*/
   font-weight: 300;
-  padding: 0 23px 0 23px;
+  padding: 0 23px;
 }
 
 @media(max-width:668px) {

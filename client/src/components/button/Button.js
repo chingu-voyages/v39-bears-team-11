@@ -9,9 +9,10 @@ function Button({
       className={`${styles.button} ${className}`}
       {...props}
     >
-      {text}
+      {/* Check if the button contains text. If yes then include it and wrap it in the span tag */}
+      {text && <span>{text}</span>}
 
-      {/* Check if the icon has been passed. If yes, add it to the button. */}
+      {/* Check if the button contains an icon. If yes then include the icon inside the button. */}
       {icon && <img src={icon} alt={iconAlt} />}
     </button>
   )
