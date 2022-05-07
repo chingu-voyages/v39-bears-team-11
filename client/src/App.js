@@ -12,49 +12,19 @@ import MainPage from './components/main_page/MainPage'
 function App() {
   const currentUser = useSelector(({ user }) => user)
   console.log(currentUser)
-  // const isLogged = () => currentUser.username && currentUser.token
+  const isLoggedIn = () => currentUser.username && currentUser.token
 
   return (
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<MainPage />}>
-            <Route path="chats" element={<Chats />} />
-            <Route path="signup" element={<Signup />} />
+          <Route element={<MainPage />}>
+            <Route path="/" element={isLoggedIn() ? <Chats /> : <Signup />} />
             <Route path="chatroom" element={<ChatRoom />} />
             <Route path="search" element={<Search />} />
             <Route path="profile" element={<Profile />} />
             <Route path="friends" element={<Friends />} />
           </Route>
-          {/* <Route
-            exact
-            path="/"
-            element={isLogged() ? <Chats /> : <Signup />}
-          />
-          <Route
-            path="signup"
-            element={<Signup />}
-          />
-          <Route
-            path="/chats"
-            element={<Chats />}
-          />
-          <Route
-            path="/chatroom"
-            element={<ChatRoom />}
-          />
-          <Route
-            path="/search"
-            element={<Search />}
-          />
-          <Route
-            path="/profile"
-            element={<Profile />}
-          />
-          <Route
-            path="/friends"
-            element={<Friends />}
-          /> */}
         </Routes>
       </Router>
     </div>
