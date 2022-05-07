@@ -10,7 +10,8 @@ function SearchResult({
   result,
   container,
   modalTitle,
-  modalText,
+  getModalText,
+  buttonClasses,
   confirmButtonText,
   formHandler,
 }) {
@@ -55,9 +56,10 @@ function SearchResult({
       <Modal
         ref={modalRef}
         title={modalTitle}
-        text={modalText}
+        text={getModalText(result.username)}
         onRequestClose={() => modalRef.current.close()}
         confirmButtonText={confirmButtonText}
+        buttonClasses={buttonClasses}
         formHandler={formHandler}
         formHandlerArgument={result.id}
       />

@@ -12,7 +12,6 @@ function Search() {
   const {
     id, username, email, token, picture, friends,
   } = userState
-  console.log(friends)
   const dispatch = useDispatch()
 
   const container = 'people'
@@ -53,7 +52,7 @@ function Search() {
           results={currentResults}
           container={container}
           modalTitle="Confirm Friend Request"
-          modalText="Are you sure you want to add this person to your friends list ?"
+          getModalText={(name) => `Are you sure you want to add ${name} to your friends list ?`}
           confirmButtonText="Add"
           formHandler={handleAdd}
         />
