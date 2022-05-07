@@ -87,3 +87,12 @@
   top: 25.9rem;
   width: 3.1rem;
 }
+
+.Profile-icons {
+  position: absolute;
+
+  height: 3rem;
+  left: 31rem;
+  top: 9.1rem;
+  width: 3rem;
+}
