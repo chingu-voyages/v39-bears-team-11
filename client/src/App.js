@@ -7,18 +7,26 @@ import ChatRoom from './components/chatroom/ChatRoom'
 import Search from './components/search/Search'
 import Profile from './components/profile/Profile'
 import Friends from './components/friends/Friends'
+import MainPage from './components/main_page/MainPage'
 
 function App() {
   const currentUser = useSelector(({ user }) => user)
   console.log(currentUser)
-  const isLogged = () => currentUser.username && currentUser.token
+  // const isLogged = () => currentUser.username && currentUser.token
 
   return (
     <div className="App">
-
       <Router>
         <Routes>
-          <Route
+          <Route path="/" element={<MainPage />}>
+            <Route path="chats" element={<Chats />} />
+            <Route path="signup" element={<Signup />} />
+            <Route path="chatroom" element={<ChatRoom />} />
+            <Route path="search" element={<Search />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="friends" element={<Friends />} />
+          </Route>
+          {/* <Route
             exact
             path="/"
             element={isLogged() ? <Chats /> : <Signup />}
@@ -46,10 +54,9 @@ function App() {
           <Route
             path="/friends"
             element={<Friends />}
-          />
+          /> */}
         </Routes>
       </Router>
-
     </div>
   )
 }
