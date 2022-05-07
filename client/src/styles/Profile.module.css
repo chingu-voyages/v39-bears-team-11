@@ -1,8 +1,21 @@
 .profile {
-  background-color: var(--clr-light-grey);
+  border-radius: 2rem;
 }
 
-.profile-CTA {
+.profile-heading {
+  position: absolute;
+  bottom: 80.66%;
+  left: 5.33%;
+  right: 78.93%;
+  top: 13.64%;
+
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 3.8rem;
+}
+
+.profile-cta-btn {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
