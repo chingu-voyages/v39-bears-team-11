@@ -11,4 +11,11 @@ describe('Profile Page Feature', () => {
     expect(screen.getByRole('heading')).toContainElement(profileHeading)
     expect(screen.getByRole('main')).toContainElement(dummyText)
   })
+
+  test('should render the profile icons', () => {
+    const editIcon = screen.getByAltText('edit icon')
+    const deleteIcon = screen.getByAltText('delete icon')
+    expect(screen.getByRole('banner')).toContainElement(editIcon)
+    expect(screen.getByRole('banner')).toContainElement(deleteIcon)
+  })
 })
