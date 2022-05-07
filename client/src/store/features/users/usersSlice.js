@@ -47,7 +47,7 @@ export const usersSlice = createSlice({
     }),
     removeFriend: (state, action) => ({
       ...state,
-      friends: state.friends.map((f) => f.id !== action.payload),
+      friends: state.friends.filter((f) => f.id !== action.payload),
     }),
   },
 })
