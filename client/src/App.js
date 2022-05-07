@@ -20,6 +20,7 @@ function App() {
         <Routes>
           <Route element={<MainPage />}>
             <Route path="/" element={isLoggedIn() ? <Chats /> : <Signup />} />
+            <Route path="chats" element={<Chats />} />
             <Route path="chatroom" element={<ChatRoom />} />
             <Route path="search" element={<Search />} />
             <Route path="profile" element={<Profile />} />
