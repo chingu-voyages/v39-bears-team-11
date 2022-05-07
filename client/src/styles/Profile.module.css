@@ -37,3 +37,32 @@
   left: 19.5rem;
   top: 11.6rem;
 }
+
+.profile-form {
+  display: flex;
+}
+
+.profile-form label {
+  position: absolute;
+
+  height: 2.1rem;
+  left: 2.5rem;
+  top: 35.2rem;
+  width: 3.7rem;
+
+  color: var(--clr-london-hue);
+  font-family: inherit;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%;
+}
+
+.profile-form input {
+  position: absolute;
+
+  height: 4rem;
+  left: 2rem;
+  top: 46.8rem;
+  width: 31.7rem;
+}
