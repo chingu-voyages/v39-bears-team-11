@@ -23,7 +23,9 @@
 
 .button--unfriend {
   color: var(--clr-danger-red);
+  background-color: transparent;
   border: 1px solid var(--clr-danger-red);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
 }
 
 .button--confirm,
@@ -43,6 +45,10 @@
   right: 3rem;
   background-color: var(--clr-light-blue);
   color: var(--clr-royal-blue);
+}
+
+.button--danger {
+  background-color: var(--clr-danger-red);
 }
 
 @media(max-width:668px) {
