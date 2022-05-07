@@ -2,6 +2,7 @@
 import editIcon from '../../icons/profile/profile-edit-icon.svg'
 import deleteIcon from '../../icons/profile/profile-delete-icon.svg'
 import profilePicture from '../../icons/profile/profile-user-icon.svg'
+import updateIcon from '../../icons/profile/profile-picture-update-icon.svg'
 
 function Profile() {
   return (
@@ -15,7 +16,10 @@ function Profile() {
       </header>
       <main>
         <p>Component</p>
-        <img src={profilePicture} alt="profile user icon" />
+        <div>
+          <img src={profilePicture} alt="profile user icon" />
+          <img src={updateIcon} alt="profile user update icon " />
+        </div>
       </main>
     </>
   )
