@@ -26,5 +26,8 @@ describe('Profile Page Feature', () => {
     expect(screen.getByRole('main')).toContainElement(profilePictureEditIcon)
   })
 
-  test('should render profile')
+  test('should render profile form controls', () => {
+    expect(screen.getByLabelText('Name')).toBeInTheDocument()
+    expect(screen.getByLabelText('Email')).toBeInTheDocument()
+  })
 })
