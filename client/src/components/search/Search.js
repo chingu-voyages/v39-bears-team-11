@@ -47,19 +47,19 @@ function Search() {
   }
 
   return (
-      <div id="search" className="container main">
+    <div id="search" className="container main">
 
-        <SearchBox searchHandler={handleSearch} />
-        <SearchResults
-          results={currentResults}
-          container={container}
-          modalTitle="Confirm Friend Request"
-          getModalText={(name) => `Are you sure you want to add ${name} to your friends list ?`}
-          confirmButtonText="Add"
-          formHandler={handleAdd}
-        />
+      <SearchBox searchHandler={handleSearch} container={container} />
+      <SearchResults
+        results={currentResults}
+        container={container}
+        modalTitle="Confirm Friend Request"
+        getModalText={(name) => `Are you sure you want to add ${name} to your friends list ?`}
+        confirmButtonText="Add"
+        formHandler={handleAdd}
+      />
 
-      </div>
+    </div>
   )
 }
 
