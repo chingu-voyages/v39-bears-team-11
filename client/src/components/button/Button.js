@@ -9,7 +9,9 @@ function Button({
       className={`${styles.button} ${className}`}
       {...props}
     >
-      {/* Check if the button contains text. If yes then include it and wrap it in the span tag */}
+      {/* Check if the button contains text. If yes then include it and wrap it in the span tag.
+          Wrapping it into the span tag will make this element easier to access and to work on.
+          For example in styling: button > span */}
       {text && <span>{text}</span>}
 
       {/* Check if the button contains an icon. If yes then include the icon inside the button. */}

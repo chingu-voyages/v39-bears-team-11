@@ -88,4 +88,25 @@
   .button--cancel {
     right: 2rem;
   }
+
+  
+}
+
+@media(max-width:768px) {
+  .button--start-a-chat > span {
+    display: none;
+  }
+
+  .button--start-a-chat {
+    height: 60px;
+    width: 60px;
+    padding: 0px;
+    justify-content: center;
+    border-radius: 50%;
+    position: absolute;
+    margin-bottom: 0;
+    /* I put it little bit further from the edge (compared to figma design) to not cover the footer */
+    bottom: 80px;
+    right: 15px;
+  }
 }
