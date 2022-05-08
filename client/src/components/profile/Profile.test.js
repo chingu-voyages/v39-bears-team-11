@@ -5,25 +5,28 @@ import Profile from './Profile'
 describe('Profile Page Feature', () => {
   beforeEach(() => render(<Profile />))
 
-  test('renders the profile component', () => {
-    const profileHeading = screen.getByText('Profile')
-    expect(screen.getByRole('heading')).toContainElement(profileHeading)
+  test('renders the profile heading', () => {
+    expect(screen.getByRole('heading').textContent).toBe('Profile')
+    expect(screen.getByRole('banner')).toBeInTheDocument()
+    expect(screen.getByRole('main')).toBeInTheDocument()
   })
 
   test('should render the profile icons', () => {
+    const iconsContainer = screen.getByRole('banner').querySelector('div')
     const editIcon = screen.getByAltText('edit icon')
     const deleteIcon = screen.getByAltText('delete icon')
-    expect(screen.getByRole('banner')).toContainElement(editIcon)
-    expect(screen.getByRole('banner')).toContainElement(deleteIcon)
+    expect(iconsContainer).toContainElement(editIcon)
+    expect(iconsContainer).toContainElement(deleteIcon)
   })
 
   test('should render profile picture', () => {
+    const pictureContainer = screen.getByRole('main').querySelector('div')
     const profilePicture = screen.getByAltText('profile user icon')
     const profilePictureEditIcon = screen.getByAltText(
       'profile user update icon',
     )
-    expect(screen.getByRole('main')).toContainElement(profilePicture)
-    expect(screen.getByRole('main')).toContainElement(profilePictureEditIcon)
+    expect(pictureContainer).toContainElement(profilePicture)
+    expect(pictureContainer).toContainElement(profilePictureEditIcon)
   })
 
   test('should render profile form controls', () => {
