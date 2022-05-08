@@ -27,7 +27,12 @@ describe('Profile Page Feature', () => {
   })
 
   test('should render profile form controls', () => {
+    const [nameControl, emailControl] = screen.getAllByRole('textbox')
     expect(screen.getByLabelText('Name')).toBeInTheDocument()
     expect(screen.getByLabelText('Email')).toBeInTheDocument()
+    expect(nameControl.type).toBe('text')
+    expect(emailControl.type).toBe('email')
+    expect(nameControl).toHaveAttribute('disabled')
+    expect(emailControl).toHaveAttribute('disabled')
   })
 })
