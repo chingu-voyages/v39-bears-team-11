@@ -8,6 +8,8 @@ import styles from '../../styles/Profile.module.css'
 function Profile({ user }) {
   return (
     <div className={styles.Profile}>
+      {/* header section contains the profile heading and profile
+      actions buttons */}
       <header className={styles.Profile__heading}>
         <h2>Profile</h2>
         <div>
@@ -23,6 +25,9 @@ function Profile({ user }) {
           />
         </div>
       </header>
+
+      {/* main section of the profile page contains the profile
+      picture, the icon to edit it, and profile form */}
       <main className={styles.Profile__main}>
         <div className={styles.Profile__imgContainer}>
           <img
