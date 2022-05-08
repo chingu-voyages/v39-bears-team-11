@@ -23,7 +23,7 @@ function App() {
             <Route path="chats" element={<Chats />} />
             <Route path="chatroom" element={<ChatRoom />} />
             <Route path="search" element={<Search />} />
-            <Route path="profile" element={<Profile />} />
+            <Route path="profile" element={<Profile user={currentUser} />} />
             <Route path="friends" element={<Friends />} />
           </Route>
         </Routes>
