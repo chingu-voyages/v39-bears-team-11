@@ -47,6 +47,8 @@
 .Profile__picture {
   border-radius: 50%;
   height: 12.9rem;
+  object-fit: cover;
+  object-position: 0 0;
   width: 12.9rem;
 }
 
@@ -59,40 +61,30 @@
   width: 3rem;
 }
 
-/* .Profile__cta-btn {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 1.1rem 2.3rem;
-
-  position: absolute;
-  width: 25.4rem;
-  height: 6.4rem;
-  left: 19.5rem;
-  top: 11.6rem;
-} */
-
 .Profile__form {
   display: block;
 }
 
 .Profile__form label {
-  display: inline-block;
   color: var(--clr-london-hue);
+  display: inline-block;
   font-family: inherit;
   font-size: 1.4rem;
   font-style: normal;
   font-weight: 700;
   line-height: 150%;
-}
-
-.Profile__form input {
-  height: 4rem;
-  width: 31.7rem;
+  width: 100%;
 }
 
 .Profile__form label:not(:last-child) {
   padding-bottom: 3rem;
+}
+
+.Profile__form input {
+  font-family: inherit;
+  font-size: inherit;
+  padding: 1.3rem;
+  width: 100%;
 }
 
 /* media queries for tablets */
