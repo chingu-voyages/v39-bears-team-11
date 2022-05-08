@@ -1,6 +1,6 @@
 .search-results {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, calc(25% - 25px)));
+  grid-template-columns: repeat(auto-fit, minmax(230px, calc(25% - 150px/4)));
   gap: 50px;
 }
 
