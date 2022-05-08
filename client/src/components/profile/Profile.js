@@ -3,12 +3,13 @@ import editIcon from '../../icons/profile/profile-edit-icon.svg'
 import deleteIcon from '../../icons/profile/profile-delete-icon.svg'
 import profilePicture from '../../icons/profile/profile-user-icon.svg'
 import updateIcon from '../../icons/profile/profile-picture-update-icon.svg'
+import styles from '../../styles/Profile.module.css'
 
 function Profile() {
   return (
-    <>
+    <div className={styles.Profile}>
       <header>
-        <h2>Profile</h2>
+        <h2 className={styles['profile-heading']}>Profile</h2>
         <div>
           <img src={editIcon} alt="edit icon" />
           <img src={deleteIcon} alt="delete icon" />
@@ -31,7 +32,7 @@ function Profile() {
           </label>
         </form>
       </main>
-    </>
+    </div>
   )
 }
 
