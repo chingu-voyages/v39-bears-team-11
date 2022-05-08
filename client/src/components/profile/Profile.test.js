@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import Profile from './Profile'
 
 describe('Profile Page Feature', () => {
@@ -39,5 +40,10 @@ describe('Profile Page Feature', () => {
     expect(emailControl).toHaveAttribute('disabled')
     expect(nameControl.value).toBeFalsy()
     expect(emailControl.value).toBeFalsy()
+
+    userEvent.type(nameControl, 'John Doe')
+    userEvent.type(emailControl, 'johndoe@gmail.com')
+    expect(nameControl.value).toBe('')
+    expect(emailControl.value).toBe('')
   })
 })
