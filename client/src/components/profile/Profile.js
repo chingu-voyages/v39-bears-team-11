@@ -20,11 +20,15 @@ function Profile() {
           <img src={updateIcon} alt="profile user update icon " />
         </div>
         <form>
-          <label htmlFor="user-name">Name</label>
-          <input type="text" name="name" id="user-name" disabled />
+          <label htmlFor="user-name">
+            Name
+            <input type="text" name="name" id="user-name" disabled />
+          </label>
 
-          <label htmlFor="user-email">Email</label>
-          <input type="email" name="email" id="user-email" disabled />
+          <label htmlFor="user-email">
+            Email
+            <input type="email" name="email" id="user-email" disabled />
+          </label>
         </form>
       </main>
     </>
