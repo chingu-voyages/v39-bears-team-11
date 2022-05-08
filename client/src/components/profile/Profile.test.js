@@ -37,5 +37,7 @@ describe('Profile Page Feature', () => {
     expect(emailControl.type).toBe('email')
     expect(nameControl).toHaveAttribute('disabled')
     expect(emailControl).toHaveAttribute('disabled')
+    expect(nameControl.value).toBeFalsy()
+    expect(emailControl.value).toBeFalsy()
   })
 })
