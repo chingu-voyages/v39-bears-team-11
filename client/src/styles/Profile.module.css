@@ -1,31 +1,65 @@
 .Profile {
-  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+
+  height: 83vh;
+  padding: 4rem 2rem 0;
 }
 
 .Profile__heading {
-  position: absolute;
-
-  bottom: 80.66%;
-  left: 5.33%;
-  right: 78.93%;
-  top: 13.64%;
+  display: flex;
+  justify-content: space-between;
 
   font-style: normal;
   font-weight: 700;
   font-size: 2rem;
   line-height: 3.8rem;
+
+  border-bottom: 1px solid #c4c4c4;
+}
+
+.Profile__heading > h2,
+.Profile__heading > div {
+  display: inline-block;
+}
+
+.Profile__icons {
+  height: 3.1rem;
+  width: 3.1rem;
+}
+
+.Profile__main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.Profile__imgContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 5rem 0;
+
+  position: relative;
 }
 
 .Profile__picture {
-  position: absolute;
-
+  border-radius: 50%;
   height: 12.9rem;
-  left: 12.3rem;
-  top: 16.1rem;
   width: 12.9rem;
 }
 
-.Profile__cta-btn {
+.Profile__editPicture {
+  position: absolute;
+
+  height: 3rem;
+  left: 22rem;
+  top: 13.5rem;
+  width: 3rem;
+}
+
+/* .Profile__cta-btn {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -36,20 +70,14 @@
   height: 6.4rem;
   left: 19.5rem;
   top: 11.6rem;
-}
+} */
 
 .Profile__form {
-  display: flex;
+  display: block;
 }
 
 .Profile__form label {
-  position: absolute;
-
-  height: 2.1rem;
-  left: 2.5rem;
-  top: 35.2rem;
-  width: 3.7rem;
-
+  display: inline-block;
   color: var(--clr-london-hue);
   font-family: inherit;
   font-size: 1.4rem;
@@ -59,53 +87,23 @@
 }
 
 .Profile__form input {
-  position: absolute;
-
   height: 4rem;
-  left: 2rem;
-  top: 46.8rem;
   width: 31.7rem;
 }
 
-.Profile__line {
-  position: absolute;
-
-  bottom: 79.91%;
-  left: 4.8%;
-  right: 7.2%;
-  top: 20.09%;
-
-  border: 1px solid #c4c4c4;
-  transform: rotate(0.17deg);
-}
-
-.Profile__editBtn {
-  position: absolute;
-
-  height: 3.1rem;
-  left: 22.8rem;
-  top: 25.9rem;
-  width: 3.1rem;
-}
-
-.Profile__icons {
-  position: absolute;
-
-  height: 3rem;
-  left: 31rem;
-  top: 9.1rem;
-  width: 3rem;
+.Profile__form label:not(:last-child) {
+  padding-bottom: 3rem;
 }
 
 /* media queries for tablets */
 @media (max-width: 768px) {
+  /* styling for tablets or ipads */
   .Profile {
-    /* styling for tablets or ipads */
-    position: absolute;
+    /* position: absolute;
     width: 100vw;
     height: 7.1rem;
     left: 0px;
-    top: 0px;
+    top: 0px; */
 
     background-color: var(--clr-white);
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
@@ -114,13 +112,13 @@
 
 /* media queries for larger screens */
 @media (max-width: 912px) {
+  /* styling for larger screens */
   .Profile {
-    /* styling for larger screens */
-    position: absolute;
+    /* position: absolute;
     width: 100vw;
     height: 7.1rem;
     left: 0px;
-    top: 0px;
+    top: 0px; */
 
     background-color: var(--clr-white);
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
