@@ -8,19 +8,35 @@ import styles from '../../styles/Profile.module.css'
 function Profile() {
   return (
     <div className={styles.Profile}>
-      <header>
-        <h2 className={styles['profile-heading']}>Profile</h2>
+      <header className={styles.Profile__heading}>
+        <h2>Profile</h2>
         <div>
-          <img src={editIcon} alt="edit icon" />
-          <img src={deleteIcon} alt="delete icon" />
+          <img
+            src={editIcon}
+            alt="edit icon"
+            className={styles.Profile__icons}
+          />
+          <img
+            src={deleteIcon}
+            alt="delete icon"
+            className={styles.Profile__icons}
+          />
         </div>
       </header>
-      <main>
-        <div>
-          <img src={profilePicture} alt="profile user icon" />
-          <img src={updateIcon} alt="profile user update icon " />
+      <main className={styles.Profile__main}>
+        <div className={styles.Profile__imgContainer}>
+          <img
+            src={profilePicture}
+            alt="profile user icon"
+            className={`${styles.Profile__icons} ${styles.Profile__picture}`}
+          />
+          <img
+            src={updateIcon}
+            alt="profile user update icon "
+            className={styles.Profile__editPicture}
+          />
         </div>
-        <form>
+        <form className={styles.Profile__form}>
           <label htmlFor="user-name">
             Name
             <input type="text" name="name" id="user-name" disabled />
