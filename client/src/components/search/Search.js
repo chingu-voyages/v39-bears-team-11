@@ -8,9 +8,9 @@ import { addFriend } from '../../store/features/users/usersSlice'
 
 function Search() {
   const userState = useSelector(({ user }) => user)
-  // eslint-disable-next-line object-curly-newline
-  const { id, username, email, token, picture, friends } = userState
-  console.log(friends)
+  const {
+    id, username, email, token, picture, friends,
+  } = userState
   const dispatch = useDispatch()
 
   const container = 'people'
@@ -48,15 +48,17 @@ function Search() {
 
   return (
     <div id="search" className="container main">
-      <SearchBox searchHandler={handleSearch} />
+
+      <SearchBox searchHandler={handleSearch} container={container} />
       <SearchResults
         results={currentResults}
         container={container}
         modalTitle="Confirm Friend Request"
-        modalText="Are you sure you want to add this person to your friends list ?"
+        getModalText={(name) => `Are you sure you want to add ${name} to your friends list ?`}
         confirmButtonText="Add"
         formHandler={handleAdd}
       />
+
     </div>
   )
 }

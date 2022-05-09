@@ -18,8 +18,8 @@
     --clr-black           : hsl(0, 0%, 0%);
     --clr-grey            : hsl(0, 0%, 58.8%);
     --clr-light-grey      : hsl(0, 0%, 76.9%);
-    /* --clr-pampas-pink     : hsl(0, 16.7%, 97.6%); */
-    --clr-pampas-pink     : hsl(0, 25%, 98.4%);
+    --clr-pampas-pink     : hsl(0, 16.7%, 97.6%);
+    /* --clr-pampas-pink     : hsl(0,25%,98.4%); */
     --clr-greyish-pampas  : hsl(0, 33.3%, 96.5%);
     --clr-royal-blue      : hsl(241.2, 83%, 65.5%);
     --clr-light-royal-blue: hsl(241, 80.4%, 70%);

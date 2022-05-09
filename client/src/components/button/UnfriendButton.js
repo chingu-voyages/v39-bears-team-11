@@ -1,15 +1,11 @@
 import styles from '../../styles/Button.module.css'
 import Button from './Button'
 
-function UnfriendButton() {
-  const handleUnfriendClick = () => {
-    // display consent dialogue or send request
-  }
-
+function UnfriendButton({ handleUnfriendClick }) {
   return (
     <Button
       text="Unfriend"
-      className={styles.unfriend}
+      className={styles['button--unfriend']}
       onClick={handleUnfriendClick}
     />
   )

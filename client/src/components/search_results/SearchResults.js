@@ -5,7 +5,7 @@ import SearchResult from '../search_result/SearchResult'
 function SearchResults({ results, container, ...props }) {
   return (
     <>
-      { results.length > 0 && <ContainerHeading text="People" />}
+      { results.length > 0 && <ContainerHeading text={container} />}
       <div className={styles['search-results']}>
         {
           results.map((result) => (

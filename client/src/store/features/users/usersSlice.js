@@ -1,4 +1,4 @@
-import { createSlice, nanoid } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 import dummyManPic from '../../../icons/profile-picture-man-unsplash.jpg'
 import dummyWomanPic from '../../../icons/profile-picture-woman-unsplash.jpg'
 
@@ -18,6 +18,16 @@ const initialState = {
     {
       id: 6,
       username: 'gleband5',
+      picture: dummyWomanPic,
+    },
+    {
+      id: 33,
+      username: 'marymille',
+      picture: dummyWomanPic,
+    },
+    {
+      id: 66,
+      username: 'bandwidth7',
       picture: dummyWomanPic,
     },
   ],
@@ -45,14 +55,20 @@ export const usersSlice = createSlice({
       ...state,
       friends: state.friends.concat(action.payload),
     }),
+    removeFriend: (state, action) => ({
+      ...state,
+      friends: state.friends.filter((f) => f.id !== action.payload),
+    }),
   },
 })
 
-export const { login, logout, appendFriend } = usersSlice.actions
+export const {
+  login, logout, appendFriend, removeFriend,
+} = usersSlice.actions
 
 export function addFriend(userToUpdate, id, token) {
   return async (dispatch, getState) => {
-    console.log(id, token, nanoid())
+    console.log(id, token)
     // const updatedUser = await userService.addFriend(userToUpdate, id, token)
     const currentFriends = getState().user.friends
 
@@ -71,11 +87,28 @@ export function addFriend(userToUpdate, id, token) {
     const newFriend = updatedFriends.find((friend) => (
       !currentFriends.some((f) => f.id === friend.id)
     ))
-    dispatch(appendFriend({
-      id: newFriend.id,
-      username: newFriend.username,
-      picture: newFriend.picture,
-    }))
+    dispatch(appendFriend(newFriend))
+  }
+}
+
+export function unFriend(userToUpdate, id, token) {
+  return async (dispatch, getState) => {
+    console.log(id, token)
+    // const updatedUser = await userService.unFriend(userToUpdate, id, token)
+    const currentFriends = getState().user.friends
+
+    /* Dummy updatedUser for testing */
+    const updatedUser = {
+      ...userToUpdate,
+      friends: currentFriends.map((f) => f.id !== 3),
+    }
+    const updatedFriends = updatedUser.friends
+
+    /* Find the friend that is in currentFriends but not in updatedFriends */
+    const friendToRemove = currentFriends.find((friend) => (
+      !updatedFriends.some((f) => f.id === friend.id)
+    ))
+    dispatch(removeFriend(friendToRemove.id))
   }
 }
 
