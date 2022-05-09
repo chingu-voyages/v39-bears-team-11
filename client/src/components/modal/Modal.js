@@ -8,6 +8,7 @@ const Modal = forwardRef(({
   text,
   onRequestClose,
   confirmButtonText,
+  buttonClasses,
   formHandler,
   formHandlerArgument,
 }, ref) => (
@@ -22,7 +23,10 @@ const Modal = forwardRef(({
       method="dialog"
       onSubmit={() => formHandler(formHandlerArgument)}
     >
-      <ConfirmButton text={confirmButtonText} />
+      <ConfirmButton
+        text={confirmButtonText}
+        buttonClasses={buttonClasses}
+      />
     </form>
 
     <CancelButton clickHandler={onRequestClose} />

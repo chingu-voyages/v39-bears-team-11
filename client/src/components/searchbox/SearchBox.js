@@ -1,7 +1,7 @@
 import styles from '../../styles/SearchBox.module.css'
 import searchIcon from '../../icons/searchbox/searchbox-search-icon.png'
 
-function SearchBox({ searchHandler }) {
+function SearchBox({ searchHandler, container }) {
   return (
     <form
       className={styles.searchbox}
@@ -11,7 +11,7 @@ function SearchBox({ searchHandler }) {
         required
         type="search"
         name="search"
-        placeholder="Search people ..."
+        placeholder={`Search ${container} ...`}
       />
       <button
         className={styles.searchbox__btn}
