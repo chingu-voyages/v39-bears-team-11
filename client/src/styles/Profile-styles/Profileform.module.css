@@ -1,0 +1,49 @@
+.Profile__form {
+  display: block;
+}
+
+.Profile__form-label {
+  color: var(--clr-london-hue);
+  display: inline-block;
+  font-family: inherit;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%;
+  width: 100%;
+}
+
+.Profile__form-label:not(:last-child) {
+  padding-bottom: 3rem;
+}
+
+.Profile__form-input {
+  border: 0.1rem solid #000;
+  border-radius: 0.4rem;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 1.3rem;
+  width: 100%;
+}
+
+/* media queries for tablets */
+@media (min-width: 768px) {
+  /* styling for tablets or ipads */
+  .Profile__form {
+    padding: 6rem 8rem 0;
+  }
+}
+
+/* media queries for larger screens */
+@media (min-width: 912px) {
+  /* styling for larger screens */
+  .Profile__form {
+    height: 100vh;
+    padding: 9rem 13.5rem 2rem;
+  }
+
+  .Profile__form label {
+    display: block;
+    width: 35%;
+  }
+}

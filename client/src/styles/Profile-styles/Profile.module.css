@@ -53,6 +53,10 @@
 }
 
 .Profile__editPicture {
+  background-color: var(--clr-pampas-pink);
+  border: none;
+  border-radius: 50%;
+
   position: absolute;
 
   height: 3rem;
@@ -61,34 +65,8 @@
   width: 3rem;
 }
 
-.Profile__form {
-  display: block;
-}
-
-.Profile__form label {
-  color: var(--clr-london-hue);
-  display: inline-block;
-  font-family: inherit;
-  font-size: 1.4rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 150%;
-  width: 100%;
-}
-
-.Profile__form label:not(:last-child) {
-  padding-bottom: 3rem;
-}
-
-.Profile__form input {
-  font-family: inherit;
-  font-size: inherit;
-  padding: 1.3rem;
-  width: 100%;
-}
-
 /* media queries for tablets */
-@media (min-width: 580px) {
+@media (min-width: 768px) {
   /* styling for tablets or ipads */
   .Profile {
     padding: 6rem 8rem 0;
@@ -99,7 +77,7 @@
   }
 
   .Profile__editPicture {
-    left: 28rem;
+    left: 35rem;
     top: 18rem;
   }
 }
