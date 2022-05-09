@@ -1,0 +1,11 @@
+.Profile__icons {
+  height: 3.1rem;
+  width: 3.1rem;
+
+  background-color: transparent;
+  border: none;
+}
+
+.Profile__icons:hover {
+  background-color: var(--clr-light-grey);
+}
