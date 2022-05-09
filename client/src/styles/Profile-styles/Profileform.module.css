@@ -26,23 +26,15 @@
   width: 100%;
 }
 
-/* media queries for tablets */
-@media (min-width: 768px) {
-  /* styling for tablets or ipads */
-  .Profile__form {
-    padding: 6rem 8rem 0;
-  }
-}
-
 /* media queries for larger screens */
 @media (min-width: 912px) {
   /* styling for larger screens */
-  .Profile__form {
-    height: 100vh;
-    padding: 9rem 13.5rem 2rem;
-  }
 
-  .Profile__form label {
+  .Profile__form-label {
+    display: block;
+    width: 100%;
+  }
+  .Profile__form-input {
     display: block;
     width: 35%;
   }
