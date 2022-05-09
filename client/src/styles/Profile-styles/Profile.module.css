@@ -23,11 +23,6 @@
   display: inline-block;
 }
 
-.Profile__icons {
-  height: 3.1rem;
-  width: 3.1rem;
-}
-
 .Profile__main {
   display: flex;
   flex-direction: column;

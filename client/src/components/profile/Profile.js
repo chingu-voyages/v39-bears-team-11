@@ -1,5 +1,6 @@
 /* eslint-disable react/self-closing-comp */
 import ProfileForm from './ProfileForm'
+import ProfileButton from './ProfileButton'
 import editIcon from '../../icons/profile/profile-edit-icon.svg'
 import deleteIcon from '../../icons/profile/profile-delete-icon.svg'
 import profilePicture from '../../icons/profile/profile-user-icon.svg'
@@ -7,6 +8,11 @@ import updateIcon from '../../icons/profile/profile-picture-update-icon.svg'
 import styles from '../../styles/Profile-styles/Profile.module.css'
 
 function Profile({ user }) {
+  // edit profile handler
+  const handleEditProfile = () => {
+    // do something here
+  }
+
   return (
     <div role="contentinfo" className={styles.Profile}>
       {/* header section contains the profile heading and profile
@@ -14,15 +20,15 @@ function Profile({ user }) {
       <header className={styles.Profile__heading}>
         <h2>Profile</h2>
         <div>
-          <img
-            src={editIcon}
-            alt="edit icon"
-            className={styles.Profile__icons}
+          <ProfileButton
+            onClick={handleEditProfile}
+            imgSrc={editIcon}
+            altText="edit icon"
           />
-          <img
-            src={deleteIcon}
-            alt="delete icon"
-            className={styles.Profile__icons}
+          <ProfileButton
+            onClick={handleEditProfile}
+            imgSrc={deleteIcon}
+            altText="delete icon"
           />
         </div>
       </header>
