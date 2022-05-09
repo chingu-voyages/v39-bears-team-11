@@ -20,7 +20,7 @@ const latestChatsData = [
     id: 3,
     picture: 'https://robohash.org/fugiataliquamrerum.png?size=80x80&set=set1',
     username: 'Jackline Nackos',
-    message: 'I’ll have to check my schedule. We will meet tommorow and discuss this in... ',
+    message: 'I’ll have to check my schedule. We will meet tommorow and discuss this in and discuss this in... ',
     time: 12,
   },
   {
