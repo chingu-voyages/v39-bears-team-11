@@ -5,8 +5,8 @@ const latestChatsData = [
   {
     id: 1,
     picture: 'https://robohash.org/fugiatenimvoluptatibus.png?size=80x80&set=set1',
-    username: 'Elmer Laverty',
-    message: 'Haha oh man , that was awsome 🔥',
+    username: 'Irene Narty',
+    message: 'Haha oh man , that was awesome 🔥',
     time: 12,
   },
   {
@@ -20,7 +20,7 @@ const latestChatsData = [
     id: 3,
     picture: 'https://robohash.org/fugiataliquamrerum.png?size=80x80&set=set1',
     username: 'Jackline Nackos',
-    message: 'I’ll have to check my schedule. We will meet tommorow and discuss this in...',
+    message: 'I’ll have to check my schedule. We will meet tommorow and discuss this in... ',
     time: 12,
   },
   {

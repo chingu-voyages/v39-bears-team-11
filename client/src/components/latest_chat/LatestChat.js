@@ -8,9 +8,14 @@ function LatestChat({
       <div className={styles['latest-chat__image']}>
         <img src={picture} alt="profile" />
       </div>
-      <span className={styles['latest-chat__image']}>{username}</span>
-      <span className={styles['latest-chat__message']}>{message}</span>
-      <span className={styles['latest-chat__time']}>{time}</span>
+      <div className={styles['latest-chat__username-and-message-container']}>
+        <span className={styles['latest-chat__username']}>{username}</span>
+        <span className={styles['latest-chat__message']}>{message}</span>
+      </div>
+      <span className={styles['latest-chat__time']}>
+        {time}
+        s
+      </span>
     </div>
   )
 }
