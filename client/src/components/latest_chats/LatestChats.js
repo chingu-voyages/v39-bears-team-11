@@ -7,7 +7,7 @@ function LatestChats({ results }) {
   return (
     <>
       { results.length > 0 && <ContainerHeading text="Lastest Chats" />}
-      <div className={styles['search-results']}>
+      <div className={styles['latest-chats']}>
         {
           results.map((result) => (
             <LatestChat

@@ -19,14 +19,14 @@ const latestChatsData = [
   {
     id: 3,
     picture: 'https://robohash.org/fugiataliquamrerum.png?size=80x80&set=set1',
-    name: 'Jackline Nackos',
+    username: 'Jackline Nackos',
     message: 'I’ll have to check my schedule. We will meet tommorow and discuss this in...',
     time: 12,
   },
   {
     id: 4,
     picture: 'https://robohash.org/animiiustoaut.png?size=80x80&set=set1',
-    name: 'Moody Laverty',
+    username: 'Moody Laverty',
     message: 'Alright. I’ll talk to you soon.',
     time: 12,
   },
