@@ -20,6 +20,16 @@ const initialState = {
       username: 'gleband5',
       picture: dummyWomanPic,
     },
+    {
+      id: 33,
+      username: 'marymille',
+      picture: dummyWomanPic,
+    },
+    {
+      id: 66,
+      username: 'bandwidth7',
+      picture: dummyWomanPic,
+    },
   ],
   isOnline: false,
   isOffline: true,
