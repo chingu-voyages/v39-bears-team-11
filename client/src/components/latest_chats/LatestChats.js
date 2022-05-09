@@ -6,7 +6,7 @@ import LatestChat from '../latest_chat/LatestChat'
 function LatestChats({ results }) {
   return (
     <>
-      { results.length > 0 && <ContainerHeading text="Lastest Chats" />}
+      { results.length > 0 && <ContainerHeading text="Latest Chats" />}
       <div className={styles['latest-chats']}>
         {
           results.map((result) => (

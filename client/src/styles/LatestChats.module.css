@@ -27,6 +27,7 @@
     font-weight: 600;
     width: 169px;
     margin: 0 10px;
+    display: inline-block;
 }
 
 .latest-chat__message, .latest-chat__time {
@@ -43,9 +44,15 @@
     margin-left: auto;
 }
 
-@media(max-width: 768px) {
+/* @media(max-width: 768px) {
     .latest-chat__username-and-message-container {
         display: flex;
         flex-direction: column;
+    }
+  } */
+
+  @media(max-width: 768px) {
+    .latest-chat__username {
+        display: block;
     }
   }
