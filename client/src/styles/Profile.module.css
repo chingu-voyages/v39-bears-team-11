@@ -88,31 +88,47 @@
 }
 
 /* media queries for tablets */
-@media (max-width: 768px) {
+@media (min-width: 580px) {
   /* styling for tablets or ipads */
   .Profile {
-    /* position: absolute;
-    width: 100vw;
-    height: 7.1rem;
-    left: 0px;
-    top: 0px; */
+    padding: 6rem 8rem 0;
+  }
 
-    background-color: var(--clr-white);
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  .Profile__imgContainer {
+    padding: 9rem 0;
+  }
+
+  .Profile__editPicture {
+    left: 28rem;
+    top: 18rem;
   }
 }
 
 /* media queries for larger screens */
-@media (max-width: 912px) {
+@media (min-width: 912px) {
   /* styling for larger screens */
   .Profile {
-    /* position: absolute;
-    width: 100vw;
-    height: 7.1rem;
-    left: 0px;
-    top: 0px; */
+    height: 100vh;
+    padding: 9rem 13.5rem 2rem;
+  }
 
-    background-color: var(--clr-white);
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  .Profile__heading {
+    width: 50%;
+  }
+
+  .Profile__imgContainer {
+    justify-content: flex-start;
+
+    padding: 9rem 0;
+  }
+
+  .Profile__editPicture {
+    left: 11.5rem;
+    top: 18rem;
+  }
+
+  .Profile__form label {
+    display: block;
+    width: 35%;
   }
 }
