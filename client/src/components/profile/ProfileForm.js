@@ -9,7 +9,7 @@ function ProfileForm({ user, disable }) {
           type="text"
           name="name"
           id="user-name"
-          value={user.username}
+          defaultValue={user.username}
           className={styles['Profile__form-input']}
           readOnly={disable || false}
         />
@@ -21,7 +21,7 @@ function ProfileForm({ user, disable }) {
           type="email"
           name="email"
           id="user-email"
-          value={user.email}
+          defaultValue={user.email}
           className={styles['Profile__form-input']}
           readOnly={disable || false}
         />

@@ -28,7 +28,7 @@ function Profile({ user }) {
       </header>
 
       {/* main section of the profile page contains the profile
-      picture, the icon to edit it, and profile form */}
+      picture, the icon to edit it, and profile form controls */}
       <main className={styles.Profile__main}>
         <div className={styles.Profile__imgContainer}>
           <img
