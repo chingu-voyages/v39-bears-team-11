@@ -7,7 +7,7 @@ import styles from '../../styles/Profile.module.css'
 
 function Profile({ user }) {
   return (
-    <div className={styles.Profile}>
+    <div role="contentinfo" className={styles.Profile}>
       {/* header section contains the profile heading and profile
       actions buttons */}
       <header className={styles.Profile__heading}>

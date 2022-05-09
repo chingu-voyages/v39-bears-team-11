@@ -8,10 +8,8 @@ const { user: currentUser } = store.getState()
 describe('Profile Page Feature', () => {
   beforeEach(() => render(<Profile user={currentUser} />))
 
-  test('renders the profile heading', () => {
-    expect(screen.getByRole('heading').textContent).toBe('Profile')
-    expect(screen.getByRole('banner')).toBeInTheDocument()
-    expect(screen.getByRole('main')).toBeInTheDocument()
+  test('should render the profile component', () => {
+    expect(screen.getByRole('contentinfo')).toBeInTheDocument()
   })
 
   test('should render the profile icons', () => {
@@ -23,13 +21,8 @@ describe('Profile Page Feature', () => {
   })
 
   test('should render profile picture', () => {
-    const pictureContainer = screen.getByRole('main').querySelector('div')
     const profilePicture = screen.getByAltText('profile user icon')
-    const profilePictureEditIcon = screen.getByAltText(
-      'profile user update icon',
-    )
-    expect(pictureContainer).toContainElement(profilePicture)
-    expect(pictureContainer).toContainElement(profilePictureEditIcon)
+    expect(profilePicture.src).toBe(`http://localhost/${currentUser.picture}`)
   })
 
   test('should render profile form controls', () => {
