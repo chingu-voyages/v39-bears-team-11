@@ -1,36 +1,24 @@
 import styles from '../../styles/LatestChats.module.css'
 import ContainerHeading from '../container_heading/ContainerHeading'
-
-const latestMessagesMock = [
-  {
-    profile_pic: 'test',
-    name: 'test',
-    message: 'asasd',
-    time: 12,
-  },
-
-]
+import LatestChat from '../latest_chat/LatestChat'
 
 // function LatestChats({ results, container, ...props }) {
-function LatestChats() {
+function LatestChats({ results }) {
   return (
     <>
-      {/* { results.length > 0 && <ContainerHeading text="People" />} */}
-      <ContainerHeading text="Lastest Chats" />
-      asfagsgdsg
-      {console.log('tyszmato')}
+      { results.length > 0 && <ContainerHeading text="Lastest Chats" />}
       <div className={styles['search-results']}>
-        test
-        {/* {
+        {
           results.map((result) => (
-            <SearchResult
+            <LatestChat
               key={result.id}
-              result={result}
-              container={container}
-              {...props}
+              username={result.username}
+              picture={result.picture}
+              time={result.time}
+              message={result.message}
             />
           ))
-        } */}
+        }
       </div>
     </>
   )
