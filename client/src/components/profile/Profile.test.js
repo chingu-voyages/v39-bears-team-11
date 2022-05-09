@@ -1,10 +1,12 @@
 /* eslint-disable no-undef */
 import { render, screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { store } from '../../store/store'
 import Profile from './Profile'
 
+const { user: currentUser } = store.getState()
+
 describe('Profile Page Feature', () => {
-  beforeEach(() => render(<Profile />))
+  beforeEach(() => render(<Profile user={currentUser} />))
 
   test('renders the profile heading', () => {
     expect(screen.getByRole('heading').textContent).toBe('Profile')
@@ -32,18 +34,10 @@ describe('Profile Page Feature', () => {
 
   test('should render profile form controls', () => {
     const [nameControl, emailControl] = screen.getAllByRole('textbox')
-    expect(screen.getByLabelText('Name')).toBeInTheDocument()
-    expect(screen.getByLabelText('Email')).toBeInTheDocument()
-    expect(nameControl.type).toBe('text')
-    expect(emailControl.type).toBe('email')
     expect(nameControl).toHaveAttribute('disabled')
     expect(emailControl).toHaveAttribute('disabled')
-    expect(nameControl.value).toBeFalsy()
-    expect(emailControl.value).toBeFalsy()
 
-    userEvent.type(nameControl, 'John Doe')
-    userEvent.type(emailControl, 'johndoe@gmail.com')
-    expect(nameControl.value).toBe('')
-    expect(emailControl.value).toBe('')
+    expect(nameControl.value).toBe('adalovelace')
+    expect(emailControl.value).toBe('adalove@gamilcom')
   })
 })
