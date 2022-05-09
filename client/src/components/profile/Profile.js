@@ -1,9 +1,10 @@
 /* eslint-disable react/self-closing-comp */
+import ProfileForm from './ProfileForm'
 import editIcon from '../../icons/profile/profile-edit-icon.svg'
 import deleteIcon from '../../icons/profile/profile-delete-icon.svg'
 import profilePicture from '../../icons/profile/profile-user-icon.svg'
 import updateIcon from '../../icons/profile/profile-picture-update-icon.svg'
-import styles from '../../styles/Profile.module.css'
+import styles from '../../styles/Profile-styles/Profile.module.css'
 
 function Profile({ user }) {
   return (
@@ -41,31 +42,7 @@ function Profile({ user }) {
             className={styles.Profile__editPicture}
           />
         </div>
-        <form className={styles.Profile__form}>
-          <label htmlFor="user-name">
-            Name
-            <input
-              type="text"
-              name="name"
-              id="user-name"
-              value={user.username}
-              disabled
-              readOnly
-            />
-          </label>
-
-          <label htmlFor="user-email">
-            Email
-            <input
-              type="email"
-              name="email"
-              id="user-email"
-              value={user.email}
-              disabled
-              readOnly
-            />
-          </label>
-        </form>
+        <ProfileForm user={user} disable="yes" />
       </main>
     </div>
   )
