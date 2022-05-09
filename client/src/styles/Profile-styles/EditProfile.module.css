@@ -1,0 +1,22 @@
+.Edit__container {
+  height: 85vh;
+  padding: 4rem 2rem 0;
+}
+
+.Edit__heading {
+  padding-bottom: 3rem;
+}
+
+.Edit__button {
+  background-color: var(--clr-royal-blue);
+  box-shadow: 0 1.5rem 0 rgba(#000, 0.4);
+  color: var(--clr-white);
+  display: inline-block;
+  margin: 2rem 1.2rem 0 0;
+  width: 10rem;
+}
+
+.Edit__buttonCancel {
+  color: var(--clr-white);
+  background-color: var(--clr-apricot);
+}
