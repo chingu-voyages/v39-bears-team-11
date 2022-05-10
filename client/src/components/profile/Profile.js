@@ -1,8 +1,11 @@
 /* eslint-disable react/self-closing-comp */
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { deleteProfile } from '../../store/features/users/usersSlice'
 import ProfileForm from './ProfileForm'
 import ProfileButton from './ProfileButton'
+import Modal from '../modal/Modal'
 import editIcon from '../../icons/profile/profile-edit-icon.svg'
 import deleteIcon from '../../icons/profile/profile-delete-icon.svg'
 import profilePicture from '../../icons/profile/profile-user-icon.svg'
@@ -10,10 +13,17 @@ import updateIcon from '../../icons/profile/profile-picture-update-icon.svg'
 import styles from '../../styles/Profile-styles/Profile.module.css'
 
 function Profile() {
+  // get the user state slice
   const currentUser = useSelector(({ user }) => user)
-  // edit profile handler
+  // get the reducer action dispatch function
+  const dispatch = useDispatch()
+  // get the modal ref
+  const modalRef = useRef()
+  // delete user handler
   const handleDeleteProfile = () => {
-    // do something here
+    // dispatch delete profile action
+    // after confirmation
+    dispatch(deleteProfile(currentUser.id))
   }
 
   return (
@@ -27,7 +37,7 @@ function Profile() {
             <ProfileButton imgSrc={editIcon} altText="edit icon" />
           </Link>
           <ProfileButton
-            onClick={handleDeleteProfile}
+            onClick={() => modalRef.current.showModal()}
             imgSrc={deleteIcon}
             altText="delete icon"
           />
@@ -51,6 +61,16 @@ function Profile() {
         </div>
         <ProfileForm user={currentUser} disable="yes" />
       </main>
+
+      <Modal
+        ref={modalRef}
+        title="Confirm Delete"
+        text="Are you sure you want to delete your profile?"
+        onRequestClose={() => modalRef.current.close()}
+        confirmButtonText="DELETE"
+        buttonClasses="button--danger"
+        formHandler={handleDeleteProfile}
+      />
     </div>
   )
 }
