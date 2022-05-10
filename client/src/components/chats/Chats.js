@@ -86,8 +86,8 @@ function Chats() {
       className="container main"
     >
       <StartAChatButton />
-      <ModalStartAChat />
-      <LatestChats results={latestChatsData} />
+      <ModalStartAChat friends={latestChatsData} />
+      <LatestChats chats={latestChatsData} />
     </div>
   )
 }

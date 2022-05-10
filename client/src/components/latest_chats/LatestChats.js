@@ -3,19 +3,19 @@ import ContainerHeading from '../container_heading/ContainerHeading'
 import LatestChat from '../latest_chat/LatestChat'
 
 // function LatestChats({ results, container, ...props }) {
-function LatestChats({ results }) {
+function LatestChats({ chats }) {
   return (
     <>
-      { results.length > 0 && <ContainerHeading text="Latest Chats" />}
+      { chats.length > 0 && <ContainerHeading text="Latest Chats" />}
       <div className={styles['latest-chats']}>
         {
-          results.map((result) => (
+          chats.map((chat) => (
             <LatestChat
-              key={result.id}
-              username={result.username}
-              picture={result.picture}
-              time={result.time}
-              message={result.message}
+              key={chat.id}
+              username={chat.username}
+              picture={chat.picture}
+              time={chat.time}
+              message={chat.message}
             />
           ))
         }
