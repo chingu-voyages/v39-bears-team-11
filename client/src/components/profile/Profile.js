@@ -5,11 +5,10 @@ import { useSelector, useDispatch } from 'react-redux'
 import { deleteProfile } from '../../store/features/users/usersSlice'
 import ProfileForm from './ProfileForm'
 import ProfileButton from './ProfileButton'
+import ProfileUser from './ProfileUser'
 import Modal from '../modal/Modal'
 import editIcon from '../../icons/profile/profile-edit-icon.svg'
 import deleteIcon from '../../icons/profile/profile-delete-icon.svg'
-import profilePicture from '../../icons/profile/profile-user-icon.svg'
-import updateIcon from '../../icons/profile/profile-picture-update-icon.svg'
 import styles from '../../styles/Profile-styles/Profile.module.css'
 
 function Profile() {
@@ -47,18 +46,7 @@ function Profile() {
       {/* main section of the profile page contains the profile
       picture, the icon to edit it, and profile form controls */}
       <main className={styles.Profile__main}>
-        <div className={styles.Profile__imgContainer}>
-          <img
-            src={currentUser.picture || profilePicture}
-            alt="profile user icon"
-            className={`${styles.Profile__icons} ${styles.Profile__picture}`}
-          />
-          <img
-            src={updateIcon}
-            alt="profile user update icon "
-            className={styles.Profile__editPicture}
-          />
-        </div>
+        <ProfileUser user={currentUser} />
         <ProfileForm user={currentUser} disable="yes" />
       </main>
 
