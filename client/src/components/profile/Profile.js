@@ -1,4 +1,6 @@
 /* eslint-disable react/self-closing-comp */
+import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import ProfileForm from './ProfileForm'
 import ProfileButton from './ProfileButton'
 import editIcon from '../../icons/profile/profile-edit-icon.svg'
@@ -7,7 +9,8 @@ import profilePicture from '../../icons/profile/profile-user-icon.svg'
 import updateIcon from '../../icons/profile/profile-picture-update-icon.svg'
 import styles from '../../styles/Profile-styles/Profile.module.css'
 
-function Profile({ user }) {
+function Profile() {
+  const currentUser = useSelector(({ user }) => user)
   // edit profile handler
   const handleEditProfile = () => {
     // do something here
@@ -20,11 +23,13 @@ function Profile({ user }) {
       <header className={styles.Profile__heading}>
         <h2>Profile</h2>
         <div>
-          <ProfileButton
-            onClick={handleEditProfile}
-            imgSrc={editIcon}
-            altText="edit icon"
-          />
+          <Link to="/edit">
+            <ProfileButton
+              onClick={handleEditProfile}
+              imgSrc={editIcon}
+              altText="edit icon"
+            />
+          </Link>
           <ProfileButton
             onClick={handleEditProfile}
             imgSrc={deleteIcon}
@@ -38,7 +43,7 @@ function Profile({ user }) {
       <main className={styles.Profile__main}>
         <div className={styles.Profile__imgContainer}>
           <img
-            src={user.picture || profilePicture}
+            src={currentUser.picture || profilePicture}
             alt="profile user icon"
             className={`${styles.Profile__icons} ${styles.Profile__picture}`}
           />
@@ -48,7 +53,7 @@ function Profile({ user }) {
             className={styles.Profile__editPicture}
           />
         </div>
-        <ProfileForm user={user} disable="yes" />
+        <ProfileForm user={currentUser} disable="yes" />
       </main>
     </div>
   )
