@@ -1,0 +1,58 @@
+.Profile__imgContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 5rem 0;
+
+  position: relative;
+}
+
+.Profile__picture {
+  border-radius: 50%;
+  height: 12.9rem;
+  object-fit: cover;
+  object-position: 0 0;
+  width: 12.9rem;
+}
+
+.Profile__editPicture {
+  background-color: var(--clr-pampas-pink);
+  border: none;
+  border-radius: 50%;
+
+  position: absolute;
+
+  height: 3rem;
+  left: 22rem;
+  top: 13.5rem;
+  width: 3rem;
+}
+
+/* media queries for tablets */
+@media screen and (min-width: 768px) {
+  /* styling for tablets or ipads */
+  .Profile__imgContainer {
+    padding: 9rem 0;
+  }
+
+  .Profile__editPicture {
+    left: 35rem;
+    top: 18rem;
+  }
+}
+
+/* media queries for larger screens */
+@media screen and (min-width: 1024px) {
+  /* styling for larger screens */
+  .Profile__imgContainer {
+    justify-content: flex-start;
+
+    padding: 9rem 0;
+  }
+
+  .Profile__editPicture {
+    left: 11.5rem;
+    top: 18rem;
+  }
+}
