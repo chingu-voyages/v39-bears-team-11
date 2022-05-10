@@ -4,6 +4,7 @@
 
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
 
 .Profile__icons:hover {
