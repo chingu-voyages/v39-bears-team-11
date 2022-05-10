@@ -1,4 +1,5 @@
 import StartAChatButton from '../button/StartAChatButton'
+import ModalStartAChat from '../modal/ModalStartAChat'
 import LatestChats from '../latest_chats/LatestChats'
 
 const latestChatsData = [
@@ -85,6 +86,7 @@ function Chats() {
       className="container main"
     >
       <StartAChatButton />
+      <ModalStartAChat />
       <LatestChats results={latestChatsData} />
     </div>
   )
