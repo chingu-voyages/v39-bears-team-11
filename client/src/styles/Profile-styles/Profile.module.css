@@ -61,7 +61,7 @@
 }
 
 /* media queries for tablets */
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   /* styling for tablets or ipads */
   .Profile {
     padding: 6rem 8rem 0;
@@ -78,7 +78,7 @@
 }
 
 /* media queries for larger screens */
-@media (min-width: 912px) {
+@media screen and (min-width: 1024px) {
   /* styling for larger screens */
   .Profile {
     height: 100vh;
