@@ -106,7 +106,7 @@
     padding: 0px;
     justify-content: center;
     border-radius: 50%;
-    position: absolute;
+    position: fixed;
     margin-bottom: 0;
     /* I put it little bit further from the edge (compared to figma design) to not cover the footer */
     bottom: 80px;
