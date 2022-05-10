@@ -12,7 +12,7 @@ import styles from '../../styles/Profile-styles/Profile.module.css'
 function Profile() {
   const currentUser = useSelector(({ user }) => user)
   // edit profile handler
-  const handleEditProfile = () => {
+  const handleDeleteProfile = () => {
     // do something here
   }
 
@@ -24,14 +24,10 @@ function Profile() {
         <h2>Profile</h2>
         <div>
           <Link to="/edit">
-            <ProfileButton
-              onClick={handleEditProfile}
-              imgSrc={editIcon}
-              altText="edit icon"
-            />
+            <ProfileButton imgSrc={editIcon} altText="edit icon" />
           </Link>
           <ProfileButton
-            onClick={handleEditProfile}
+            onClick={handleDeleteProfile}
             imgSrc={deleteIcon}
             altText="delete icon"
           />
