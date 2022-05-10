@@ -1,13 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 import dummyManPic from '../../../icons/profile-picture-man-unsplash.jpg'
 import dummyWomanPic from '../../../icons/profile-picture-woman-unsplash.jpg'
+// import userService from '../../../../services/user'
 
 /* dummy user state */
 const initialState = {
   id: '61cdd39a5a14f24e4f2f89c7',
   username: 'adalovelace',
   email: 'adalove@gamilcom',
-  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjYyMDEyM2UwMjg1ZDI2MWIwNWQ1OWY2NyIsImlhdCI6MTY0NDI1NzM3MywiZXhwIjoxNjQ0NTE2NTczfQ.VPUWHlYqzhOkU9UsyfWdhpkH3pS3GMeNkpFVct8Mtms',
+  token:
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjYyMDEyM2UwMjg1ZDI2MWIwNWQ1OWY2NyIsImlhdCI6MTY0NDI1NzM3MywiZXhwIjoxNjQ0NTE2NTczfQ.VPUWHlYqzhOkU9UsyfWdhpkH3pS3GMeNkpFVct8Mtms',
   picture: dummyManPic,
   friends: [
     {
@@ -62,9 +64,8 @@ export const usersSlice = createSlice({
   },
 })
 
-export const {
-  login, logout, appendFriend, removeFriend,
-} = usersSlice.actions
+// eslint-disable-next-line object-curly-newline
+export const { login, logout, appendFriend, removeFriend } = usersSlice.actions
 
 export function addFriend(userToUpdate, id, token) {
   return async (dispatch, getState) => {
@@ -84,9 +85,9 @@ export function addFriend(userToUpdate, id, token) {
     const updatedFriends = updatedUser.friends
 
     /* Find the friend that is in updatedFriends but not in currentFriends */
-    const newFriend = updatedFriends.find((friend) => (
-      !currentFriends.some((f) => f.id === friend.id)
-    ))
+    const newFriend = updatedFriends.find(
+      (friend) => !currentFriends.some((f) => f.id === friend.id),
+    )
     dispatch(appendFriend(newFriend))
   }
 }
@@ -105,10 +106,35 @@ export function unFriend(userToUpdate, id, token) {
     const updatedFriends = updatedUser.friends
 
     /* Find the friend that is in currentFriends but not in updatedFriends */
-    const friendToRemove = currentFriends.find((friend) => (
-      !updatedFriends.some((f) => f.id === friend.id)
-    ))
+    const friendToRemove = currentFriends.find(
+      (friend) => !updatedFriends.some((f) => f.id === friend.id),
+    )
     dispatch(removeFriend(friendToRemove.id))
+  }
+}
+
+// async thunk to send delete user request
+export function deleteProfile(userId) {
+  // return async function that takes dispatch function
+  // as parameters
+  return async (dispatch) => {
+    console.log(userId)
+    // configure the request object the backend will receive
+    const requestObject = {
+      method: 'DELETE',
+      body: { id: userId },
+    }
+    // make the request to the server
+    try {
+      // eslint-disable-next-line no-undef
+      const response = await userService.deleteUser(requestObject)
+      console.log(response)
+      // logout user on success
+      dispatch(logout)
+    } catch (error) {
+      // handle error on failure
+      console.log(error.message)
+    }
   }
 }
 
