@@ -16,14 +16,11 @@ const ImageModal = forwardRef(
       </div>
       <img src={photo || profilePicture} alt="user portrait" />
       <form method="dialog" onSubmit={() => formHandler()}>
-        <Button
-          text={cameraButtonText}
-          className={styles.imageModal__closebtn}
-        />
-        <Button
-          text={uploadButtonText}
-          className={styles.imageModal__closebtn}
-        />
+        {/* <label htmlFor="image">
+          <input type="file" alt="upload photo" id="image" name="image" />
+        </label> */}
+        <Button text={cameraButtonText} />
+        <Button text={uploadButtonText} />
       </form>
     </dialog>
   ),
