@@ -1,15 +1,20 @@
 import styles from '../../styles/ModalStartAChat.module.css'
 import FriendsStartAChat from '../friends_start_a_chat/FriendsStartAChat'
 
-function ModalStartAChat({ friends }) {
+function ModalStartAChat({ friends, show }) {
+  if (!show) {
+    return null
+  }
   return (
     <div className={styles.modal}>
-      <div className={styles.modal__header}>
-        <h4>Select a contact</h4>
-        <span className={styles['modal__close-button']}>close button</span>
+      <div className={styles.modal__content}>
+        <div className={styles.modal__header}>
+          <h4>Select a contact</h4>
+          <span className={styles['modal__close-button']}>✕</span>
+        </div>
+        <hr />
+        <FriendsStartAChat friends={friends} />
       </div>
-      <hr />
-      <FriendsStartAChat friends={friends} />
     </div>
   )
 }

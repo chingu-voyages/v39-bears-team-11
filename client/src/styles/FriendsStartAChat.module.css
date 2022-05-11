@@ -1,0 +1,21 @@
+.friend {
+    display: flex;
+    align-items: center;
+    margin: 8px 0px;
+}
+
+.friend__image {
+    height: 60px;
+    width: 60px;
+    border: 2.4714px solid var(--clr-royal-blue);
+    border-radius: 50%;
+    overflow: hidden;
+    /* flex-shrink: 0; */
+}
+
+.friend__username{
+    font-size: 18px;
+    font-weight: 600;
+    width: 169px;
+    margin: 0 10px;
+}
