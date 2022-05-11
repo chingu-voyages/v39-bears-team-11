@@ -1,16 +1,19 @@
 import styles from '../../styles/ModalStartAChat.module.css'
 import FriendsStartAChat from '../friends_start_a_chat/FriendsStartAChat'
 
-function ModalStartAChat({ friends, show }) {
+function ModalStartAChat({ friends, show, onClose }) {
+  const stopPropagation = (e) => {
+    e.stopPropagation()
+  }
   if (!show) {
     return null
   }
   return (
-    <div className={styles.modal}>
-      <div className={styles.modal__content}>
+    <div className={styles.modal} onClick={onClose}>
+      <div className={styles.modal__content} onClick={stopPropagation}>
         <div className={styles.modal__header}>
           <h4>Select a contact</h4>
-          <span className={styles['modal__close-button']}>✕</span>
+          <button type="button" className={styles['modal__close-button']} onClick={onClose}>✕</button>
         </div>
         <hr />
         <FriendsStartAChat friends={friends} />

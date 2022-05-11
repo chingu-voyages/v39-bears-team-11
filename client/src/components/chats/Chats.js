@@ -87,13 +87,18 @@ function Chats() {
     setShow(true)
   }
 
+  const onClose = (event) => {
+    event.stopPropagation()
+    setShow(false)
+  }
+
   return (
     <div
       id="chats"
       className="container main"
     >
       <StartAChatButton handleClick={handleClick} />
-      <ModalStartAChat friends={latestChatsData} show={show} />
+      <ModalStartAChat friends={latestChatsData} show={show} onClose={onClose} />
       <LatestChats chats={latestChatsData} />
     </div>
   )
