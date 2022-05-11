@@ -12,7 +12,7 @@ function ModalStartAChat({ friends, show, onClose }) {
     <CSSTransition
       in={show}
       unmountOnExit
-      timeout={{ enter: 0, exit: 300 }}
+      timeout={{ enter: 600, exit: 600 }}
     >
       <div role="presentation" className={styles.modal} onClick={onClose} onKeyDown={onClose}>
         <div role="presentation" className={styles.modal__content} onClick={stopPropagation}>
