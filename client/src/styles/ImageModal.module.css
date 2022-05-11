@@ -1,53 +1,74 @@
-.modal {
+.imageModal {
   width: 40rem;
   height: 38rem;
-  top: 30%;
+  top: 15%;
   left: 35%;
   border: 0;
   border-radius: 15px;
   background-color: var(--clr-white);
   box-shadow: 2px 2px 1em rgba(0, 0, 0, 0.3);
-  padding: 2rem;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+  padding: 1rem 3rem;
+  text-align: center;
 }
 
-.modal::backdrop {
+.imageModal::backdrop {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-.modal h3 {
-  color: var(--clr-black);
+.imageModal__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 0;
 }
 
-.modal img {
+.imageModal h3 {
+  color: var(--clr-black);
+  display: inline-block;
+  font-size: 2rem;
+}
+
+.imageModal__heading > button {
+  background-color: var(--clr-danger-red);
+  color: var(--clr-white);
+  margin: 0;
+}
+
+.imageModal img {
   border: none;
   border-radius: 50%;
   object-fit: cover;
   object-position: 0 0;
-  width: 15rem;
+  margin: 2rem 0;
   height: 15rem;
+  width: 15rem;
 }
 
-.modal form {
+.imageModal form {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
 }
 
-@media (max-width: 768px) {
-  .modal {
+.imageModal form button {
+  border-radius: 0.5rem;
+}
+
+.imageModal form button:last-of-type {
+  background-color: var(--clr-royal-blue);
+  color: var(--clr-white);
+}
+
+@media screen and (max-width: 768px) {
+  .imageModal {
     width: 80vw;
     height: 200px;
     left: 10%;
   }
 }
 
-@media (max-width: 580px) {
-  .modal {
+@media screen and (max-width: 580px) {
+  .imageModal {
     height: 230px;
   }
 }
