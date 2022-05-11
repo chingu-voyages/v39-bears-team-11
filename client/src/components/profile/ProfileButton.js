@@ -1,12 +1,12 @@
 /* eslint-disable object-curly-newline */
 import styles from '../../styles/Profile-styles/ProfileButton.module.css'
 
-function ProfileButton({ onClick, imgSrc, altText, styling }) {
+function ProfileButton({ imgSrc, altText, styling, ...props }) {
   return (
     <button
       type="button"
       className={`${styles.Profile__icons}, ${styling || ''}`}
-      onClick={onClick}
+      {...props}
     >
       <img src={imgSrc} alt={altText} />
     </button>
