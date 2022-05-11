@@ -5,12 +5,11 @@ function ModalStartAChat({ friends, show, onClose }) {
   const stopPropagation = (e) => {
     e.stopPropagation()
   }
-  if (!show) {
-    return null
-  }
+
+  console.log('KURWA', styles.modal)
   return (
-    <div className={styles.modal} onClick={onClose}>
-      <div className={styles.modal__content} onClick={stopPropagation}>
+    <div role="presentation" className={`${styles.modal} ${show && styles.show}`} onClick={onClose} onKeyDown={onClose}>
+      <div role="presentation" className={styles.modal__content} onClick={stopPropagation}>
         <div className={styles.modal__header}>
           <h4>Select a contact</h4>
           <button type="button" className={styles['modal__close-button']} onClick={onClose}>✕</button>
