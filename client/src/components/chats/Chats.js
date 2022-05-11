@@ -6,7 +6,7 @@ import LatestChats from '../latest_chats/LatestChats'
 const latestChatsData = [
   {
     id: 1,
-    picture: 'https://placekitten.com/80/80',
+    picture: 'https://loremflickr.com/80/80',
     username: 'Irene Narty',
     message: 'Haha oh man , that was awesome 🔥',
     time: 12,
@@ -48,7 +48,7 @@ const latestChatsData = [
   },
   {
     id: 7,
-    picture: 'https://www.fillmurray.com/80/80',
+    picture: 'https://loremflickr.com/80/80',
     username: 'Moody Laverty',
     message: 'Alright. I’ll talk to you soon.',
     time: 12,
