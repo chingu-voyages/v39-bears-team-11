@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import StartAChatButton from '../button/StartAChatButton'
 import ModalStartAChat from '../modal/ModalStartAChat'
 import LatestChats from '../latest_chats/LatestChats'
@@ -80,13 +81,19 @@ const latestChatsData = [
 
 // const userState = useSelector(({ user }) => user)
 function Chats() {
+  const [show, setShow] = useState(false)
+
+  const handleClick = () => {
+    setShow(true)
+  }
+
   return (
     <div
       id="chats"
       className="container main"
     >
-      <StartAChatButton />
-      <ModalStartAChat friends={latestChatsData} show={show}} />
+      <StartAChatButton handleClick={handleClick} />
+      <ModalStartAChat friends={latestChatsData} show={show} />
       <LatestChats chats={latestChatsData} />
     </div>
   )
