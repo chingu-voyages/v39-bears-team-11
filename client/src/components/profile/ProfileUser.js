@@ -7,38 +7,36 @@ import styles from '../../styles/Profile-styles/ProfileUser.module.css'
 
 function ProfileUser({ user }) {
   // get the modal ref
-  const modalRef = useRef()
+  const imageModalRef = useRef()
   // change photo handler
   const handleChangePhoto = () => {
     // do something
   }
 
   return (
-    <>
-      <div className={styles.Profile__imgContainer}>
-        <img
-          src={user.picture || profilePicture}
-          alt="profile user icon"
-          className={`${styles.Profile__icons} ${styles.Profile__picture}`}
-        />
-        <ProfileButton
-          onClick={() => modalRef.current.showModal()}
-          imgSrc={updateIcon}
-          altText="profile user update icon"
-          styling={styles.Profile__editPicture}
-        />
-      </div>
+    <div className={styles.Profile__imgContainer}>
+      <img
+        src={user.picture || profilePicture}
+        alt="profile user icon"
+        className={`${styles.Profile__icons} ${styles.Profile__picture}`}
+      />
+      <ProfileButton
+        imgSrc={updateIcon}
+        altText="profile user update icon"
+        styling={styles.Profile__editPicture}
+        onClick={() => imageModalRef.current.showModal()}
+      />
 
       <ImageModal
-        ref={modalRef}
-        close={() => modalRef.current.close()}
+        ref={imageModalRef}
         title="Update Your Profile Picture"
-        cameraButtonText="use camera"
-        uploadPhotoText="upload photo"
         photo={user.picture}
+        cameraButtonText="use camera"
+        uploadButtonText="upload photo"
         formHandler={handleChangePhoto}
+        close={() => imageModalRef.current.close()}
       />
-    </>
+    </div>
   )
 }
 
