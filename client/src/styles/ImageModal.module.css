@@ -61,14 +61,62 @@
 
 @media screen and (max-width: 768px) {
   .imageModal {
-    width: 80vw;
-    height: 200px;
-    left: 10%;
+    width: 70vw;
+    height: 40rem;
+    left: 15%;
+    padding: 2rem 5rem;
+  }
+
+  .imageModal h3 {
+    font-size: 2.5rem;
+  }
+
+  .imageModal form {
+    justify-content: space-evenly;
+    padding-bottom: 1.5rem;
   }
 }
 
 @media screen and (max-width: 580px) {
   .imageModal {
-    height: 230px;
+    height: 30rem;
+    padding: 1rem 2rem;
+    width: 80vw;
+    left: 10%;
+  }
+
+  .imageModal h3 {
+    font-size: 1.5rem;
+  }
+
+  .imageModal__heading {
+    padding: 1.3rem 0;
+  }
+
+  .imageModal__heading > button {
+    background-color: var(--clr-danger-red);
+    color: var(--clr-white);
+    margin: 0;
+  }
+
+  .imageModal img {
+    margin: 1.5rem 0;
+    height: 12rem;
+    width: 12rem;
+  }
+
+  .imageModal form {
+    padding-bottom: 1.5rem;
+  }
+
+  .imageModal form button {
+    font-size: 1.3rem;
+    padding: 0.8rem 1.4rem;
+    width: 12rem;
+  }
+
+  .imageModal form button:last-of-type {
+    background-color: var(--clr-royal-blue);
+    color: var(--clr-white);
   }
 }
