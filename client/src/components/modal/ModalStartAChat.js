@@ -1,18 +1,17 @@
 import styles from '../../styles/ModalStartAChat.module.css'
 import FriendsStartAChat from '../friends_start_a_chat/FriendsStartAChat'
 
-function ModalStartAChat({ friends, show, onClose }) {
+function ModalStartAChat({ friends, show, onCloseModal }) {
   const stopPropagation = (e) => {
     e.stopPropagation()
   }
 
-  console.log('KURWA', styles.modal)
   return (
-    <div role="presentation" className={`${styles.modal} ${show ? styles.show : null}`} onClick={onClose} onKeyDown={onClose}>
+    <div role="presentation" className={`${styles.modal} ${show && styles.show}`} onClick={onCloseModal}>
       <div role="presentation" className={styles.modal__content} onClick={stopPropagation}>
         <div className={styles.modal__header}>
           <h4>Select a contact</h4>
-          <button type="button" className={styles['modal__close-button']} onClick={onClose}>✕</button>
+          <button type="button" className={styles['modal__close-button']} onClick={onCloseModal}>✕</button>
         </div>
         <hr />
         <FriendsStartAChat friends={friends} />
@@ -22,13 +21,3 @@ function ModalStartAChat({ friends, show, onClose }) {
 }
 
 export default ModalStartAChat
-
-// 1. refactor classnames into dynamic classnames
-// 2. apply style to the modal
-// 3. hadnle show/hide modal
-// 4. implement onClose event
-// 5. close modal by outside click
-// 6. close modal by escape keydown event
-// 7. add dynamic modal content
-// 8. add animation to modal using CSS
-// 9. add animation to modal using transition group
