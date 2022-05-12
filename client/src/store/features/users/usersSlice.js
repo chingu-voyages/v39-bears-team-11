@@ -113,6 +113,7 @@ export function unFriend(userToUpdate, id, token) {
   }
 }
 
+// todo: consider using the createAsyncThunk middleware
 // async thunk to send delete user request
 export function deleteProfile(userId) {
   // return async function that takes dispatch function
