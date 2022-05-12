@@ -7,7 +7,7 @@ const { user: currentUser } = store.getState()
 describe('Profile Form Controls', () => {
   beforeEach(() => render(<ProfileForm user={currentUser} />))
 
-  test('should render profile form controls', () => {
+  it('should render profile form controls', () => {
     const [nameControl, emailControl] = screen.getAllByRole('textbox')
 
     expect(screen.getByLabelText(/name/i)).toBeInTheDocument()
