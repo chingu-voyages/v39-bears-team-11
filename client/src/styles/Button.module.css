@@ -21,6 +21,13 @@
   color: var(--clr-pampas-pink);
 }
 
+.button--send-picture {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
 .button--unfriend {
   color: var(--clr-danger-red);
   background-color: transparent;
@@ -52,6 +59,13 @@
   background-color: var(--clr-danger-red);
 }
 
+@media(max-width: 768px) {
+  .button--send-picture {
+    width: 28px;
+    height: 28px;
+  }
+}
+
 @media(max-width:668px) {
   .button {
     font-size: 14px;
@@ -67,5 +81,5 @@
   }
   .button--cancel {
     right: 2rem;
-  }
+  } 
 }
