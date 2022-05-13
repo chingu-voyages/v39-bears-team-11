@@ -3,7 +3,7 @@ const axios = require('axios')
 
 const baseUrl = process.env.REACT_APP_BASE_USER_URL
 
-export const addFriend = async (user, id, token) => {
+const addFriend = async (user, id, token) => {
   try {
     // make a post request to the backend
     const response = await axios.post(baseUrl, { user, id, token })
@@ -13,7 +13,7 @@ export const addFriend = async (user, id, token) => {
   }
 }
 
-export const unFriend = async (user, id, token) => {
+const unFriend = async (user, id, token) => {
   try {
     // make a post request to the backend
     const response = await axios.post(baseUrl, { user, id, token })
@@ -26,7 +26,7 @@ export const unFriend = async (user, id, token) => {
   }
 }
 
-export const updateProfile = async (id, username, email) => {
+const updateProfile = async (id, username, email) => {
   try {
     // make a delete request to the backend
     const response = await axios.patch(baseUrl, { id, username, email })
@@ -39,7 +39,7 @@ export const updateProfile = async (id, username, email) => {
   }
 }
 
-export const uploadPhoto = async (id, imgData) => {
+const uploadPhoto = async (id, imgData) => {
   try {
     // make a delete request to the backend
     const response = await axios.patch(baseUrl, { id, imgData })
@@ -52,7 +52,7 @@ export const uploadPhoto = async (id, imgData) => {
   }
 }
 
-export const deleteProfile = async (id) => {
+const deleteProfile = async (id) => {
   try {
     // make a delete request to the backend
     const response = await axios.delete(baseUrl, { id })
@@ -63,4 +63,12 @@ export const deleteProfile = async (id) => {
     // log the error message to the browser console
     console.log(error.message)
   }
+}
+
+module.exports = {
+  addFriend,
+  unFriend,
+  deleteProfile,
+  updateProfile,
+  uploadPhoto,
 }
