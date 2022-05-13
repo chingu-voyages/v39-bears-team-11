@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
+import { sortArrayOfObjects } from '../../utils/helper'
 import StartAChatButton from '../button/StartAChatButton'
 import ModalStartAChat from '../modal/ModalStartAChat'
 import LatestChats from '../latest_chats/LatestChats'
-import { sortArrayOfObjects } from '../../utils/helper'
 
 // mocked messages data
 const chatsMockData = [
@@ -22,16 +22,16 @@ const chatsMockData = [
     id: '6',
     messages: [
       {
-        content: 'Show. Alright I will look over chat array, sort, and return latest message.',
-        sender_id: '61cdd39a5a14f24e4f2f89c7',
-        receiver_id: '6',
-        timestamp: 1652362533,
-      },
-      {
         content: 'Look over chat array, sort, return latest message.',
         sender_id: '',
         receiver_id: '6',
         timestamp: 1652362500,
+      },
+      {
+        content: 'Alright I will look over chat array, sort, and return latest message.',
+        sender_id: '61cdd39a5a14f24e4f2f89c7',
+        receiver_id: '6',
+        timestamp: 1652362533,
       },
 
     ],
@@ -46,7 +46,7 @@ const chatsMockData = [
         timestamp: 1652261968,
       },
       {
-        content: 'Show me and you always say tomorrow and it is never done.',
+        content: 'You always say tomorrow and it is never done.',
         sender_id: '33',
         receiver_id: '61cdd39a5a14f24e4f2f89c73',
         timestamp: 1652271970,
@@ -55,7 +55,7 @@ const chatsMockData = [
         content: 'Ok thank you for all the details I should implement that tomorrow.',
         sender_id: '61cdd39a5a14f24e4f2f89c7',
         receiver_id: '33',
-        timestamp: 1652271969,
+        timestamp: 1652271971,
       },
 
     ],
@@ -89,14 +89,13 @@ function Chats() {
 
   const lastestChats = chatsMockData.reduce(
     (newArr, currentChat) => {
-      //  Use provided friend id (from user messages) to get the friend index in the friends data.
+      //  Use provided friend id (from user messages) to get the friend index in the friends data
       const friendId = currentChat.id
       const friendIndex = friends.findIndex((friend) => friend.id.toString() === friendId)
       //  Use friend index (from user friends array) to get friend's picture and username
-      const Picture = friends[friendIndex].picture
-      const Username = friends[friendIndex].username
-
-      //  Use all the messages from the current friend.
+      const messagePicture = friends[friendIndex].picture
+      const messageUsername = friends[friendIndex].username
+      //  Use all the messages from the current friend
       const allMessages = currentChat.messages
       //  Use helper function to sort these messages and return only the latest message
       //  sortArrayOfObjects arguments:
@@ -106,18 +105,18 @@ function Chats() {
       //     -choice of returning either first item, last item, or the whole array
       const latestMessage = sortArrayOfObjects(allMessages, 'timestamp', 'desc', 'firstItem')
       // Use the latest message to get the timestamp and the message content
-      const Content = latestMessage.content
-      const Timestamp = latestMessage.timestamp
+      const messageContent = latestMessage.content
+      const messageTimestamp = latestMessage.timestamp
 
       // Define new object with all prepared data
       const newInstance = {
         id: friendId,
-        picture: Picture,
-        username: Username,
-        message: Content,
-        time: Timestamp,
+        picture: messagePicture,
+        username: messageUsername,
+        message: messageContent,
+        time: messageTimestamp,
       }
-      // Add this object to the list that is being created in this reduce function
+      // Add this object to the list of objects that is being created in this reduce function
       newArr.push(newInstance)
       return newArr
     },

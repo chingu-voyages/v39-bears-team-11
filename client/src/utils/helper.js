@@ -1,6 +1,10 @@
 // where an helper function lives
 
-// Sorting function that returns a sorted array or the first item of it
+// *******************
+// sortArrayOfObjects
+// *******************
+// Sorts an array of objects and depending on the choice returns:
+// sorted array OR first item of the sorted array OR last item of the sorted array
 //
 // arguments:
 //   arr - the array that will be sorted
