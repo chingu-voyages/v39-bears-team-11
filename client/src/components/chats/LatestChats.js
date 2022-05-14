@@ -1,5 +1,5 @@
 import ContainerHeading from '../container_heading/ContainerHeading'
-import LatestChat from '../latest_chat/LatestChat'
+import LatestChat from './LatestChat'
 
 function LatestChats({ chats }) {
   return (

@@ -1,32 +1,45 @@
-import { useRef } from 'react'
-import { useSelector } from 'react-redux'
+import { useRef } from 'react' // add useState
+import { useSelector } from 'react-redux' // add useDispatch
 import { sortArrayOfObjects } from '../../utils/helper'
 import StartAChatButton from '../button/StartAChatButton'
 import ModalStartAChat from '../modal/ModalStartAChat'
-import LatestChats from '../latest_chats/LatestChats'
+import LatestChats from './LatestChats'
 
 // temporary mock data that will be replaced with data from chats store
 import { chatsMockData } from './mock_messages'
 
 function Chats() {
-  // **********
-  // import action from chat store and dispatch an action that sets the current friend id
-  // with an id of a friend that has been clicked
-  // **********
+  // ******todo******
+  // import action from chat store and dispatch an action that sets the current
+  // friend id with an id of a friend that has been clicked
+  // ****************
+
+  // Create the state variable for the selected friend to start a chat
+  // const [selectedFriendId, setSelectededFriendId] = useState()
+
+  // Get the reducer dispatch action
+  // const dispatch = useDispatch()
+
+  // Create handler for selecting the friend when clicking either last message or a friend
+  // const handleSelectFriend = (selectededFriendId) => {
+  //   setSelectedFriendId(selectededFriendId) - set the selected friend id
+  //   dispatch(currentFriend(selectedFriendId) - dispatch an action
+  //   modalRef.current.open && onCloseModal() - close the modal if opened
+  // }
 
   // Get friends list from the user state slice
   const friends = useSelector(({ user }) => user.friends)
   // Get the modal ref
   const modalRef = useRef()
-  // Get the list of the latest messages
+  // Get the list of the latest messages, one message per contact
   const latestChats = chatsMockData.reduce(
     (newArr, currentChat) => {
-      //  Use provided friend id (from user messages) to get the friend index in the friends data
+      //  Use provided friend id (from user messages) to get the friend from the friends data
       const friendId = currentChat.id
-      const friendIndex = friends.findIndex((friend) => friend.id.toString() === friendId)
-      //  Use friend index (from user friends array) to get friend's picture and username
-      const messagePicture = friends[friendIndex].picture
-      const messageUsername = friends[friendIndex].username
+      const friend = friends.find((contact) => contact.id.toString() === friendId)
+      //  Use friend (from user friends array) to get friend's picture and username
+      const messagePicture = friend.picture
+      const messageUsername = friend.username
       //  Use all the messages from the current friend
       const allMessages = currentChat.messages
       //  Use helper function to sort these messages and return only the latest message
@@ -39,7 +52,6 @@ function Chats() {
       // Use the latest message to get the timestamp and the message content
       const messageContent = latestMessage.content
       const messageTimestamp = latestMessage.timestamp
-
       // Define new object with all prepared data
       const newInstance = {
         id: friendId,

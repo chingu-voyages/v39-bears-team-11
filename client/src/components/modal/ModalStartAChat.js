@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 import styles from '../../styles/ModalStartAChat.module.css'
-import FriendsStartAChat from '../friends_start_a_chat/FriendsStartAChat'
+import FriendsStartAChat from '../chats/FriendsStartAChat'
 
 const ModalStartAChat = forwardRef(({ friends, handleOnClick }, ref) => (
 

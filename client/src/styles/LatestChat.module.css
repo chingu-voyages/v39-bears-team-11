@@ -9,6 +9,7 @@
     padding: 0 25px;
     box-shadow: 0px 2.4714px 3.70709px rgba(0, 0, 0, 0.25);
     border-radius: 18.5355px;
+    cursor: pointer;
 }
 
 .latest-chat__image {

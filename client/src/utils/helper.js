@@ -1,5 +1,3 @@
-// where an helper function lives
-
 // *******************
 // sortArrayOfObjects
 // *******************
@@ -14,6 +12,13 @@
 //   receive = 'array' - funtion will return the sorted array (default)
 //             'firstItem' - function will return the first item of the sorted array
 //             'lastItem'  - function will return the last item of the sorted array
+//
+// version 0.1
+// At the moment the function was only tested to work with timestamps (number) and it's
+// doing that well. It still needs refactoring for other types and also it needs better
+// error handling. For example it should check if the object contains selected property,
+// or if the correct types of the arguments were provided etc.
+
 const sortArrayOfObjects = (
   arr,
   property,

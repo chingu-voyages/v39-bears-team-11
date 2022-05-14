@@ -1,6 +1,5 @@
-import FriendStartAChat from '../friend_start_a_chat/FriendStartAChat'
+import FriendStartAChat from './FriendStartAChat'
 
-// function LatestChats({ results, container, ...props }) {
 function FriendsStartAChat({ friends }) {
   return (
     <>
