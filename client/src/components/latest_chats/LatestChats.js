@@ -12,7 +12,7 @@ function LatestChats({ chats }) {
               key={chat.id}
               username={chat.username}
               picture={chat.picture}
-              time={chat.time}
+              timestamp={chat.timestamp}
               message={chat.message}
             />
           ))

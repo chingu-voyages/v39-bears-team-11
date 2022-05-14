@@ -1,7 +1,8 @@
+import Moment from 'react-moment'
 import styles from '../../styles/LatestChat.module.css'
 
 function LatestChat({
-  username, picture, message, time,
+  username, picture, message, timestamp,
 }) {
   return (
     <div className={styles['latest-chat']}>
@@ -13,8 +14,7 @@ function LatestChat({
         <span className={styles['latest-chat__message']}>{message}</span>
       </div>
       <span className={styles['latest-chat__time']}>
-        {time}
-        s
+        <Moment unix fromNow>{timestamp}</Moment>
       </span>
     </div>
   )

@@ -45,6 +45,7 @@
 
 .latest-chat__time {
     margin-left: auto;
+    flex-shrink: 0;
 }
 
 .latest-chat__username-and-message-container {

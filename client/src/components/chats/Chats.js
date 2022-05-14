@@ -19,7 +19,7 @@ function Chats() {
   // Get the modal ref
   const modalRef = useRef()
   // Get the list of the latest messages
-  const lastestChats = chatsMockData.reduce(
+  const latestChats = chatsMockData.reduce(
     (newArr, currentChat) => {
       //  Use provided friend id (from user messages) to get the friend index in the friends data
       const friendId = currentChat.id
@@ -46,7 +46,7 @@ function Chats() {
         picture: messagePicture,
         username: messageUsername,
         message: messageContent,
-        time: messageTimestamp,
+        timestamp: messageTimestamp,
       }
       // Add the above object to the list of objects that is being created in this reduce function
       newArr.push(newInstance)
@@ -54,6 +54,8 @@ function Chats() {
     },
     [],
   )
+  // Sort the list of the latest chats
+  const latestChatsSorted = sortArrayOfObjects(latestChats, 'timestamp', 'desc', 'array')
 
   // Define functions for opening and closing the modal
   const onOpenModal = () => modalRef.current.showModal()
@@ -63,7 +65,7 @@ function Chats() {
     <div id="chats" className="container main">
       <StartAChatButton handleOnClick={onOpenModal} />
       <ModalStartAChat friends={friends} ref={modalRef} handleOnClick={onCloseModal} />
-      <LatestChats chats={lastestChats} />
+      <LatestChats chats={latestChatsSorted} />
     </div>
   )
 }
