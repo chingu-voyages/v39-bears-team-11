@@ -2,7 +2,7 @@ import styles from '../../styles/MessageForms.module.css'
 import NewMessageForm from '../new_message_form/NewMessageForm'
 import NewPictureButton from '../button/NewPictureButton'
 
-function MessageForms({}) {
+function MessageForms() {
   return (
     <div className={styles['message-forms']}>
       <NewMessageForm />
