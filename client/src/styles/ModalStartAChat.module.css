@@ -1,25 +1,4 @@
 .modal {
-    background-color: rgba(0, 0, 0, 0.5);
-    position: fixed;
-    left:0;
-    top:0;
-    right:0;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: all 0.2s ease-in-out;
-    pointer-events: none;
-
-}
-
-.modal.show {
-    opacity: 1;
-    pointer-events:visible;
-}
-
-.modal__content {
     height: 476px;
     width: 384px;
     padding: 19px 29px;
@@ -30,7 +9,11 @@
     overflow: scroll;
 }
 
-.modal__content hr {
+.modal::backdrop {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+.modal hr {
     height: 1px;
     background-color: var(--clr-grey);
     border: none;

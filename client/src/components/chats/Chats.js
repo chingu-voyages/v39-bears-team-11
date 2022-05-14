@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { sortArrayOfObjects } from '../../utils/helper'
 import StartAChatButton from '../button/StartAChatButton'
@@ -74,18 +74,8 @@ const chatsMockData = [
 ]
 
 function Chats() {
-  const userState = useSelector(({ user }) => user)
-  const { friends } = userState
-  const [show, setShow] = useState(false)
-
-  const onOpenModal = () => {
-    setShow(true)
-  }
-
-  const onCloseModal = (event) => {
-    event.stopPropagation()
-    setShow(false)
-  }
+  const friends = useSelector(({ user }) => user.friends)
+  const modalRef = useRef()
 
   const lastestChats = chatsMockData.reduce(
     (newArr, currentChat) => {
@@ -123,13 +113,16 @@ function Chats() {
     [],
   )
 
+  const onOpenModal = () => modalRef.current.open()
+  const onCloseModal = () => modalRef.current.close()
+
   return (
     <div
       id="chats"
       className="container main"
     >
       <StartAChatButton onOpenModal={onOpenModal} />
-      <ModalStartAChat friends={friends} show={show} onCloseModal={onCloseModal} />
+      <ModalStartAChat friends={friends} ref={modalRef} onCloseModal={onCloseModal} />
       <LatestChats chats={lastestChats} />
     </div>
   )
