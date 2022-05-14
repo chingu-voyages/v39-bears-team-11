@@ -121,7 +121,7 @@ function Chats() {
       id="chats"
       className="container main"
     >
-      <StartAChatButton onOpenModal={onOpenModal} />
+      <StartAChatButton handleOnClick={onOpenModal} />
       <ModalStartAChat friends={friends} ref={modalRef} onCloseModal={onCloseModal} />
       <LatestChats chats={lastestChats} />
     </div>
