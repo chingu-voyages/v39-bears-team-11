@@ -5,78 +5,20 @@ import StartAChatButton from '../button/StartAChatButton'
 import ModalStartAChat from '../modal/ModalStartAChat'
 import LatestChats from '../latest_chats/LatestChats'
 
-// mocked messages data
-const chatsMockData = [
-  {
-    id: '3',
-    messages: [
-      {
-        content: 'Finished styling the ChatRoom page and testing it with dummy data from the messages store.',
-        sender_id: '61cdd39a5a14f24e4f2f89c7',
-        receiver_id: '3',
-        timestamp: 1652361968,
-      },
-    ],
-  },
-  {
-    id: '6',
-    messages: [
-      {
-        content: 'Look over chat array, sort, return latest message.',
-        sender_id: '',
-        receiver_id: '6',
-        timestamp: 1652362500,
-      },
-      {
-        content: 'Alright I will look over chat array, sort, and return latest message.',
-        sender_id: '61cdd39a5a14f24e4f2f89c7',
-        receiver_id: '6',
-        timestamp: 1652362533,
-      },
-
-    ],
-  },
-  {
-    id: '33',
-    messages: [
-      {
-        content: 'Define user state as variable te value of which is going to be hwatever the user.',
-        sender_id: '33',
-        receiver_id: '61cdd39a5a14f24e4f2f89c7',
-        timestamp: 1652261968,
-      },
-      {
-        content: 'You always say tomorrow and it is never done.',
-        sender_id: '33',
-        receiver_id: '61cdd39a5a14f24e4f2f89c73',
-        timestamp: 1652271970,
-      },
-      {
-        content: 'Ok thank you for all the details I should implement that tomorrow.',
-        sender_id: '61cdd39a5a14f24e4f2f89c7',
-        receiver_id: '33',
-        timestamp: 1652271971,
-      },
-
-    ],
-  },
-  {
-    id: '66',
-    messages: [
-      {
-        content: "Retrieve profile pic and name from user store using the frriends ID received from message router.'",
-        sender_id: '61cdd39a5a14f24e4f2f89c7',
-        receiver_id: '66',
-        timestamp: 1652185568,
-      },
-    ],
-  },
-]
+// temporary mock data that will be replaced with data from chats store
+import { chatsMockData } from './mock_messages'
 
 function Chats() {
-  const friends = useSelector(({ user }) => user.friends)
-  const modalRef = useRef()
+  // **********
+  // import action from chat store and dispatch an action that sets the current friend id
+  // with an id of a friend that has been clicked
+  // **********
 
+  // Get friends list from the user state slice
+  const friends = useSelector(({ user }) => user.friends)
+  // Get the modal ref
+  const modalRef = useRef()
+  // Get the list of the latest messages
   const lastestChats = chatsMockData.reduce(
     (newArr, currentChat) => {
       //  Use provided friend id (from user messages) to get the friend index in the friends data
@@ -106,21 +48,19 @@ function Chats() {
         message: messageContent,
         time: messageTimestamp,
       }
-      // Add this object to the list of objects that is being created in this reduce function
+      // Add the above object to the list of objects that is being created in this reduce function
       newArr.push(newInstance)
       return newArr
     },
     [],
   )
 
-  const onOpenModal = () => modalRef.current.open()
+  // Define functions for opening and closing the modal
+  const onOpenModal = () => modalRef.current.showModal()
   const onCloseModal = () => modalRef.current.close()
 
   return (
-    <div
-      id="chats"
-      className="container main"
-    >
+    <div id="chats" className="container main">
       <StartAChatButton handleOnClick={onOpenModal} />
       <ModalStartAChat friends={friends} ref={modalRef} handleOnClick={onCloseModal} />
       <LatestChats chats={lastestChats} />

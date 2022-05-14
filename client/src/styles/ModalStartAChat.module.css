@@ -1,13 +1,15 @@
 .modal {
     height: 476px;
-    width: 384px;
+    width: 100%;
+    max-width: 384px;
     padding: 19px 29px;
     background-color: var(--clr-white);
     border-radius: 15px;
-    top: 30%;
-    left: 35%;
+    top: 10%;
+    margin: 0 auto;
     overflow: scroll;
 }
+
 
 .modal::backdrop {
     background-color: rgba(0, 0, 0, 0.8);

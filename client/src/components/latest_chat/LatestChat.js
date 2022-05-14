@@ -1,4 +1,4 @@
-import styles from '../../styles/LatestChats.module.css'
+import styles from '../../styles/LatestChat.module.css'
 
 function LatestChat({
   username, picture, message, time,

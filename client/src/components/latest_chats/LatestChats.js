@@ -1,13 +1,11 @@
-import styles from '../../styles/LatestChats.module.css'
 import ContainerHeading from '../container_heading/ContainerHeading'
 import LatestChat from '../latest_chat/LatestChat'
 
-// function LatestChats({ results, container, ...props }) {
 function LatestChats({ chats }) {
   return (
     <>
       { chats.length > 0 && <ContainerHeading text="Latest Chats" />}
-      <div className={styles['latest-chats']}>
+      <div>
         {
           chats.map((chat) => (
             <LatestChat
