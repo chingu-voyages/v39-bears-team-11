@@ -26,10 +26,15 @@ const unFriend = async (user, id, token) => {
   }
 }
 
-const updateProfile = async (id, username, email) => {
+const updateProfile = async (id, username, email, token) => {
   try {
     // make a delete request to the backend
-    const response = await axios.patch(baseUrl, { id, username, email })
+    const response = await axios.patch(baseUrl, {
+      id,
+      username,
+      email,
+      token,
+    })
     // return the response data
     return response.data
   } catch (error) {
@@ -39,25 +44,25 @@ const updateProfile = async (id, username, email) => {
   }
 }
 
-const uploadPhoto = async (id, imgData) => {
+const deleteProfile = async (id, token) => {
   try {
     // make a delete request to the backend
-    const response = await axios.patch(baseUrl, { id, imgData })
-    // return the response data
-    return response.data
-  } catch (error) {
-    // todo: add better error handling
-    // log the error message to the browser console
-    console.log(error.message)
-  }
-}
-
-const deleteProfile = async (id) => {
-  try {
-    // make a delete request to the backend
-    const response = await axios.delete(baseUrl, { id })
+    const response = await axios.delete(baseUrl, { id, token })
     // return the response status
     return response.status
+  } catch (error) {
+    // todo: add better error handling
+    // log the error message to the browser console
+    console.log(error.message)
+  }
+}
+
+const uploadPhoto = async (id, imgData, token) => {
+  try {
+    // make a delete request to the backend
+    const response = await axios.patch(baseUrl, { id, imgData, token })
+    // return the response data
+    return response.data
   } catch (error) {
     // todo: add better error handling
     // log the error message to the browser console
