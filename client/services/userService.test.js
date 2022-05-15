@@ -29,7 +29,7 @@ describe('User Service', () => {
     addFriend = userService.addFriend.mockImplementation(() =>
       Promise.resolve(response.data),
     )
-    expect(addFriend()).resolves.toEqual(['user1', 'user2', 'user3'])
+    expect(addFriend()).resolves.toEqual(expect.arrayContaining([]))
   })
 
   it('should return response data', async () => {
@@ -40,7 +40,7 @@ describe('User Service', () => {
 
     const req = unFriend.mockResolvedValueOnce(response.data)
     const res = await req()
-    expect(res).toStrictEqual(['user1', 'user2', 'user3'])
+    expect(res).toEqual(expect.arrayContaining([expect.any(String)]))
   })
 
   it('should return response data', async () => {
@@ -51,7 +51,7 @@ describe('User Service', () => {
 
     const req = updateProfile.mockResolvedValueOnce(response.data)
     const res = await req()
-    expect(res).toStrictEqual(['user1', 'user2', 'user3'])
+    expect(res).toStrictEqual(expect.arrayContaining([]))
   })
 
   it('should return response data', async () => {
@@ -62,7 +62,7 @@ describe('User Service', () => {
 
     const req = deleteProfile.mockResolvedValueOnce(response.data)
     const res = await req()
-    expect(res).toEqual(['user1', 'user2', 'user3'])
+    expect(res).toEqual(expect.arrayContaining([]))
   })
 
   it('should return response data', async () => {
@@ -73,6 +73,6 @@ describe('User Service', () => {
 
     const req = uploadPhoto.mockResolvedValueOnce(response.data)
     const res = await req()
-    expect(res).toEqual(['user1', 'user2', 'user3'])
+    expect(res).toEqual(expect.arrayContaining([]))
   })
 })
