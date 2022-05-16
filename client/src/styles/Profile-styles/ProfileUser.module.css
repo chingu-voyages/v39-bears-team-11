@@ -4,6 +4,8 @@
   justify-content: center;
 
   padding: 5rem 0;
+  margin: 0 auto;
+  max-width: 20rem;
 
   position: relative;
 }
@@ -20,13 +22,12 @@
   background-color: var(--clr-pampas-pink);
   border: none;
   border-radius: 50%;
+  height: 3rem;
+  width: 3rem;
 
   position: absolute;
-
-  height: 3rem;
-  left: 22rem;
-  top: 13.5rem;
-  width: 3rem;
+  left: 10.5rem;
+  top: 15rem;
 }
 
 /* media queries for tablets */
@@ -37,7 +38,7 @@
   }
 
   .Profile__editPicture {
-    left: 35rem;
+    left: 11rem;
     top: 18rem;
   }
 }
@@ -47,12 +48,12 @@
   /* styling for larger screens */
   .Profile__imgContainer {
     justify-content: flex-start;
-
+    margin: 0;
     padding: 9rem 0;
   }
 
   .Profile__editPicture {
-    left: 11.5rem;
+    left: 11rem;
     top: 18rem;
   }
 }

@@ -31,6 +31,12 @@
   justify-content: space-between;
 }
 
+/* media queries for other small screens */
+@media screen and (min-width: 580px) {
+  .Profile {
+    padding: 6rem 8rem;
+  }
+}
 /* media queries for tablets */
 @media screen and (min-width: 768px) {
   /* styling for tablets or ipads */
