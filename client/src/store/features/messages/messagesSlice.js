@@ -72,7 +72,17 @@ export const { setMessages, setCurrentFriendId, appendMessage } = messagesSlice.
 
 export function addTextMessage(message) {
   return (dispatch, getState) => {
-    /* Send post request to messagesService.addTextMessage */
+    /* Send post request to messagesService */
+    // const token = getState().user.token
+    // const textMessageObject = {
+    //   senderId: getState().user.id,
+    //   friendId: getState().messages.currentFriendId,
+    //   content: message,
+    //   timestamp: new Date().toISOString(),
+    // }
+    // createdMessage = await messagesService.createTextMessage(textMessageObject, token)
+    // dispatch(appendMessage(createdMessage))
+
     dispatch(appendMessage({
       sender: 9999,
       receiver: getState().messages.currentFriendId,
@@ -81,4 +91,5 @@ export function addTextMessage(message) {
     }))
   }
 }
+
 export default messagesSlice.reducer
