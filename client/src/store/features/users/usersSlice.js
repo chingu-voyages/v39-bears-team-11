@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import dummyManPic from '../../../icons/profile-picture-man-unsplash.jpg'
+// import dummyManPic from '../../../icons/profile-picture-man-unsplash.jpg'
 import dummyWomanPic from '../../../icons/profile-picture-woman-unsplash.jpg'
 
 /* dummy user state */
@@ -8,7 +8,7 @@ const initialState = {
   username: 'adalovelace',
   email: 'adalove@gamilcom',
   token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjYyMDEyM2UwMjg1ZDI2MWIwNWQ1OWY2NyIsImlhdCI6MTY0NDI1NzM3MywiZXhwIjoxNjQ0NTE2NTczfQ.VPUWHlYqzhOkU9UsyfWdhpkH3pS3GMeNkpFVct8Mtms',
-  picture: dummyManPic,
+  picture: null,
   friends: [
     {
       id: 3,
