@@ -1,4 +1,5 @@
 import styles from '../../styles/Messages.module.css'
+import defaultPicture from '../../icons/default-user-profile-image.png'
 
 function MessageHead({
   classes,
@@ -25,7 +26,7 @@ function MessageHead({
   return (
     <div className={`${styles.message__head} ${styles[classes]}`}>
       <div className={styles.message__head__img}>
-        <img src={picture} alt={name} />
+        <img src={picture || defaultPicture} alt={name} />
       </div>
       <div className={styles.message__head__text}>
         <h5>{name}</h5>
