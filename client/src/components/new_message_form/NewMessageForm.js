@@ -18,8 +18,10 @@ function NewMessageForm() {
       className={styles['message-form']}
       onSubmit={handleSubmit}
     >
-      <input
+      <textarea
         required
+        /* eslint-disable-next-line jsx-a11y/no-autofocus */
+        autoFocus
         type="text"
         name="message"
         placeholder="Start typing ..."
