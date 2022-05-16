@@ -1,0 +1,64 @@
+.Profile {
+  display: flex;
+  flex-direction: column;
+
+  height: 83vh;
+  padding: 4rem 2rem 0;
+}
+
+.Profile__heading {
+  display: flex;
+  justify-content: space-between;
+
+  border-bottom: 1px solid #c4c4c4;
+}
+
+.Profile__headText {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2.3rem;
+  line-height: 3.8rem;
+}
+
+.Profile__heading > h2,
+.Profile__heading > div {
+  display: inline-block;
+}
+
+.Profile__main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* media queries for other small screens */
+@media screen and (min-width: 580px) {
+  .Profile {
+    padding: 6rem 8rem;
+  }
+}
+/* media queries for tablets */
+@media screen and (min-width: 768px) {
+  /* styling for tablets or ipads */
+  .Profile {
+    padding: 6rem 8rem 0;
+  }
+}
+
+/* media queries for larger screens */
+@media screen and (min-width: 1024px) {
+  /* styling for larger screens */
+  .Profile {
+    height: 100vh;
+    padding: 9rem 13.5rem 2rem;
+  }
+
+  .Profile__heading {
+    width: 50%;
+  }
+
+  .Profile__form label {
+    display: block;
+    width: 35%;
+  }
+}

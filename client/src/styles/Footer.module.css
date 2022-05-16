@@ -1,14 +1,12 @@
 .footer {
-  padding: 6rem 0;
+  padding: 6rem 0 0;
 }
 
 .footer p {
   color: var(--clr-grey);
-  margin: 0;
-  padding: 0;
 }
 
-@media(max-width: 768px) {
+@media (max-width: 768px) {
   .footer p {
     font-size: 1.5rem;
   }

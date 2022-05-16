@@ -8,6 +8,7 @@ import Search from './components/search/Search'
 import Profile from './components/profile/Profile'
 import Friends from './components/friends/Friends'
 import MainPage from './components/main_page/MainPage'
+import EditProfilePage from './components/profile/EditProfilePage'
 
 function App() {
   const currentUser = useSelector(({ user }) => user)
@@ -24,6 +25,7 @@ function App() {
             <Route path="chatroom" element={<ChatRoom />} />
             <Route path="search" element={<Search />} />
             <Route path="profile" element={<Profile />} />
+            <Route path="edit" element={<EditProfilePage />} />
             <Route path="friends" element={<Friends />} />
           </Route>
         </Routes>

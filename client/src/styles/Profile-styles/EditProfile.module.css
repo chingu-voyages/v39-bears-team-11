@@ -1,0 +1,76 @@
+.Edit__container {
+  height: 85vh;
+  padding: 4rem 2rem 0;
+}
+
+.Edit__heading {
+  border-bottom: 1px solid #c4c4c4;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2.3rem;
+  line-height: 3.8rem;
+  margin-bottom: 5rem;
+}
+
+.Edit__button {
+  background-color: var(--clr-royal-blue);
+  color: var(--clr-white);
+  display: inline-block;
+  margin: 4rem 1.2rem 0 0;
+  transform: translateY(0);
+  transition: transform 200ms ease-in;
+  width: 10rem;
+  will-change: transform;
+}
+
+.Edit__buttonCancel {
+  background-color: var(--clr-light-blue);
+  color: var(--clr-royal-blue);
+  transform: translateY(0);
+  transition: transform 200ms ease-in;
+  width: 10rem;
+  will-change: transform;
+}
+
+.Edit__button,
+.Edit__buttonCancel {
+  box-shadow: 0 0.3rem 0 0 rgba(0, 0, 0, 0.4);
+}
+
+.Edit__button:hover,
+.Edit__buttonCancel:hover {
+  transform: translateY(-0.5rem);
+  transition: transform 100ms ease-out;
+}
+
+.Edit__button:active,
+.Edit__buttonCancel:active {
+  box-shadow: 0 0 0 rgba(#000, 0);
+  transform: translateY(0);
+}
+
+/* media query for medium screens (tables, ipads) */
+@media screen and (min-width: 768px) {
+  .Edit__container {
+    padding: 6rem 8rem;
+  }
+
+  .Edit__button {
+    margin-top: 6rem;
+  }
+}
+
+/* media query for medium screens (tables, ipads) */
+@media screen and (min-width: 1024px) {
+  .Edit__container {
+    padding: 6rem 13.5rem;
+  }
+
+  .Edit__heading {
+    width: 55%;
+  }
+
+  .Edit__button {
+    margin-top: 6rem;
+  }
+}
