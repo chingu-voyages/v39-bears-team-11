@@ -10,12 +10,14 @@
   display: flex;
   justify-content: space-between;
 
+  border-bottom: 1px solid #c4c4c4;
+}
+
+.Profile__headText {
   font-style: normal;
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 2.3rem;
   line-height: 3.8rem;
-
-  border-bottom: 1px solid #c4c4c4;
 }
 
 .Profile__heading > h2,

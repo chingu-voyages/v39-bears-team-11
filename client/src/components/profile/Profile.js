@@ -30,7 +30,7 @@ function Profile() {
       {/* header section contains the profile heading and profile
       actions buttons */}
       <header className={styles.Profile__heading}>
-        <h2>Profile</h2>
+        <h2 className={styles.Profile__headText}>Profile</h2>
         <div>
           <Link to="/edit">
             <ProfileButton imgSrc={editIcon} altText="edit icon" />

@@ -1,12 +1,8 @@
-.Profile__icons {
-  height: 3.1rem;
-  width: 3.1rem;
-
+button {
   background-color: transparent;
   border: none;
-  cursor: pointer;
 }
 
-.Profile__icons:hover {
+button:hover {
   background-color: var(--clr-light-grey);
 }
