@@ -1,0 +1,8 @@
+button {
+  background-color: transparent;
+  border: none;
+}
+
+button:hover {
+  background-color: var(--clr-light-grey);
+}

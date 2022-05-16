@@ -1,0 +1,41 @@
+.Profile__form {
+  display: block;
+}
+
+.Profile__form-label {
+  color: var(--clr-london-hue);
+  display: inline-block;
+  font-family: inherit;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%;
+  width: 100%;
+}
+
+.Profile__form-label:not(:last-child) {
+  padding-bottom: 3rem;
+}
+
+.Profile__form-input {
+  border: 0.1rem solid #000;
+  border-radius: 0.4rem;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 1.3rem;
+  width: 100%;
+}
+
+/* media queries for larger screens */
+@media screen and (min-width: 1024px) {
+  /* styling for larger screens */
+
+  .Profile__form-label {
+    display: block;
+    width: 100%;
+  }
+  .Profile__form-input {
+    display: block;
+    width: 35%;
+  }
+}

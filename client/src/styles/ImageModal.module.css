@@ -1,0 +1,122 @@
+.imageModal {
+  width: 40rem;
+  height: 38rem;
+  top: 15%;
+  left: 35%;
+  border: 0;
+  border-radius: 15px;
+  background-color: var(--clr-white);
+  box-shadow: 2px 2px 1em rgba(0, 0, 0, 0.3);
+  padding: 1rem 3rem;
+  text-align: center;
+}
+
+.imageModal::backdrop {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.imageModal__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 0;
+}
+
+.imageModal h3 {
+  color: var(--clr-black);
+  display: inline-block;
+  font-size: 2rem;
+}
+
+.imageModal__heading > button {
+  background-color: var(--clr-danger-red);
+  color: var(--clr-white);
+  margin: 0;
+}
+
+.imageModal img {
+  border: none;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 0 0;
+  margin: 2rem 0;
+  height: 15rem;
+  width: 15rem;
+}
+
+.imageModal form {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.imageModal form button {
+  border-radius: 0.5rem;
+}
+
+.imageModal form button:last-of-type {
+  background-color: var(--clr-royal-blue);
+  color: var(--clr-white);
+}
+
+@media screen and (max-width: 768px) {
+  .imageModal {
+    width: 70vw;
+    height: 40rem;
+    left: 15%;
+    padding: 2rem 5rem;
+  }
+
+  .imageModal h3 {
+    font-size: 2.5rem;
+  }
+
+  .imageModal form {
+    justify-content: space-evenly;
+    padding-bottom: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .imageModal {
+    height: 30rem;
+    padding: 1rem 2rem;
+    width: 80vw;
+    left: 10%;
+  }
+
+  .imageModal h3 {
+    font-size: 1.5rem;
+  }
+
+  .imageModal__heading {
+    padding: 1.3rem 0;
+  }
+
+  .imageModal__heading > button {
+    background-color: var(--clr-danger-red);
+    color: var(--clr-white);
+    margin: 0;
+  }
+
+  .imageModal img {
+    margin: 1.5rem 0;
+    height: 12rem;
+    width: 12rem;
+  }
+
+  .imageModal form {
+    padding-bottom: 1.5rem;
+  }
+
+  .imageModal form button {
+    font-size: 1.3rem;
+    padding: 0.8rem 1.4rem;
+    width: 12rem;
+  }
+
+  .imageModal form button:last-of-type {
+    background-color: var(--clr-royal-blue);
+    color: var(--clr-white);
+  }
+}
