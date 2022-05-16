@@ -10,7 +10,6 @@
 
 .Edit__button {
   background-color: var(--clr-royal-blue);
-  box-shadow: 0 2rem 0 rgba(#000, 0.4);
   color: var(--clr-white);
   display: inline-block;
   margin: 4rem 1.2rem 0 0;
@@ -27,6 +26,11 @@
   transition: transform 200ms ease-in;
   width: 10rem;
   will-change: transform;
+}
+
+.Edit__button,
+.Edit__buttonCancel {
+  box-shadow: 0 0.3rem 0 0 rgba(0, 0, 0, 0.4);
 }
 
 .Edit__button:hover,
