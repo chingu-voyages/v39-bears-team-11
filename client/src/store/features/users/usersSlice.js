@@ -115,20 +115,16 @@ export function unFriend(userToUpdate, id, token) {
 
 // todo: consider using the createAsyncThunk middleware
 // async thunk to send delete user request
-export function deleteProfile(userId) {
+export function deleteProfile(userId, token) {
   // return async function that takes dispatch function
   // as parameters
   return async (dispatch) => {
     console.log(userId)
-    // configure the request object the backend will receive
-    const requestObject = {
-      method: 'DELETE',
-      body: { id: userId },
-    }
     // make the request to the server
     try {
       // eslint-disable-next-line no-undef
-      const response = await userService.deleteUser(requestObject)
+      const response = await userService.deleteProfile(userId, token)
+      // do something with the response
       console.log(response)
       // logout user on success
       dispatch(logout)
