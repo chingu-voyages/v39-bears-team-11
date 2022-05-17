@@ -4,13 +4,13 @@ function FriendStartAChat({
   username, picture,
 }) {
   return (
-    <div className={styles.friend}>
+    <button type="submit" className={styles.friend}>
       <div className={styles.friend__image}>
         <img src={picture} alt="profile" />
       </div>
       <span className={styles.friend__username}>{username}</span>
 
-    </div>
+    </button>
   )
 }
 
