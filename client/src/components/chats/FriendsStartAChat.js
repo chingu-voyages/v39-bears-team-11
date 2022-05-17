@@ -2,7 +2,7 @@ import FriendStartAChat from './FriendStartAChat'
 
 function FriendsStartAChat({ friends }) {
   return (
-    <>
+    <form method="dialog">
       {
         friends.map((friend) => (
           <FriendStartAChat
@@ -12,7 +12,7 @@ function FriendsStartAChat({ friends }) {
           />
         ))
       }
-    </>
+    </form>
   )
 }
 

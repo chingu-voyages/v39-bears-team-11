@@ -1,7 +1,7 @@
 import styles from '../../styles/FriendsStartAChat.module.css'
 
 function FriendStartAChat({
-  username, picture,
+  username, picture, key: id,
 }) {
   return (
     <button type="submit" className={styles.friend}>

@@ -1,4 +1,4 @@
-import { useRef } from 'react' // add useState
+import { useRef, useState } from 'react'
 import { useSelector } from 'react-redux' // add useDispatch
 import { sortArrayOfObjects } from '../../utils/helper'
 import StartAChatButton from '../button/StartAChatButton'
@@ -15,7 +15,7 @@ function Chats() {
   // ****************
 
   // Create the state variable for the selected friend to start a chat
-  // const [selectedFriendId, setSelectededFriendId] = useState()
+  const [selectedFriendId, setSelectededFriendId] = useState()
 
   // Get the reducer dispatch action
   // const dispatch = useDispatch()
@@ -72,6 +72,8 @@ function Chats() {
   // Define functions for opening and closing the modal
   const onOpenModal = () => modalRef.current.showModal()
   const onCloseModal = () => modalRef.current.close()
+
+  // Define function for
 
   return (
     <div id="chats" className="container main">
