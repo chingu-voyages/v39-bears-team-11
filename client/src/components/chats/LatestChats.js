@@ -10,6 +10,7 @@ function LatestChats({ chats, onOpenAChatClick }) {
           chats.map((chat) => (
             <LatestChat
               key={chat.id}
+              id={chat.id}
               username={chat.username}
               picture={chat.picture}
               timestamp={chat.timestamp}

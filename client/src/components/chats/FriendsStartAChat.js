@@ -7,6 +7,7 @@ function FriendsStartAChat({ friends }) {
         friends.map((friend) => (
           <FriendStartAChat
             key={friend.id}
+            id={friend.id}
             picture={friend.picture}
             username={friend.username}
           />
