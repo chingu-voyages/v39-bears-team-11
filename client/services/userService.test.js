@@ -9,8 +9,7 @@ jest.mock('./userService.js')
 
 // dummy test data
 const id = 1
-const username = 'adalovelace'
-const email = 'adalove@gmail.com'
+const user = { username: 'adalovelace', email: 'adalove@gamil.com' }
 const token = 'thisisamocktoken'
 const imgData = 'https://fakeimgdata.com'
 const response = { data: ['user1', 'user2', 'user3'] }
@@ -30,8 +29,8 @@ describe('User Service', () => {
   })
 
   it('should call addFriend with params', () => {
-    addFriend(id, username, token)
-    expect(addFriend).toHaveBeenCalledWith(id, username, token)
+    addFriend(id, user, token)
+    expect(addFriend).toHaveBeenCalledWith(id, user, token)
   })
 
   it('should call addFriend and return response', () => {
@@ -44,10 +43,10 @@ describe('User Service', () => {
   })
 
   it('should call unFriend and with correct params', () => {
-    unFriend(id, username, token)
+    unFriend(id, user, token)
     expect(unFriend).toHaveBeenCalled()
     expect(unFriend).toHaveBeenCalledTimes(1)
-    expect(unFriend).toHaveBeenCalledWith(id, username, token)
+    expect(unFriend).toHaveBeenCalledWith(id, user, token)
   })
 
   it('should call unFriend and return response data', async () => {
@@ -57,10 +56,10 @@ describe('User Service', () => {
   })
 
   it('should call updateProfile and with correct params', () => {
-    updateProfile(id, username, email, token)
+    updateProfile(id, user, token)
     expect(updateProfile).toBeCalled()
     expect(updateProfile).toBeCalledTimes(1)
-    expect(updateProfile).toHaveBeenCalledWith(id, username, email, token)
+    expect(updateProfile).toHaveBeenCalledWith(id, user, token)
   })
 
   it('should call updateProfile and return response data', async () => {
