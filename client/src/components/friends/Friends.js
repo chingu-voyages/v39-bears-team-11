@@ -10,7 +10,6 @@ function Friends() {
     id, username, email, token, picture, friends,
   } = userState
   const dispatch = useDispatch()
-  console.log('ty szmato kurwa', id)
 
   /* Initially, theh component renders the entire friends list */
   const [currentResults, setCurrentResults] = useState([...friends])

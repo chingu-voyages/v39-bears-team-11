@@ -1,6 +1,8 @@
 import { useRef, useState } from 'react'
-import { useSelector } from 'react-redux' // add useDispatch
+import { useSelector, useDispatch } from 'react-redux'
 import { sortArrayOfObjects } from '../../utils/helper'
+// to be uncommented once the message store is completed:
+// import { setCurrentFriendId } from '../../store/features/messages/messagesSlice'
 import StartAChatButton from '../button/StartAChatButton'
 import ModalStartAChat from '../modal/ModalStartAChat'
 import LatestChats from './LatestChats'
@@ -9,23 +11,11 @@ import LatestChats from './LatestChats'
 import { chatsMockData } from './mock_messages'
 
 function Chats() {
-  // ******todo******
-  // import action from chat store and dispatch an action that sets the current
-  // friend id with an id of a friend that has been clicked
-  // ****************
-
-  // Create the state variable for the selected friend to start a chat
+  // selectedFriendId is a state variable that stores the id of the currently
+  // clicked friend. The change of this variable can happen in two places:
+  // LatestChats - list of latest chats
+  // ModalStart a chat - list of friends
   const [selectedFriendId, setSelectededFriendId] = useState()
-
-  // Get the reducer dispatch action
-  // const dispatch = useDispatch()
-
-  // Create handler for selecting the friend when clicking either last message or a friend
-  // const handleSelectFriend = (selectededFriendId) => {
-  //   setSelectedFriendId(selectededFriendId) - set the selected friend id
-  //   dispatch(currentFriend(selectedFriendId) - dispatch an action
-  //   modalRef.current.open && onCloseModal() - close the modal if opened
-  // }
 
   // Get friends list from the user state slice
   const friends = useSelector(({ user }) => user.friends)
@@ -73,12 +63,12 @@ function Chats() {
   const onOpenModal = () => modalRef.current.showModal()
   const onCloseModal = () => modalRef.current.close()
 
-  // Define function for
+  // onClick
 
   return (
     <div id="chats" className="container main">
       <StartAChatButton handleOnClick={onOpenModal} />
-      <ModalStartAChat friends={friends} ref={modalRef} handleOnClick={onCloseModal} />
+      <ModalStartAChat friends={friends} ref={modalRef} onCloseModal={onCloseModal} />
       <LatestChats chats={latestChatsSorted} />
     </div>
   )
