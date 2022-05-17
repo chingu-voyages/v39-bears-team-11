@@ -3,8 +3,11 @@
 /* eslint-disable no-undef */
 const userService = require('./userService')
 
+// mock the userService.js module effectively
+// turning every function in it into jest.fn()
 jest.mock('./userService.js')
 
+// dummy test data
 const id = 1
 const username = 'adalovelace'
 const email = 'adalove@gmail.com'
@@ -13,28 +16,31 @@ const imgData = 'https://fakeimgdata.com'
 const response = { data: ['user1', 'user2', 'user3'] }
 
 describe('User Service', () => {
-  afterEach(() => jest.clearAllMocks())
-  let addFriend = jest.spyOn(userService, 'addFriend')
+  afterAll(() => jest.clearAllMocks())
+  const addFriend = jest.spyOn(userService, 'addFriend')
+  const unFriend = jest.spyOn(userService, 'unFriend')
+
   it('should call addFriend function', () => {
     addFriend()
     expect(addFriend).toHaveBeenCalled()
-    addFriend.mockClear()
-
-    addFriend()
     expect(addFriend).toHaveBeenCalledTimes(1)
+  })
 
+  it('should call addFriend with params', () => {
     addFriend(id, username, token)
     expect(addFriend).toHaveBeenCalledWith(id, username, token)
+  })
 
-    addFriend = userService.addFriend.mockImplementation(() =>
+  it('should call addFriend and return response', () => {
+    const addFriendMock = userService.addFriend.mockImplementation(() =>
       Promise.resolve(response.data),
     )
-    expect(addFriend()).resolves.toEqual(expect.arrayContaining([]))
+    expect(addFriendMock()).resolves.toEqual(
+      expect.arrayContaining([expect.any(String)]),
+    )
   })
 
   it('should return response data', async () => {
-    const unFriend = jest.spyOn(userService, 'unFriend')
-
     unFriend(id, username, token)
     expect(unFriend).toHaveBeenCalledWith(id, username, token)
 
@@ -51,7 +57,7 @@ describe('User Service', () => {
 
     const req = updateProfile.mockResolvedValueOnce(response.data)
     const res = await req()
-    expect(res).toStrictEqual(expect.arrayContaining([]))
+    expect(res).toStrictEqual(expect.arrayContaining([expect.any(String)]))
   })
 
   it('should return response data', async () => {
@@ -62,7 +68,7 @@ describe('User Service', () => {
 
     const req = deleteProfile.mockResolvedValueOnce(response.data)
     const res = await req()
-    expect(res).toEqual(expect.arrayContaining([]))
+    expect(res).toEqual(expect.arrayContaining([expect.any(String)]))
   })
 
   it('should return response data', async () => {
@@ -73,6 +79,6 @@ describe('User Service', () => {
 
     const req = uploadPhoto.mockResolvedValueOnce(response.data)
     const res = await req()
-    expect(res).toEqual(expect.arrayContaining([]))
+    expect(res).toEqual(expect.arrayContaining([expect.any(String)]))
   })
 })
