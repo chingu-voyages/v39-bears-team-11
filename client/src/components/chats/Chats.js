@@ -1,9 +1,12 @@
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { sortArrayOfObjects } from '../../utils/helper'
 // *********************************************************
-// to be uncommented once the message store is completed:
+//
+//            to be uncommented once the message store is completed:
+//
 // import { setCurrentFriendId } from '../../store/features/messages/messagesSlice'
+//
 // *********************************************************
 import StartAChatButton from '../button/StartAChatButton'
 import ModalStartAChat from '../modal/ModalStartAChat'
@@ -19,12 +22,6 @@ function Chats() {
   // get the reducer action dispatch function
   const dispatch = useDispatch()
 
-  // selectedFriendId is a state variable that stores the id of the currently
-  // clicked friend. The change of this variable can happen in two places:
-  // 1. LatestChats -- list of latest chats
-  // // 2. ModalStart a chat -- list of friends
-  // const [selectedFriendId, setSelectededFriendId] = useState()
-
   // Get the modal ref
   const modalRef = useRef()
 
@@ -35,9 +32,13 @@ function Chats() {
   // Handling the click on the selected chat or friend
   const onOpenAChatClick = (currentFriendId) => {
     // *********************************************************
-    // to be uncomented when the message store is complete
-    // dispatch(setCurrentFriendId(currentFriendId))
+    //
+    //   to be uncomented when the message store is complete:
+    //
+    //       dispatch(setCurrentFriendId(currentFriendId))
+    //
     // *********************************************************
+    console.log('Friend Clicked: ', currentFriendId)
   }
 
   // Get the list of the latest messages, one message per contact

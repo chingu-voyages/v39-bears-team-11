@@ -1,6 +1,6 @@
 import FriendStartAChat from './FriendStartAChat'
 
-function FriendsStartAChat({ friends }) {
+function FriendsStartAChat({ friends, onOpenAChatClick }) {
   return (
     <form method="dialog">
       {
@@ -10,6 +10,7 @@ function FriendsStartAChat({ friends }) {
             id={friend.id}
             picture={friend.picture}
             username={friend.username}
+            onOpenAChatClick={onOpenAChatClick}
           />
         ))
       }
