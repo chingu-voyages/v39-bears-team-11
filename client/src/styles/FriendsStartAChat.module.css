@@ -6,7 +6,7 @@
     width: 100%;
     outline: none;
     border: none;
-    background-color: white;
+    background-color: var(--clr-white);
     border-radius: 30px;
 }
 
