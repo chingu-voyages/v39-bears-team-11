@@ -2,10 +2,10 @@ import Moment from 'react-moment'
 import styles from '../../styles/LatestChat.module.css'
 
 function LatestChat({
-  username, picture, message, timestamp,
+  username, picture, message, timestamp, key: id,
 }) {
   return (
-    <div className={styles['latest-chat']}>
+    <button type="button" className={styles['latest-chat']}>
       <div className={styles['latest-chat__image']}>
         <img src={picture} alt="profile" />
       </div>
@@ -16,7 +16,7 @@ function LatestChat({
       <span className={styles['latest-chat__time']}>
         <Moment unix fromNow>{timestamp}</Moment>
       </span>
-    </div>
+    </button>
   )
 }
 

@@ -1,7 +1,7 @@
 import ContainerHeading from '../container_heading/ContainerHeading'
 import LatestChat from './LatestChat'
 
-function LatestChats({ chats }) {
+function LatestChats({ chats, onOpenAChatClick }) {
   return (
     <>
       { chats.length > 0 && <ContainerHeading text="Latest Chats" />}
@@ -14,6 +14,7 @@ function LatestChats({ chats }) {
               picture={chat.picture}
               timestamp={chat.timestamp}
               message={chat.message}
+              onOpenAChatClick={onOpenAChatClick}
             />
           ))
         }
