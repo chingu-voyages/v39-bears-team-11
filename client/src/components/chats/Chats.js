@@ -38,6 +38,7 @@ function Chats() {
     //       dispatch(setCurrentFriendId(currentFriendId))
     //
     // *********************************************************
+    // temporary console functionality check:
     console.log('Friend Clicked: ', currentFriendId)
   }
 
