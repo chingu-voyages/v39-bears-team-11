@@ -12,6 +12,10 @@
     cursor: pointer;
 }
 
+.latest-chat:hover {
+    background-color: var(--clr-pampas-pink);
+}
+
 .latest-chat__image {
     height: 66px;
     width: 66px;
