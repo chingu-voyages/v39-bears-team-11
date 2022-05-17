@@ -1,6 +1,12 @@
 /* eslint-disable consistent-return */
 const axios = require('axios')
 
+/**
+ * @description The api endpoint for the user service request. It is set in the
+ * dot env file and imported from there with the given name.
+ * @constant baseUrl
+ * @type string
+ */
 const baseUrl = process.env.REACT_APP_BASE_USER_URL
 
 /**
@@ -9,15 +15,11 @@ const baseUrl = process.env.REACT_APP_BASE_USER_URL
  * function accepts three parameters---user, id, and token. The request is sent to
  * the backend, the user's friends list is updated and the updated list is returned.
  * @param {{
- * id: string,
  * username: string,
  * email: string,
- * contacts: string[],
- * picture: Buffer,
- * token: string,
- * refreshToken: string,
- * createdAt: Date,
- * updatedAt: Date}} user This is the user currently logged in
+ * friends: string[],
+ * picture: Buffer
+ * }} user This is the user currently logged in
  * @param {string} id This is the id of the current user
  * @param {string} token This is token to authenticate the user before handling request
  * @returns The updated list of the current user's friends
@@ -25,7 +27,7 @@ const baseUrl = process.env.REACT_APP_BASE_USER_URL
 const addFriend = async (user, id, token) => {
   try {
     // make a post request to the backend
-    const response = await axios.post(baseUrl, { user, id, token })
+    const response = await axios.post(baseUrl, { ...user, id, token })
     return response.data
   } catch (error) {
     console.log(error.message)
@@ -40,15 +42,11 @@ const addFriend = async (user, id, token) => {
  * the backend, the user's friends list is updated by removing the friend whose
  * id matches and the updated list is returned.
  * @param {{
- * id: string,
  * username: string,
  * email: string,
- * contacts: string[],
- * picture: Buffer,
- * token: string,
- * refreshToken: string,
- * createdAt: Date,
- * updatedAt: Date}} user This is the user currently logged in
+ * friends: string[],
+ * picture: Buffer
+ * }} user This is the user currently logged in
  * @param {string} id The id of the current user
  * @param {string} token The token used to authenticate the current user before handling request
  * @returns The updated list of the current user's friends
@@ -56,7 +54,7 @@ const addFriend = async (user, id, token) => {
 const unFriend = async (user, id, token) => {
   try {
     // make a post request to the backend
-    const response = await axios.post(baseUrl, { user, id, token })
+    const response = await axios.post(baseUrl, { ...user, id, token })
     // return the response data
     return response.data
   } catch (error) {
