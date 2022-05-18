@@ -5,7 +5,9 @@ import { sortArrayOfObjects } from '../../utils/helper'
 //
 //            to be uncommented once the message store is completed:
 //
-// import { setCurrentFriendId } from '../../store/features/messages/messagesSlice'
+//  import { setCurrentFriendId } from '../../store/features/messages/messagesSlice'
+//  import { getAll } from '../../services/messages'
+//  import { setMessages } from '../../store/features/messages/messagesSlice'
 //
 // *********************************************************
 import StartAChatButton from '../button/StartAChatButton'
@@ -14,16 +16,26 @@ import LatestChats from './LatestChats'
 
 // temporary mock data that will be replaced with data from chats store
 import { chatsMockData } from './mock_messages'
+// temporaralily the chatsData will equal to the imported MockData
+const chatsData = chatsMockData
 
 function Chats() {
   // Get friends list from the user state slice
   const friends = useSelector(({ user }) => user.friends)
 
-  // Get the messages from the messages store
-  const messagesState = useSelector(({ messages }) => messages)
-
   // get the reducer action dispatch function
   const dispatch = useDispatch()
+
+  // *********************************************************
+  //
+  //   to be uncommented once the message store is completed:
+  //
+  //           useEffect(() => {
+  //             chatsData = await getAll(id, token)
+  //             dispatch(setMessages(chatsData))
+  //           }, [])
+  //
+  // *********************************************************
 
   // Get the modal ref
   const modalRef = useRef()
@@ -36,7 +48,7 @@ function Chats() {
   const onOpenAChatClick = (currentFriendId) => {
     // *********************************************************
     //
-    //   to be uncomented when the message store is complete:
+    //   to be uncomented when the message store is completed:
     //
     //       dispatch(setCurrentFriendId(currentFriendId))
     //
@@ -46,7 +58,7 @@ function Chats() {
   }
 
   // Get the list of the latest messages, one message per contact
-  const latestChats = chatsMockData.reduce(
+  const latestChats = chatsData.reduce(
     (newArr, currentChat) => {
       //  Use provided friend id (from user messages) to get the friend from the friends data
       const friendId = currentChat.id
