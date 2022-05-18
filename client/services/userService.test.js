@@ -12,16 +12,24 @@ const unFriend = jest.spyOn(userService, 'unFriend')
 const updateProfile = jest.spyOn(userService, 'updateProfile')
 const deleteAccount = jest.spyOn(userService, 'deleteAccount')
 const uploadPhoto = jest.spyOn(userService, 'uploadPhoto')
+const signUp = jest.spyOn(userService, 'signUp')
 
 // dummy test data
 const id = 1
-const user = { username: 'adalovelace', email: 'adalove@gamil.com' }
+const user = {
+  username: 'adalovelace',
+  email: 'adalove@gamil.com',
+  password: 'h3ll0/w01rd',
+}
 const token = 'thisisamocktoken'
 const imgData = 'https://fakeimgdata.com'
 const response = { data: ['user1', 'user2', 'user3'] }
 
+// clean up after tests
+afterAll(() => jest.clearAllMocks())
+afterEach(() => jest.resetAllMocks())
+
 describe('User Service', () => {
-  afterAll(() => jest.clearAllMocks())
   // test for addFriend service
   it('should call addFriend function', () => {
     addFriend()
@@ -97,5 +105,29 @@ describe('User Service', () => {
     const req = uploadPhoto.mockResolvedValueOnce(response.data)
     const res = await req()
     expect(res).toEqual(expect.arrayContaining([expect.any(String)]))
+  })
+
+  // test for signUp service
+  it('should call signUp once', () => {
+    signUp(user.username, user.email, user.password)
+    expect(signUp.mock.calls.length).not.toBeGreaterThan(1)
+  })
+
+  it('should call signUp with correct params', () => {
+    signUp(user.username, user.email, user.password)
+    expect(signUp.mock.calls[0][0]).toStrictEqual(user.username)
+    expect(signUp.mock.calls[0][1]).toStrictEqual(user.email)
+    expect(signUp.mock.calls[0][2]).toStrictEqual(user.password)
+  })
+
+  it('should call signUp and return user Object', () => {
+    const userObject = signUp.mockResolvedValueOnce(user)
+    expect(userObject).toBe(
+      expect.objectContaining({
+        username: expect.any(String),
+        email: expect.any(String),
+        password: expect.any(String),
+      }),
+    )
   })
 })
