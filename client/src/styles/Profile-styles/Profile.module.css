@@ -6,6 +6,15 @@
   padding: 2rem 2rem 0;
 }
 
+.Profile button {
+  background-color: transparent;
+  border: none;
+}
+
+.Profile button:hover {
+  background-color: var(--clr-light-grey);
+} 
+
 .Profile__heading {
   display: flex;
   justify-content: space-between;
