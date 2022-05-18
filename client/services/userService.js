@@ -93,7 +93,7 @@ const updateProfile = async (id, username, email, token) => {
 }
 
 /**
- * @name deleteProfile
+ * @name deleteAccount
  * @summary This function sends the current user delete request to the server
  * so that the user's account can be deleted. Upon successful deletion of the
  * user, he/she will be logged out
@@ -101,7 +101,7 @@ const updateProfile = async (id, username, email, token) => {
  * @param {string} token The token to authenticate the current user
  * @returns The status of the operation
  */
-const deleteProfile = async (id, token) => {
+const deleteAccount = async (id, token) => {
   try {
     // make a delete request to the backend
     const response = await axios.delete(baseUrl, { id, token })
@@ -126,7 +126,7 @@ const deleteProfile = async (id, token) => {
 const uploadPhoto = async (id, imgData, token) => {
   try {
     // make an upload request to the backend
-    const response = await axios.patch(baseUrl, { id, imgData, token })
+    const response = await axios.put(baseUrl, { id, imgData, token })
     // return the response data
     return response.data
   } catch (error) {
@@ -139,7 +139,7 @@ const uploadPhoto = async (id, imgData, token) => {
 module.exports = {
   addFriend,
   unFriend,
-  deleteProfile,
+  deleteAccount,
   updateProfile,
   uploadPhoto,
 }

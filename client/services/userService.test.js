@@ -6,6 +6,12 @@ const userService = require('./userService')
 // mock the userService.js module effectively
 // turning every function in it into jest.fn()
 jest.mock('./userService.js')
+// mock all user service functions
+const addFriend = jest.spyOn(userService, 'addFriend')
+const unFriend = jest.spyOn(userService, 'unFriend')
+const updateProfile = jest.spyOn(userService, 'updateProfile')
+const deleteAccount = jest.spyOn(userService, 'deleteAccount')
+const uploadPhoto = jest.spyOn(userService, 'uploadPhoto')
 
 // dummy test data
 const id = 1
@@ -16,12 +22,7 @@ const response = { data: ['user1', 'user2', 'user3'] }
 
 describe('User Service', () => {
   afterAll(() => jest.clearAllMocks())
-  const addFriend = jest.spyOn(userService, 'addFriend')
-  const unFriend = jest.spyOn(userService, 'unFriend')
-  const updateProfile = jest.spyOn(userService, 'updateProfile')
-  const deleteProfile = jest.spyOn(userService, 'deleteProfile')
-  const uploadPhoto = jest.spyOn(userService, 'uploadPhoto')
-
+  // test for addFriend service
   it('should call addFriend function', () => {
     addFriend()
     expect(addFriend).toHaveBeenCalled()
@@ -42,6 +43,7 @@ describe('User Service', () => {
     )
   })
 
+  // test for unFriend service
   it('should call unFriend and with correct params', () => {
     unFriend(id, user, token)
     expect(unFriend).toHaveBeenCalled()
@@ -55,6 +57,7 @@ describe('User Service', () => {
     expect(res).toEqual(expect.arrayContaining([expect.any(String)]))
   })
 
+  // test for updateProfile service
   it('should call updateProfile and with correct params', () => {
     updateProfile(id, user, token)
     expect(updateProfile).toBeCalled()
@@ -68,19 +71,21 @@ describe('User Service', () => {
     expect(res).toStrictEqual(expect.arrayContaining([expect.any(String)]))
   })
 
-  it('should call deleteProfile and with correct params', () => {
-    deleteProfile(id, token)
-    expect(deleteProfile).toBeCalled()
-    expect(deleteProfile).toBeCalledTimes(1)
-    expect(deleteProfile).toHaveBeenCalledWith(id, token)
+  // test for deleteAccount service
+  it('should call deleteAccount and with correct params', () => {
+    deleteAccount(id, token)
+    expect(deleteAccount).toBeCalled()
+    expect(deleteAccount).toBeCalledTimes(1)
+    expect(deleteAccount).toHaveBeenCalledWith(id, token)
   })
 
-  it('should call deleteProfile and return response data', async () => {
-    const req = deleteProfile.mockResolvedValueOnce(response.data)
+  it('should call deleteAccount and return response data', async () => {
+    const req = deleteAccount.mockResolvedValueOnce(response.data)
     const res = await req()
     expect(res).toEqual(expect.arrayContaining([expect.any(String)]))
   })
 
+  // test for uploadPhoto service
   it('should call uploadPhoto and with correct params', () => {
     uploadPhoto(id, imgData, token)
     expect(uploadPhoto).toHaveBeenCalled()
@@ -88,7 +93,7 @@ describe('User Service', () => {
     expect(uploadPhoto).toHaveBeenCalledWith(id, imgData, token)
   })
 
-  it('should return response data', async () => {
+  it('should call uploadPhoto and return response data', async () => {
     const req = uploadPhoto.mockResolvedValueOnce(response.data)
     const res = await req()
     expect(res).toEqual(expect.arrayContaining([expect.any(String)]))
