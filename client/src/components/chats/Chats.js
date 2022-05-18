@@ -19,6 +19,9 @@ function Chats() {
   // Get friends list from the user state slice
   const friends = useSelector(({ user }) => user.friends)
 
+  // Get the messages from the messages store
+  const messagesState = useSelector(({ messages }) => messages)
+
   // get the reducer action dispatch function
   const dispatch = useDispatch()
 
