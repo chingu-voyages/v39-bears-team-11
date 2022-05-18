@@ -136,10 +136,34 @@ const uploadPhoto = async (id, imgData, token) => {
   }
 }
 
+/**
+ * @name signUp
+ * @summary The signUp service takes the registration credentials of the new user
+ * and makes a post request to the server where the user is registered.
+ * @param {string} username The username selected by the user for his/her account
+ * @param {string} email The email provided by the user for his/her account
+ * @param {string} password The password entered by the user to register his/her account
+ * @returns The user object if the registration is successful. The user object contains
+ * the username, email, id, picture, contacts, token, refreshToken, and timestamps.
+ */
+const signUp = async (username, email, password) => {
+  try {
+    // make a post request to the server with user credentials
+    const response = await axios.post(baseUrl, { username, email, password })
+    // return user object from database
+    return response.data
+  } catch (error) {
+    // todo: add better error handling
+    // log the error message to the browser console
+    console.log(error)
+  }
+}
+
 module.exports = {
   addFriend,
   unFriend,
   deleteAccount,
   updateProfile,
   uploadPhoto,
+  signUp,
 }
