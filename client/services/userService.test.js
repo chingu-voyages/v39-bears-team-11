@@ -121,8 +121,8 @@ describe('User Service', () => {
   })
 
   it('should call signUp and return user Object', () => {
-    const userObject = signUp.mockResolvedValueOnce(user)
-    expect(userObject).toBe(
+    const userObject = signUp.mockResolvedValueOnce(user)()
+    expect(userObject).resolves.toEqual(
       expect.objectContaining({
         username: expect.any(String),
         email: expect.any(String),
