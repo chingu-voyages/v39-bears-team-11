@@ -13,6 +13,7 @@ const updateProfile = jest.spyOn(userService, 'updateProfile')
 const deleteAccount = jest.spyOn(userService, 'deleteAccount')
 const uploadPhoto = jest.spyOn(userService, 'uploadPhoto')
 const signUp = jest.spyOn(userService, 'signUp')
+const logIn = jest.spyOn(userService, 'logIn')
 
 // dummy test data
 const id = 1
@@ -109,7 +110,7 @@ describe('User Service', () => {
 
   // test for signUp service
   it('should call signUp once', () => {
-    signUp(user.username, user.email, user.password)
+    signUp()
     expect(signUp.mock.calls.length).not.toBeGreaterThan(1)
   })
 
@@ -123,6 +124,29 @@ describe('User Service', () => {
   it('should call signUp and return user Object', () => {
     const userObject = signUp.mockResolvedValueOnce(user)()
     expect(userObject).resolves.toEqual(
+      expect.objectContaining({
+        username: expect.any(String),
+        email: expect.any(String),
+        password: expect.any(String),
+      }),
+    )
+  })
+
+  // test for logIn service
+  it('should call logIn service once', () => {
+    expect(logIn()).toHaveBeenCalledTimes(1)
+  })
+
+  it('should call logIn service with correct params', () => {
+    expect(logIn(user.username, user.email)).toHaveBeenCalledWith(
+      user.username,
+      user.email,
+    )
+  })
+
+  it('should call logIn service and return user object', () => {
+    const res = logIn.mockResolvedValueOnce(user)()
+    expect(res).resoloves.toEqual(
       expect.objectContaining({
         username: expect.any(String),
         email: expect.any(String),
