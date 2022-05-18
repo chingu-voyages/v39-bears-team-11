@@ -77,6 +77,10 @@
         font-size: 14px;
     }
 
+    .latest-chat__username {
+        text-align: left;
+    }
+
     .latest-chat__username-and-message-container {
         flex-direction: column;
     }
