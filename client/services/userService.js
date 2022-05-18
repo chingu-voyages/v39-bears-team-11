@@ -159,6 +159,29 @@ const signUp = async (username, email, password) => {
   }
 }
 
+/**
+ * @name logIn
+ * @summary The log in service to make the ajax call to the server and return
+ * the response from the server.
+ * @param {string} username
+ * @param {string} password
+ * @returns The user object as is in the database excluding the password. The user object
+ * The user object contains the username, email, id, picture, contacts, token,
+ * refreshToken, and timestamps.
+ */
+const logIn = async (username, password) => {
+  try {
+    // make a post request to the server with username and password
+    const response = await axios.post(baseUrl, { username, password })
+    // return the user object if login succeeds
+    return response.data
+  } catch (error) {
+    // todo: add better error handling
+    // log the error message to the browser console
+    console.log(error)
+  }
+}
+
 module.exports = {
   addFriend,
   unFriend,
@@ -166,4 +189,5 @@ module.exports = {
   updateProfile,
   uploadPhoto,
   signUp,
+  logIn,
 }
