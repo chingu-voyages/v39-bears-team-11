@@ -33,6 +33,7 @@
     margin: 0 10px;
     display: inline-block;
     flex-shrink: 0;
+    text-align: left;
 }
 
 .latest-chat__message, .latest-chat__time {
@@ -75,10 +76,6 @@
     .latest-chat__message, 
     .latest-chat__time {
         font-size: 14px;
-    }
-
-    .latest-chat__username {
-        text-align: left;
     }
 
     .latest-chat__username-and-message-container {

@@ -1,3 +1,7 @@
+/* 
+commented out for now as this was affecting all the buttons 
+across the app
+
 button {
   background-color: transparent;
   border: none;
@@ -5,4 +9,4 @@ button {
 
 button:hover {
   background-color: var(--clr-light-grey);
-}
+} */
