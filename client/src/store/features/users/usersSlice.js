@@ -6,7 +6,8 @@ import dummyWomanPic from '../../../icons/profile-picture-woman-unsplash.jpg'
 /* dummy user state */
 const initialState = {
   id: '61cdd39a5a14f24e4f2f89c7',
-  username: 'adalovelace',
+  // username: 'adalovelace',
+  username: false,
   email: 'adalove@gamilcom',
   token:
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjYyMDEyM2UwMjg1ZDI2MWIwNWQ1OWY2NyIsImlhdCI6MTY0NDI1NzM3MywiZXhwIjoxNjQ0NTE2NTczfQ.VPUWHlYqzhOkU9UsyfWdhpkH3pS3GMeNkpFVct8Mtms',
