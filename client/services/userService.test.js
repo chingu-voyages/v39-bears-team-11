@@ -134,19 +134,18 @@ describe('User Service', () => {
 
   // test for logIn service
   it('should call logIn service once', () => {
-    expect(logIn()).toHaveBeenCalledTimes(1)
+    logIn()
+    expect(logIn).toHaveBeenCalledTimes(1)
   })
 
   it('should call logIn service with correct params', () => {
-    expect(logIn(user.username, user.email)).toHaveBeenCalledWith(
-      user.username,
-      user.email,
-    )
+    logIn(user.username, user.email)
+    expect(logIn).toHaveBeenCalledWith(user.username, user.email)
   })
 
   it('should call logIn service and return user object', () => {
     const res = logIn.mockResolvedValueOnce(user)()
-    expect(res).resoloves.toEqual(
+    expect(res).resolves.toEqual(
       expect.objectContaining({
         username: expect.any(String),
         email: expect.any(String),
