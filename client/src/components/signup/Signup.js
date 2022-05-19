@@ -14,10 +14,17 @@ function Signup() {
         <Logo isWhite className={styles['Signup__logo-white']} />
         <img src={Illustration} alt="Chats comming out of the computer screen. Conversation between 2 people." className={styles.Signup__illustration} />
       </div>
-      <div className={styles['Signup__control-buttons']}>
-        <ChoiceButton type="login" isActive={formChoice === 'login'} handleFormChoiceClick={handleFormChoiceClick} />
-        <ChoiceButton type="signup" isActive={formChoice === 'signup'} handleFormChoiceClick={handleFormChoiceClick} />
+      <div className={styles.Signup__form__container}>
+        <div className={styles['Signup__form__control-buttons']}>
+          <ChoiceButton type="login" isActive={formChoice === 'login'} handleFormChoiceClick={handleFormChoiceClick} />
+          <ChoiceButton type="signup" isActive={formChoice === 'signup'} handleFormChoiceClick={handleFormChoiceClick} />
+        </div>
+        <h4 className={styles.Signup__form__heading}>
+          {formChoice === 'login' && 'Login To Your Account'}
+          {formChoice === 'signup' && 'Create your Account'}
+        </h4>
       </div>
+
     </div>
   )
 }
