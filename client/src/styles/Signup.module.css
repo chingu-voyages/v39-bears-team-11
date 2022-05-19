@@ -1,9 +1,7 @@
 .Signup {
-    background-color:  var(--clr-royal-blue);
-}
-
-.Signup__logo-illustration-container {
-    /* background-color: var(--clr-royal-blue); */
+    padding: 10px 26px;
+    height: 100vh;
+    background-color: var(--clr-light-royal-blue);
 }
 
 .Signup__illustration {
@@ -12,4 +10,13 @@
 
 .Signup__logo-blue {
     display: none !important;
+}
+
+.Signup__control-buttons {
+    margin-top: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 25px;
+    
 }
