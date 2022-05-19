@@ -1,5 +1,5 @@
 .Signup {
-
+    background-color:  var(--clr-royal-blue);
 }
 
 .Signup__logo-illustration-container {
@@ -10,6 +10,6 @@
     display: none;
 }
 
-.Signup__logo {
-    
+.Signup__logo-blue {
+    display: none !important;
 }
