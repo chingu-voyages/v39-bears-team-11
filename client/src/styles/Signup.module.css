@@ -25,7 +25,7 @@
 }
 
 .Signup__form__heading {
+    font-family:  var(--ff-text);
     color: white;
     margin-top: 50px;
-    font-weight: lighter
 }
