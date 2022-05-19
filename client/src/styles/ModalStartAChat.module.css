@@ -28,9 +28,9 @@
 }
 
 .modal__header h4 {
+    font-family:  var(--ff-text);
     color: var(--clr-black );
     font-size: 18px; 
-    font-weight:100;
 }
 
 .modal__close-button {
