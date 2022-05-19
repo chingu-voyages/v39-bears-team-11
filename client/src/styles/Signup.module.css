@@ -12,11 +12,20 @@
     display: none !important;
 }
 
-.Signup__control-buttons {
+.Signup__form__container {
+    padding: 0 20px;
+}
+
+.Signup__form__control-buttons {
     margin-top: 60px;
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    gap: 25px;
-    
+    gap: 25px;    
+}
+
+.Signup__form__heading {
+    color: white;
+    margin-top: 50px;
+    font-weight: lighter
 }
