@@ -74,7 +74,7 @@
   font-weight: 300;
 }
 
-.button--login, .button--signup {
+.button--choice {
   padding: 0;
   width: 127px;
   height: 48px;
@@ -84,7 +84,7 @@
   font-size: 22px;
 }
 
-.button--login:hover,.button--signup:hover   {
+.button--choice:hover   {
   color: var(--clr-pampas-pink);
   background-color: var(--clr-apricot);
 }
@@ -132,7 +132,7 @@
     right: 15px;
   }
   
-  .button--login, .button--signup {
+  .button--choice {
     width: 86.46px;
     height:  32.68px;
     margin: 0;
