@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import styles from '../../styles/Signup.module.css'
 import Logo from '../logo/Logo'
 import LogoWhite from '../logo/LogoWhite'
@@ -6,6 +7,7 @@ import LoginButton from '../button/LoginButton'
 import SignupButton from '../button/SignupButton'
 
 function Signup() {
+  const [formChoice, setFormChoice] = useState('signup')
   return (
     <div id="signup" className={styles.Signup}>
       <div className={styles['Signup__logo-illustration-container']}>
