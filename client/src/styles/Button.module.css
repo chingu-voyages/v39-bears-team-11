@@ -89,6 +89,11 @@
   background-color: var(--clr-apricot);
 }
 
+.isactive {
+  color: var(--clr-pampas-pink);
+  background-color: var(--clr-apricot);
+}
+
 @media(max-width:668px) {
   .button {
     font-size: 14px;
@@ -105,7 +110,6 @@
   .button--cancel {
     right: 2rem;
   }
-<<<<<<< HEAD
 
   
 }
@@ -126,11 +130,11 @@
     /* I put it little bit further from the edge (compared to figma design) to not cover the footer */
     bottom: 80px;
     right: 15px;
-=======
+  }
+  
   .button--login, .button--signup {
     width: 86.46px;
     height:  32.68px;
     margin: 0;
->>>>>>> create and style login and signup buttons
   }
 }
