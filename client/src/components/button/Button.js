@@ -1,7 +1,11 @@
 import styles from '../../styles/Button.module.css'
 
 function Button({
+<<<<<<< HEAD
   text, className, icon, iconAlt, ...props
+=======
+  text, className, ...props
+>>>>>>> create active button on click functionality
 }) {
   return (
     <button

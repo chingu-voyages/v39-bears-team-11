@@ -8,6 +8,7 @@ import SignupButton from '../button/SignupButton'
 
 function Signup() {
   const [formChoice, setFormChoice] = useState('signup')
+  const handleFormChoiceClick = (choice) => (setFormChoice(choice))
   return (
     <div id="signup" className={styles.Signup}>
       <div className={styles['Signup__logo-illustration-container']}>
@@ -16,8 +17,8 @@ function Signup() {
         <img src={Illustration} alt="Chats comming out of the computer screen. Conversation between 2 people." className={styles.Signup__illustration} />
       </div>
       <div className={styles['Signup__control-buttons']}>
-        <LoginButton />
-        <SignupButton />
+        <LoginButton isActive={formChoice === 'login'} handleFormChoiceClick={handleFormChoiceClick} />
+        <SignupButton isActive={formChoice === 'signup'} handleFormChoiceClick={handleFormChoiceClick} />
       </div>
     </div>
   )
