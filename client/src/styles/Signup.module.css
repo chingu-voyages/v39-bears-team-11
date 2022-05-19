@@ -1,23 +1,37 @@
 .Signup {
-    padding: 10px 26px;
     height: 100vh;
+    background-color: white;
     background-color: var(--clr-light-royal-blue);
 }
 
-.Signup__illustration {
+.Signup__logo-illustration-container {
+    padding: 10px 26px;
     display: none;
 }
 
-.Signup__logo-blue {
-    display: none !important;
+.Signup__illustration {
+}
+
+.Signup__main {
+    padding: 10px 26px;
+    background-color: var(--clr-light-royal-blue);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Signup__main__logo-container {
+    width: 100%;
 }
 
 .Signup__form__container {
     padding: 0 20px;
+    max-width: 359px;
 }
 
 .Signup__form__control-buttons {
     margin-top: 60px;
+    padding-right: 20px;
     width: 100%;
     display: flex;
     justify-content: flex-end;
@@ -28,4 +42,34 @@
     font-family:  var(--ff-text);
     color: white;
     margin-top: 50px;
+    font-size: 20.42px
+}
+
+@media (min-width: 768px) {
+    .Signup__form__heading {
+        font-size: 30px
+    }
+
+    .Signup__form__control-buttons {
+        padding: 0;
+        margin-top: 40px;
+    }
+}
+
+@media (min-width: 900px) {
+    .Signup {
+        display: flex;
+        background-color: white;
+    }    
+    .Signup__main {
+        width: 618px;
+    }
+    .Signup__logo-illustration-container {
+        display: block;
+    }
+    .Signup__main__logo-container {
+        display: none;
+    }
+
+
 }
