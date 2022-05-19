@@ -3,8 +3,7 @@ import styles from '../../styles/Signup.module.css'
 import Logo from '../logo/Logo'
 import LogoWhite from '../logo/LogoWhite'
 import Illustration from '../../icons/signup/signup-illustration.png'
-import LoginButton from '../button/LoginButton'
-import SignupButton from '../button/SignupButton'
+import ChoiceButton from '../button/ChoiceButton'
 
 function Signup() {
   const [formChoice, setFormChoice] = useState('signup')
@@ -17,8 +16,8 @@ function Signup() {
         <img src={Illustration} alt="Chats comming out of the computer screen. Conversation between 2 people." className={styles.Signup__illustration} />
       </div>
       <div className={styles['Signup__control-buttons']}>
-        <LoginButton isActive={formChoice === 'login'} handleFormChoiceClick={handleFormChoiceClick} />
-        <SignupButton isActive={formChoice === 'signup'} handleFormChoiceClick={handleFormChoiceClick} />
+        <ChoiceButton type="login" isActive={formChoice === 'login'} handleFormChoiceClick={handleFormChoiceClick} />
+        <ChoiceButton type="signup" isActive={formChoice === 'signup'} handleFormChoiceClick={handleFormChoiceClick} />
       </div>
     </div>
   )
