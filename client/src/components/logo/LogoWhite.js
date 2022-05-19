@@ -2,11 +2,11 @@ import logoIcon from '../../icons/logo/litetalk-logo-icon-white.svg'
 import logoName from '../../icons/logo/litetalk-logo-name-white.svg'
 import styles from '../../styles/Logo.module.css'
 
-function LogoWhite({ styling }) {
+function LogoWhite({ className }) {
   return (
     <a
       href="/"
-      className={`${styles.logo}  ${styling}`}
+      className={`${styles.logo}  ${className}`}
     >
       <img
         src={logoName}

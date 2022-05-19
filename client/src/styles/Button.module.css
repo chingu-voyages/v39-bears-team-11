@@ -72,7 +72,21 @@
   /* For some reason font-weight: 400, the same as on figma is too bold in browser.
      That's why I had to lower it to 300 to achieve the same effect as in figma*/
   font-weight: 300;
-  
+}
+
+.button--login, .button--signup {
+  padding: 0;
+  width: 127px;
+  height: 48px;
+  color: var(--clr-royal-blue);
+  background-color: var(--clr-pampas-pink);
+  border-radius: 10.21px;
+  font-size: 22px;
+}
+
+.button--login:hover,.button--signup:hover   {
+  color: var(--clr-pampas-pink);
+  background-color: var(--clr-apricot);
 }
 
 @media(max-width:668px) {
@@ -91,6 +105,7 @@
   .button--cancel {
     right: 2rem;
   }
+<<<<<<< HEAD
 
   
 }
@@ -111,5 +126,11 @@
     /* I put it little bit further from the edge (compared to figma design) to not cover the footer */
     bottom: 80px;
     right: 15px;
+=======
+  .button--login, .button--signup {
+    width: 86.46px;
+    height:  32.68px;
+    margin: 0;
+>>>>>>> create and style login and signup buttons
   }
 }
