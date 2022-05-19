@@ -30,7 +30,7 @@ function Signup() {
             <input type="text" className={styles.Signup__form__input} />
             <input type="text" className={styles.Signup__form__input} />
             <input type="text" className={styles.Signup__form__input} />
-            <button type="submit" className={styles.Signup__form__button}>sd</button>
+            <button type="submit" className={styles.Signup__form__button}>ssd</button>
           </form>
         </div>
       </div>
