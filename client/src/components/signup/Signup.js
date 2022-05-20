@@ -8,9 +8,9 @@ import styles from '../../styles/Signup.module.css'
 function Signup() {
   const [formChoice, setFormChoice] = useState('signup')
   const handleFormChoiceClick = (choice) => (setFormChoice(choice))
-  const handleSubmit = (event) => {
+  const handleSubmit = (event, credentialsData) => {
     event.preventDefault()
-    console.log('ojoj')
+    console.log('Here we have an object with name, email, password', credentialsData)
   }
   return (
     <div id="signup" className={styles.Signup}>

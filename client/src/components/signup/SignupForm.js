@@ -17,16 +17,10 @@ function SignupForm({ formChoice, handleSubmit }) {
     isValidForm: false,
   })
 
-  const validateForm = () => {
-    setCredentials({
-      ...credentials,
-      formValid: credentials.isValidName
-      && credentials.isValidEmail
-      && credentials.isValidPassword,
-    })
-  }
+  const handleInput = (e) => {
+    const property = e.target.name
+    const { value } = e.target
 
-  const validateField = (property, value) => {
     const fieldValidationErrors = credentials.formErrors
     let { isValidName } = credentials
     let { isValidEmail } = credentials
@@ -50,20 +44,21 @@ function SignupForm({ formChoice, handleSubmit }) {
 
     setCredentials({
       ...credentials,
+      [property]: value,
       formErrors: fieldValidationErrors,
       isValidName,
       isValidEmail,
       isValidPassword,
-    }, validateForm)
+      formValid: credentials.isValidName
+      && credentials.isValidEmail
+      && credentials.isValidPassword,
+    })
   }
 
-  const handleInput = (e) => {
-    const property = e.target.name
-    const { value } = e.target
-    setCredentials(
-      { ...credentials, [property]: value },
-      () => { validateField(property, value) },
-    )
+  const credentialsData = {
+    name: credentials.name,
+    emai: credentials.email,
+    password: credentials.password,
   }
 
   return (
@@ -72,7 +67,10 @@ function SignupForm({ formChoice, handleSubmit }) {
         {formChoice === 'login' && 'Login To Your Account'}
         {formChoice === 'signup' && 'Create Your Account'}
       </h4>
-      <form onSubmit={handleSubmit} className={styles.SignupForm}>
+      <form
+        onSubmit={(event) => handleSubmit(event, credentialsData)}
+        className={styles.SignupForm}
+      >
         <div className={styles['SignupForm__input-container']}>
           <input
             type="text"
@@ -85,7 +83,7 @@ function SignupForm({ formChoice, handleSubmit }) {
             required
           />
           <img src={userIcon} alt="user" className={styles.SignupForm__icon} />
-          {credentials.formErrors.name
+          {formChoice === 'signup' && credentials.formErrors.name
             ? (
               <span className={styles.SignupForm__error}>
                 {credentials.formErrors.name}
@@ -126,14 +124,14 @@ function SignupForm({ formChoice, handleSubmit }) {
             required
           />
           <img src={passwordIcon} alt="password" className={styles.SignupForm__icon} />
-          {credentials.formErrors.password
+          {formChoice === 'signup' && credentials.formErrors.password
             ? (
               <span className={styles.SignupForm__error}>
                 {credentials.formErrors.password}
               </span>
             ) : null}
         </div>
-        <SignupFormButton choice={formChoice} type="submit" className={styles.SignupForm__button} />
+        <SignupFormButton choice={formChoice} type="submit" disabled={formChoice === 'signup' && !credentials.isValidForm} className={styles.SignupForm__button} />
       </form>
     </div>
   )
