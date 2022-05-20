@@ -10,7 +10,7 @@ function SignupForm({ formChoice, handleSubmit }) {
     name: '',
     email: '',
     password: '',
-    formErrors: { name: '', email: '', password: '' },
+    formErrors: { name: 'minimum 5 characters', email: 'invalid email address', password: 'minimum 5 characters' },
     nameValid: false,
     emailValid: false,
     passwordValid: false,
@@ -20,7 +20,7 @@ function SignupForm({ formChoice, handleSubmit }) {
     const property = e.target.name
     const { value } = e.target
     setCredentials({ ...credentials, [property]: value })
-    console.log(credentials)
+    console.log(credentials.formErrors.name)
   }
   return (
     <div className={styles.SignupForm__container}>
@@ -41,6 +41,12 @@ function SignupForm({ formChoice, handleSubmit }) {
             required
           />
           <img src={userIcon} alt="user" className={styles.SignupForm__icon} />
+          {credentials.formErrors.name
+            ? (
+              <span className={styles.SignupForm__error}>
+                {credentials.formErrors.name}
+              </span>
+            ) : null}
         </div>
         {(formChoice === 'signup')
           ? (
@@ -56,11 +62,17 @@ function SignupForm({ formChoice, handleSubmit }) {
                 required
               />
               <img src={emailIcon} alt="email" className={styles.SignupForm__icon} />
+              {credentials.formErrors.email
+                ? (
+                  <span className={styles.SignupForm__error}>
+                    {credentials.formErrors.email}
+                  </span>
+                ) : null}
             </div>
           ) : null}
         <div className={styles['SignupForm__input-container']}>
           <input
-            type="text"
+            type="password"
             aria-label="Your Password"
             placeholder="Password"
             name="password"
@@ -70,6 +82,12 @@ function SignupForm({ formChoice, handleSubmit }) {
             required
           />
           <img src={passwordIcon} alt="password" className={styles.SignupForm__icon} />
+          {credentials.formErrors.password
+            ? (
+              <span className={styles.SignupForm__error}>
+                {credentials.formErrors.password}
+              </span>
+            ) : null}
         </div>
         <SignupFormButton choice={formChoice} type="submit" className={styles.SignupForm__button} />
       </form>
