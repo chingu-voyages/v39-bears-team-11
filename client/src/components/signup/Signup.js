@@ -8,6 +8,10 @@ import styles from '../../styles/Signup.module.css'
 function Signup() {
   const [formChoice, setFormChoice] = useState('signup')
   const handleFormChoiceClick = (choice) => (setFormChoice(choice))
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    console.log('ojoj')
+  }
   return (
     <div id="signup" className={styles.Signup}>
       <div className={styles.Signup__side}>
@@ -22,7 +26,7 @@ function Signup() {
           <ChoiceButton choice="login" isActive={formChoice === 'login'} handleFormChoiceClick={handleFormChoiceClick} />
           <ChoiceButton choice="signup" isActive={formChoice === 'signup'} handleFormChoiceClick={handleFormChoiceClick} />
         </div>
-        <SignupForm formChoice={formChoice} />
+        <SignupForm formChoice={formChoice} handleSubmit={handleSubmit} />
       </div>
     </div>
   )
