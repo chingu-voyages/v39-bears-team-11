@@ -10,6 +10,7 @@ import { store } from '../../store/store'
 import Profile from './Profile'
 import EditProfilePage from './EditProfilePage'
 
+// jest.mock('./Profile')
 const { user: currentUser } = store.getState()
 
 describe('Profile Page Features', () => {
@@ -35,12 +36,13 @@ describe('Profile Page Features', () => {
     expect(emailControl.value).not.toBe('bears11@gmail.com')
   })
 
-  // todo: write a test to mock the showmodal
-  // it('should show modal', () => {
-  //   const modal = jest.fn()
-  //   userEvent.click(screen.getAllByRole('button')[1])
-  //   expect(modal).toHaveBeenCalled()
-  // })
+  it('should show modal', () => {
+    const showModal = jest.fn()
+    const btn = document.createElement('button')
+    btn.addEventListener('click', showModal)
+    userEvent.click(btn)
+    expect(showModal).toHaveBeenCalledTimes(1)
+  })
 })
 
 describe('profile page navigation', () => {
