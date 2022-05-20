@@ -19,8 +19,8 @@ function Signup() {
           <Logo isWhite />
         </div>
         <div className={styles['Signup__main__control-buttons']}>
-          <ChoiceButton type="login" isActive={formChoice === 'login'} handleFormChoiceClick={handleFormChoiceClick} />
-          <ChoiceButton type="signup" isActive={formChoice === 'signup'} handleFormChoiceClick={handleFormChoiceClick} />
+          <ChoiceButton choice="login" isActive={formChoice === 'login'} handleFormChoiceClick={handleFormChoiceClick} />
+          <ChoiceButton choice="signup" isActive={formChoice === 'signup'} handleFormChoiceClick={handleFormChoiceClick} />
         </div>
         <SignupForm formChoice={formChoice} />
       </div>
