@@ -1,19 +1,21 @@
+/* ************* Mobile View ************* */
 .Signup {
     height: 100vh;
-    background-color: white;
     background-color: var(--clr-light-royal-blue);
 }
 
+/* ------------- Side section ------------ */
 .Signup__side {
     display: none;
 }
 
+/* ------------- Main section ------------ */
 .Signup__main {
-    padding: 10px 26px;
-    background-color: var(--clr-light-royal-blue);
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 10px 26px;
+    background-color: var(--clr-light-royal-blue);   
 }
 
 .Signup__main__logo-container {
@@ -21,51 +23,46 @@
 }
 
 .Signup__main__control-buttons {
+    display: flex;
+    justify-content: flex-end;
     margin-top: 60px;
     padding-right: 20px;
     width: 100%;
-    display: flex;
-    justify-content: flex-end;
     gap: 25px;    
 }
 
-
+/* ************* Tablet View ************* */
 @media (min-width: 500px) {
+/* ------------- Main section ------------ */
     .Signup__main__control-buttons {
         padding: 0;
         margin-top: 20px;
     }
-    .Signup__form__container {
-        min-width: min(360px, 95%);
-    }
-    .Signup__form__input, .Signup__form__button {
-        height:68px;
-    }
 }
 
+/* ************* Laptop View ************* */
 @media (min-width: 900px) {
     .Signup {
         display: flex;
         justify-content: center;
         background-color: white;
     }    
+/* ------------- Side section ------------ */
+    .Signup__side {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 26px;
+         gap: 10px;
+    }
+    .Signup__side__illustration {
+        width: 90%;
+    }
+/* ------------- Main section ------------ */
     .Signup__main {
         min-width: min(41%, 618px);
     }
     .Signup__main__logo-container {
         display: none;
     }
-
-    .Signup__side {
-        padding: 10px 26px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-    .Signup__side__illustration {
-        width: 90%;
-    }
-
-
 }
