@@ -8,5 +8,5 @@ const search = async (searchObject) => {
 }
 
 export default {
-  search
+  search,
 }

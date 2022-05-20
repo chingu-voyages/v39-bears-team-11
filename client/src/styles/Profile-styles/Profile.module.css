@@ -3,8 +3,17 @@
   flex-direction: column;
 
   height: 83vh;
-  padding: 4rem 2rem 0;
+  padding: 2rem 2rem 0;
 }
+
+.Profile button {
+  background-color: transparent;
+  border: none;
+}
+
+.Profile button:hover {
+  background-color: var(--clr-light-grey);
+} 
 
 .Profile__heading {
   display: flex;
@@ -34,14 +43,14 @@
 /* media queries for other small screens */
 @media screen and (min-width: 580px) {
   .Profile {
-    padding: 6rem 8rem;
+    padding: 2rem 8rem;
   }
 }
 /* media queries for tablets */
 @media screen and (min-width: 768px) {
   /* styling for tablets or ipads */
   .Profile {
-    padding: 6rem 8rem 0;
+    padding: 3rem 8rem 0;
   }
 }
 
@@ -50,7 +59,7 @@
   /* styling for larger screens */
   .Profile {
     height: 100vh;
-    padding: 9rem 13.5rem 2rem;
+    padding: 4rem 13.5rem 2rem;
   }
 
   .Profile__heading {

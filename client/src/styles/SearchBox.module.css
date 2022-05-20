@@ -2,7 +2,6 @@
   display: flex;
   justify-content: space-between;
   width: 320px;
-  margin-top: 42px;
   padding: .4rem .8rem;
   border-radius: 25px;
   background-color: var(--clr-white);
@@ -50,12 +49,5 @@
 @media(max-width: 375px) {
   .searchbox {
     width: 100%;
-    margin-top: 24px;
-  }
-}
-
-@media(max-width: 768px) {
-  .searchbox {
-    margin-top: 24px;
   }
 }
