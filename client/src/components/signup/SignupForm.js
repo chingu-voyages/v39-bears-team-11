@@ -17,6 +17,15 @@ function SignupForm({ formChoice, handleSubmit }) {
     isValidForm: false,
   })
 
+  const validateForm = () => {
+    setCredentials({
+      ...credentials,
+      formValid: credentials.isValidName
+      && credentials.isValidEmail
+      && credentials.isValidPassword,
+    })
+  }
+
   const validateField = (property, value) => {
     const fieldValidationErrors = credentials.formErrors
     let { isValidName } = credentials
