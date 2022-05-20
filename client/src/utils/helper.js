@@ -19,7 +19,8 @@
 // error handling. For example it should check if the object contains selected property,
 // or if the correct types of the arguments were provided etc.
 
-const sortArrayOfObjects = (
+// eslint-disable-next-line import/prefer-default-export
+export const sortArrayOfObjects = (
   arr,
   property,
   order = 'asc',
@@ -35,5 +36,3 @@ const sortArrayOfObjects = (
   if (receive === 'lastItem') return sortedArr[sortedArr.length - 1]
   return 'error: wrong _receive_ argument'
 }
-
-export { sortArrayOfObjects }
