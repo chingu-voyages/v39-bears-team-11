@@ -62,6 +62,10 @@ export const usersSlice = createSlice({
       ...state,
       friends: state.friends.filter((f) => f.id !== action.payload),
     }),
+    updateUser: (state, action) => ({
+      ...state,
+      ...action.payload,
+    }),
   },
 })
 
@@ -116,7 +120,7 @@ export function unFriend(userToUpdate, id, token) {
 
 // todo: consider using the createAsyncThunk middleware
 // async thunk to send delete user request
-export function deleteProfile(userId, token) {
+export function deleteUserProfile(userId, token) {
   // return async function that takes dispatch function
   // as parameters
   return async (dispatch) => {
@@ -131,6 +135,48 @@ export function deleteProfile(userId, token) {
       dispatch(logout)
     } catch (error) {
       // handle error on failure
+      console.log(error.message)
+    }
+  }
+}
+
+// todo: consider using the createAsyncThunk middleware
+/**
+ * @name updateUserProfile
+ * @summary A thunk action that sends a put request to update the user on the
+ * server and update the user state with the response.
+ * @param {string} userId
+ * @param {string} userToken
+ * @returns Async function that makes a put request to update the user on the
+ * server and dispatch the updateUser action the received response to update
+ * the user state.
+ */
+export function updateUserProfile(userId, userToken) {
+  /**
+   * @param {Function} dispatch The redux dispatch function
+   * @returns A thunk action
+   */
+  return async (dispatch) => {
+    try {
+      /**
+       * @constant response The response from the put request to the server
+       * @type {{
+       * username: string,
+       * email: string,
+       * token: string
+       * }}
+       */
+      const response = await userService.updateProfile(userId, userToken)
+      console.log(response)
+      /**
+       * @constant username The updated username from the server
+       * @constant email The updated email from the server
+       * @constant token The new token created and sent with the response
+       */
+      const { username, email, token } = response
+      dispatch(updateUser(username, email, token))
+    } catch (error) {
+      // todo: add better error handling
       console.log(error.message)
     }
   }
