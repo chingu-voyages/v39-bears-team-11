@@ -6,7 +6,7 @@ import emailIcon from '../../icons/signup/signup-email-icon.png'
 import passwordIcon from '../../icons/signup/signup-password-icon.png'
 
 function SignupForm({ formChoice, handleSubmit }) {
-  const [credentials, SetCredentials] = useState({
+  const [credentials, setCredentials] = useState({
     name: '',
     email: '',
     password: '',
@@ -19,7 +19,7 @@ function SignupForm({ formChoice, handleSubmit }) {
   const handleInput = (e) => {
     const property = e.target.name
     const { value } = e.target
-    SetCredentials({ ...credentials, [property]: value })
+    setCredentials({ ...credentials, [property]: value })
     console.log(credentials)
   }
   return (
