@@ -1,12 +1,12 @@
 import Button from './Button'
 import styles from '../../styles/Button.module.css'
 
-function ChoiceButton({ type, isActive, handleFormChoiceClick }) {
+function ChoiceButton({ choice, isActive, handleFormChoiceClick }) {
   return (
     <Button
-      text={type}
-      className={`${styles['button--choice']} ${isActive && styles.isactive}`}
-      onClick={() => handleFormChoiceClick(type)}
+      text={choice}
+      className={`${styles['button--choice']} ${isActive && styles['button--choice-isactive']}`}
+      onClick={() => handleFormChoiceClick(choice)}
     />
   )
 }
