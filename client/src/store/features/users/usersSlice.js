@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-newline */
 import { createSlice } from '@reduxjs/toolkit'
 import dummyManPic from '../../../icons/profile-picture-man-unsplash.jpg'
 import dummyWomanPic from '../../../icons/profile-picture-woman-unsplash.jpg'
@@ -51,6 +52,15 @@ export const usersSlice = createSlice({
     }),
     logout: (state) => ({
       ...state,
+      id: null,
+      username: null,
+      email: null,
+      token: null,
+      refreshToken: null,
+      createdAt: null,
+      updatedAt: null,
+      picture: null,
+      friends: [],
       isOnline: false,
       isOffline: true,
     }),
@@ -70,7 +80,9 @@ export const usersSlice = createSlice({
 })
 
 // eslint-disable-next-line object-curly-newline
-export const { login, logout, appendFriend, removeFriend } = usersSlice.actions
+// eslint-disable-next-line operator-linebreak
+export const { login, logout, appendFriend, removeFriend, updateUser } =
+  usersSlice.actions
 
 export function addFriend(userToUpdate, id, token) {
   return async (dispatch, getState) => {
@@ -119,17 +131,28 @@ export function unFriend(userToUpdate, id, token) {
 }
 
 // todo: consider using the createAsyncThunk middleware
-// async thunk to send delete user request
+/**
+ * @name deleteUserProfile
+ * @summary A thunk action to delete a user from the database.
+ * @param {string} userId The id of the current user
+ * @param {string} token The token of the current user
+ * @returns A thunk action that makes a delete request to the server and removes a
+ * user.
+ */
 export function deleteUserProfile(userId, token) {
-  // return async function that takes dispatch function
-  // as parameters
+  /**
+   * @param {function} dispatch The redux dispatch function
+   * @returns void
+   */
   return async (dispatch) => {
-    console.log(userId)
-    // make the request to the server
     try {
+      /**
+       * @constant response The response from the delete request to the server.
+       * The status of the delete operation.
+       * @type {string}
+       */
       // eslint-disable-next-line no-undef
       const response = await userService.deleteProfile(userId, token)
-      // do something with the response
       console.log(response)
       // logout user on success
       dispatch(logout)
@@ -145,16 +168,16 @@ export function deleteUserProfile(userId, token) {
  * @name updateUserProfile
  * @summary A thunk action that sends a put request to update the user on the
  * server and update the user state with the response.
- * @param {string} userId
- * @param {string} userToken
- * @returns Async function that makes a put request to update the user on the
+ * @param {string} userId The id of the current user
+ * @param {string} userToken The token of the current user
+ * @returns A thunk action that makes a put request to update the user on the
  * server and dispatch the updateUser action the received response to update
  * the user state.
  */
 export function updateUserProfile(userId, userToken) {
   /**
    * @param {Function} dispatch The redux dispatch function
-   * @returns A thunk action
+   * @returns void
    */
   return async (dispatch) => {
     try {
@@ -166,6 +189,7 @@ export function updateUserProfile(userId, userToken) {
        * token: string
        * }}
        */
+      // eslint-disable-next-line no-undef
       const response = await userService.updateProfile(userId, userToken)
       console.log(response)
       /**
