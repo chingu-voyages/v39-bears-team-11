@@ -102,6 +102,10 @@
   background-color: var(--clr-apricot)
 }
 
+.button--signup-form-submit:hover {
+    filter: brightness(95%);
+}
+
 @media(max-width:668px) {
   .button {
     font-size: 14px;

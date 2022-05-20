@@ -24,7 +24,6 @@ function Signup() {
         </div>
         <SignupForm formChoice={formChoice} />
       </div>
-
     </div>
   )
 }
