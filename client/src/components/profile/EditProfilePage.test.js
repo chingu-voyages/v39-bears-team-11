@@ -61,6 +61,6 @@ describe('Edit Profile Page Redirect', () => {
   it('should navigate to profile page on cancel', () => {
     const [, cancelBtn] = screen.getAllByRole('button')
     userEvent.click(cancelBtn)
-    expect(screen.getByText(/^profile$/i)).toBeInTheDocument()
+    expect(history.location.pathname).toBe('/profile')
   })
 })
