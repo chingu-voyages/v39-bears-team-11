@@ -51,7 +51,7 @@
     left: 0;
     left: 50%;
     transform: translateX(-50%);
-    bottom: -3px;
+    bottom: -2px;
     font-size: 12px;
     color:var(--clr-light-grey);    
 }
