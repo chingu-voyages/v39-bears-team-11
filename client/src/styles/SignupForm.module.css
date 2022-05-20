@@ -46,6 +46,16 @@
     width: 26.55px;
 }
 
+.SignupForm__error {
+    position: absolute;
+    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -3px;
+    font-size: 12px;
+    color:var(--clr-light-grey);    
+}
+
 .SignupForm__input::placeholder {
     color: var(--clr-light-grey);
 }
@@ -72,5 +82,9 @@
     .SignupForm__icon {
        height: 41px;
        width: 41px;
+    }
+
+    .SignupForm__error {
+        font-size: 15px;    
     }
 }
