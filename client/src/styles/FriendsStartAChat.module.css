@@ -1,0 +1,30 @@
+.friend {
+    display: flex;
+    align-items: center;
+    margin: 8px 0px;
+    cursor: pointer;
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: var(--clr-white);
+    border-radius: 30px;
+}
+
+.friend:hover {
+    background-color: var(--clr-pampas-pink);
+}
+
+.friend__image {
+    height: 60px;
+    width: 60px;
+    border: 2.4714px solid var(--clr-royal-blue);
+    border-radius: 50%;
+    overflow: hidden;
+    /* flex-shrink: 0; */
+}
+
+.friend__username{
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 10px;
+}
