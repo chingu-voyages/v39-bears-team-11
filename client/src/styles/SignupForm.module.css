@@ -1,0 +1,37 @@
+.Signup__form__container {
+    min-width: 244px;
+}
+
+.Signup__form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.Signup__form__input, .Signup__form__button {
+    height:46px;
+    border-radius: 10px;
+}
+
+.Signup__form__heading {
+    font-family:  var(--ff-text);
+    color: white;
+    margin-top: 50px;
+    font-size: 20.42px;
+    text-align: left;
+}
+
+@media (min-width: 500px) {
+    .Signup__form__heading {
+        font-size: 30px
+    }
+
+    .Signup__form__container {
+        min-width: min(360px, 95%);
+    }
+    .Signup__form__input, .Signup__form__button {
+        height:68px;
+    }
+    
+    
+}
