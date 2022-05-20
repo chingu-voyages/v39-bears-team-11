@@ -17,9 +17,37 @@
     color: white;
 }
 
+.SignupForm__input-container {
+    position: relative;
+}
+
 .SignupForm__input, .SignupForm__button {
     height:46px;
     border-radius: 10px;
+}
+
+.SignupForm__input {
+    width: 100%;
+    border: none;
+    outline: none;
+    box-shadow: 1.36154px 1.36154px 1.36154px rgba(0, 0, 0, 0.25);
+    font-family: var(--ff-text);
+    font-size: 17.7px;
+    color: var(--clr-dark-grey);
+    padding-left: 51px;
+}
+
+.SignupForm__icon {
+    position: absolute;
+    top: 50%;  
+    left: 4%; 
+    transform: translateY(-50%);
+    height: 26.55px;
+    width: 26.55px;
+}
+
+.SignupForm__input::placeholder {
+    color: var(--clr-light-grey);
 }
 
 /* ************* Tablet and Laptop View ************* */
@@ -27,10 +55,22 @@
     .SignupForm__heading {
         font-size: 30px
     }
+    
     .SignupForm__container {
-        min-width: min(360px, 95%);
-    }
+        max-width: min(360px, 99.9%);
+    } 
+
     .SignupForm__input, .SignupForm__button {
         height:68px;
+    }
+
+    .SignupForm__input {
+        font-size: 26px;
+        padding-left: 75px;
+    }
+
+    .SignupForm__icon {
+       height: 41px;
+       width: 41px;
     }
 }
