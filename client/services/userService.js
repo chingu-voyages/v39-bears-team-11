@@ -29,7 +29,7 @@ const baseSignupUrl = process.env.REACT_APP_BASE_SIGNUP_URL
 const addFriend = async (user, id, token) => {
   try {
     // make a post request to the backend
-    const response = await axios.post(baseUserUrl, { ...user, id, token })
+    const response = await axios.put(baseUserUrl, { ...user, id, token })
     return response.data
   } catch (error) {
     console.log(error.message)
@@ -56,7 +56,7 @@ const addFriend = async (user, id, token) => {
 const unFriend = async (user, id, token) => {
   try {
     // make a post request to the backend
-    const response = await axios.post(baseUserUrl, { ...user, id, token })
+    const response = await axios.put(baseUserUrl, { ...user, id, token })
     // return the response data
     return response.data
   } catch (error) {
@@ -76,7 +76,7 @@ const unFriend = async (user, id, token) => {
  * @param {string} token The token of the current user to authenticate the request
  * @returns The updated user object with the new username and email address
  */
-const updateProfile = async (id, username, email, token) => {
+const updateUserProfile = async (id, username, email, token) => {
   try {
     // make a put request to the backend
     const response = await axios.put(baseUserUrl, {
@@ -103,7 +103,7 @@ const updateProfile = async (id, username, email, token) => {
  * @param {string} token The token to authenticate the current user
  * @returns The status of the operation
  */
-const deleteAccount = async (id, token) => {
+const deleteUserAccount = async (id, token) => {
   try {
     // make a delete request to the backend
     const response = await axios.delete(baseUserUrl, { id, token })
@@ -125,7 +125,7 @@ const deleteAccount = async (id, token) => {
  * @param {string} token
  * @returns The user object updated with the new photo
  */
-const uploadPhoto = async (id, imgData, token) => {
+const updateUserPicture = async (id, imgData, token) => {
   try {
     // make an upload request to the backend
     const response = await axios.put(baseUserUrl, { id, imgData, token })
@@ -191,9 +191,9 @@ const logIn = async (username, password) => {
 module.exports = {
   addFriend,
   unFriend,
-  deleteAccount,
-  updateProfile,
-  uploadPhoto,
+  deleteUserAccount,
+  updateUserProfile,
+  updateUserPicture,
   signUp,
   logIn,
 }
