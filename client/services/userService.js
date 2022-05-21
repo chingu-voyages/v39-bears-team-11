@@ -7,7 +7,9 @@ const axios = require('axios')
  * @constant baseUrl
  * @type string
  */
-const baseUrl = process.env.REACT_APP_BASE_USER_URL
+const baseUserUrl = process.env.REACT_APP_BASE_USER_URL
+const baseLoginUrl = process.env.REACT_APP_BASE_LOGIN_URL
+const baseSignupUrl = process.env.REACT_APP_BASE_SIGNUP_URL
 
 /**
  * @name addFriend
@@ -27,7 +29,7 @@ const baseUrl = process.env.REACT_APP_BASE_USER_URL
 const addFriend = async (user, id, token) => {
   try {
     // make a post request to the backend
-    const response = await axios.post(baseUrl, { ...user, id, token })
+    const response = await axios.post(baseUserUrl, { ...user, id, token })
     return response.data
   } catch (error) {
     console.log(error.message)
@@ -54,7 +56,7 @@ const addFriend = async (user, id, token) => {
 const unFriend = async (user, id, token) => {
   try {
     // make a post request to the backend
-    const response = await axios.post(baseUrl, { ...user, id, token })
+    const response = await axios.post(baseUserUrl, { ...user, id, token })
     // return the response data
     return response.data
   } catch (error) {
@@ -77,7 +79,7 @@ const unFriend = async (user, id, token) => {
 const updateProfile = async (id, username, email, token) => {
   try {
     // make a put request to the backend
-    const response = await axios.put(baseUrl, {
+    const response = await axios.put(baseUserUrl, {
       id,
       username,
       email,
@@ -104,7 +106,7 @@ const updateProfile = async (id, username, email, token) => {
 const deleteAccount = async (id, token) => {
   try {
     // make a delete request to the backend
-    const response = await axios.delete(baseUrl, { id, token })
+    const response = await axios.delete(baseUserUrl, { id, token })
     // return the response status
     return response.status
   } catch (error) {
@@ -126,7 +128,7 @@ const deleteAccount = async (id, token) => {
 const uploadPhoto = async (id, imgData, token) => {
   try {
     // make an upload request to the backend
-    const response = await axios.put(baseUrl, { id, imgData, token })
+    const response = await axios.put(baseUserUrl, { id, imgData, token })
     // return the response data
     return response.data
   } catch (error) {
@@ -149,7 +151,11 @@ const uploadPhoto = async (id, imgData, token) => {
 const signUp = async (username, email, password) => {
   try {
     // make a post request to the server with user credentials
-    const response = await axios.post(baseUrl, { username, email, password })
+    const response = await axios.post(baseSignupUrl, {
+      username,
+      email,
+      password,
+    })
     // return user object from database
     return response.data
   } catch (error) {
@@ -172,7 +178,7 @@ const signUp = async (username, email, password) => {
 const logIn = async (username, password) => {
   try {
     // make a post request to the server with username and password
-    const response = await axios.post(baseUrl, { username, password })
+    const response = await axios.post(baseLoginUrl, { username, password })
     // return the user object if login succeeds
     return response.data
   } catch (error) {
