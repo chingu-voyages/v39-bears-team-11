@@ -1,14 +1,30 @@
+/* eslint-disable import/no-import-module-exports */
 /* eslint-disable consistent-return */
-const axios = require('axios')
+import axios from 'axios'
+import axiosConfig from '../src/utils/config'
 
 /**
  * @description The api endpoint for the user service request. It is set in the
  * dot env file and imported from there with the given name.
- * @constant baseUrl
+ * @constant baseUserUrl
  * @type string
  */
 const baseUserUrl = process.env.REACT_APP_BASE_USER_URL
+
+/**
+ * @description The api endpoint for the user service log in requests
+ * imported from the dot env file.
+ * @constant baseLoginUrl
+ * @type string
+ */
 const baseLoginUrl = process.env.REACT_APP_BASE_LOGIN_URL
+
+/**
+ * @description The api endpoint for the user service sign up requests imported
+ * from the dot env file.
+ * @constant baseSignupUrl
+ * @type string
+ */
 const baseSignupUrl = process.env.REACT_APP_BASE_SIGNUP_URL
 
 /**
@@ -24,12 +40,13 @@ const baseSignupUrl = process.env.REACT_APP_BASE_SIGNUP_URL
  * }} user This is the user currently logged in
  * @param {string} id This is the id of the current user
  * @param {string} token This is token to authenticate the user before handling request
- * @returns The updated list of the current user's friends
+ * @returns The current user object with the updated list of the friends
  */
 const addFriend = async (user, id, token) => {
+  const config = axiosConfig(token)
   try {
     // make a post request to the backend
-    const response = await axios.put(baseUserUrl, { ...user, id, token })
+    const response = await axios.put(`${baseUserUrl}/:${id}`, user, config)
     return response.data
   } catch (error) {
     console.log(error.message)
@@ -51,12 +68,13 @@ const addFriend = async (user, id, token) => {
  * }} user This is the user currently logged in
  * @param {string} id The id of the current user
  * @param {string} token The token used to authenticate the current user before handling request
- * @returns The updated list of the current user's friends
+ * @returns The current user object with the updated list of the friends
  */
 const unFriend = async (user, id, token) => {
+  const config = axiosConfig(token)
   try {
     // make a post request to the backend
-    const response = await axios.put(baseUserUrl, { ...user, id, token })
+    const response = await axios.put(`${baseUserUrl}/:${id}`, user, config)
     // return the response data
     return response.data
   } catch (error) {
@@ -76,15 +94,11 @@ const unFriend = async (user, id, token) => {
  * @param {string} token The token of the current user to authenticate the request
  * @returns The updated user object with the new username and email address
  */
-const updateUserProfile = async (id, username, email, token) => {
+const updateUserProfile = async (id, user, token) => {
+  const config = axiosConfig(token)
   try {
     // make a put request to the backend
-    const response = await axios.put(baseUserUrl, {
-      id,
-      username,
-      email,
-      token,
-    })
+    const response = await axios.put(`${baseUserUrl}/:${id}`, user, config)
     // return the response data
     return response.data
   } catch (error) {
@@ -104,9 +118,10 @@ const updateUserProfile = async (id, username, email, token) => {
  * @returns The status of the operation
  */
 const deleteUserAccount = async (id, token) => {
+  const config = axiosConfig(token)
   try {
     // make a delete request to the backend
-    const response = await axios.delete(baseUserUrl, { id, token })
+    const response = await axios.delete(`${baseUserUrl}/:${id}`, config)
     // return the response status
     return response.status
   } catch (error) {
@@ -125,10 +140,11 @@ const deleteUserAccount = async (id, token) => {
  * @param {string} token
  * @returns The user object updated with the new photo
  */
-const updateUserPicture = async (id, imgData, token) => {
+const updateUserPicture = async (id, user, token) => {
+  const config = axiosConfig(token)
   try {
     // make an upload request to the backend
-    const response = await axios.put(baseUserUrl, { id, imgData, token })
+    const response = await axios.put(`${baseUserUrl}/:${id}`, user, config)
     // return the response data
     return response.data
   } catch (error) {
