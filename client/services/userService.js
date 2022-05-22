@@ -47,8 +47,10 @@ const addFriend = async (user, id, token) => {
   try {
     // make a post request to the backend
     const response = await axios.put(`${baseUserUrl}/:${id}`, user, config)
+    // return the response
     return response.data
   } catch (error) {
+    // todo: add better error handling
     console.log(error.message)
   }
 }
@@ -94,7 +96,7 @@ const unFriend = async (user, id, token) => {
  * @param {string} token The token of the current user to authenticate the request
  * @returns The updated user object with the new username and email address
  */
-const updateUserProfile = async (id, user, token) => {
+const updateUserProfile = async (user, id, token) => {
   const config = axiosConfig(token)
   try {
     // make a put request to the backend
@@ -140,7 +142,7 @@ const deleteUserAccount = async (id, token) => {
  * @param {string} token
  * @returns The user object updated with the new photo
  */
-const updateUserPicture = async (id, user, token) => {
+const updateUserPicture = async (user, id, token) => {
   const config = axiosConfig(token)
   try {
     // make an upload request to the backend
