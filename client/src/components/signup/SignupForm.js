@@ -5,7 +5,7 @@ import emailIcon from '../../icons/signup/signup-email-icon.png'
 import passwordIcon from '../../icons/signup/signup-password-icon.png'
 import styles from '../../styles/SignupForm.module.css'
 
-function SignupForm({ formChoice, setCredentials }) {
+function SignupForm({ formChoice, onValidatedSubmit }) {
   // create state variable to store:
   //    -current credentials from inputs in string (name, email, password)
   const [inputValues, setInputValues] = useState({
@@ -54,7 +54,7 @@ function SignupForm({ formChoice, setCredentials }) {
   const handleSubmit = (e) => {
     e.preventDefault()
     if ((formChoice === 'signup' && isFormValid()) || (formChoice === 'login')) {
-      setCredentials({ ...inputValues })
+      onValidatedSubmit({ ...inputValues })
     }
   }
 
