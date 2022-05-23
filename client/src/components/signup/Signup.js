@@ -6,16 +6,24 @@ import SignupForm from './SignupForm'
 import styles from '../../styles/Signup-styles/Signup.module.css'
 
 function Signup() {
+  // Set up formChoice variable to control status on corrently clicked
+  // form option which is Login or Signup.
   const [formChoice, setFormChoice] = useState('signup')
 
+  // Create function that handles the choices click and updates the
+  // state formChoice variable accordingly
   const handleFormChoiceClick = (choice) => (setFormChoice(choice))
 
+  // onValidateSubmit function is a function that is being passed as prop
+  // to the SignupForm component. This function gathers the data from the form
+  // and comes back to this component with validated credentials ready to
+  // perform Login or Signup functions.
   const onValidatedSubmit = (validatedCredentials) => {
     if (formChoice === 'login') {
-      console.log('login with ', validatedCredentials)
+      console.log('login with: ', validatedCredentials)
     }
     if (formChoice === 'signup') {
-      console.log('signup with ', validatedCredentials)
+      console.log('signup with: ', validatedCredentials)
     }
   }
 
