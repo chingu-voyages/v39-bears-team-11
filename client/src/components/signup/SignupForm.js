@@ -5,60 +5,57 @@ import emailIcon from '../../icons/signup/signup-email-icon.png'
 import passwordIcon from '../../icons/signup/signup-password-icon.png'
 import styles from '../../styles/SignupForm.module.css'
 
-function SignupForm({ formChoice, handleSubmit }) {
-  const [credentials, setCredentials] = useState({
+function SignupForm({ formChoice, setCredentials }) {
+  // create state variable to store:
+  //    -current credentials from inputs in string (name, email, password)
+  const [inputValues, setInputValues] = useState({
     name: '',
     email: '',
     password: '',
-    formErrors: { name: '', email: '', password: '' },
-    isValidName: false,
-    isValidEmail: false,
-    isValidPassword: false,
-    isValidForm: false,
+  })
+  //    -current error message for each field in a form of a object of strings
+  const [errors, setErrors] = useState({
+    name: '',
+    email: '',
+    password: '',
   })
 
+  const isFormValid = () => {
+    const fieldValidationErrors = {}
+    const isValidName = inputValues.name.length >= 5
+    const isValidEmail = (/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i).test(inputValues.email)
+    const isValidPassword = inputValues.password.length >= 5
+
+    fieldValidationErrors.name = isValidName ? '' : 'minimum 5 characters'
+    fieldValidationErrors.email = isValidEmail ? '' : 'invalid email address'
+    fieldValidationErrors.password = isValidPassword ? '' : 'minimum 5 characters'
+
+    setErrors({ ...fieldValidationErrors })
+
+    if (isValidName && isValidEmail && isValidPassword) { return true }
+    return false
+  }
+
+  // Create handleInput function runs on every change of any input field.
   const handleInput = (e) => {
+    // Store name and value of the current input field:
+    //   -the name will become our property that we can use on credentials variable
+    //   -the value will be the new value of the chosen property
     const property = e.target.name
     const { value } = e.target
 
-    const fieldValidationErrors = credentials.formErrors
-    let { isValidName } = credentials
-    let { isValidEmail } = credentials
-    let { isValidPassword } = credentials
-
-    switch (property) {
-    case 'name':
-      isValidName = value.length >= 5
-      fieldValidationErrors.name = isValidName ? '' : 'minimum 5 characters'
-      break
-    case 'email':
-      isValidEmail = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)
-      fieldValidationErrors.email = isValidEmail ? '' : 'invalid email address'
-      break
-    case 'password':
-      isValidPassword = value.length >= 5
-      fieldValidationErrors.password = isValidPassword ? '' : 'minimum 5 characters'
-      break
-    default: console.log('Error in passing property')
-    }
-
-    setCredentials({
-      ...credentials,
+    // Update inputValues variable. It will update the current value of the field
+    setInputValues({
+      ...inputValues,
       [property]: value,
-      formErrors: fieldValidationErrors,
-      isValidName,
-      isValidEmail,
-      isValidPassword,
-      formValid: credentials.isValidName
-      && credentials.isValidEmail
-      && credentials.isValidPassword,
     })
   }
 
-  const credentialsData = {
-    name: credentials.name,
-    emai: credentials.email,
-    password: credentials.password,
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if ((formChoice === 'signup' && isFormValid()) || (formChoice === 'login')) {
+      setCredentials({ ...inputValues })
+    }
   }
 
   return (
@@ -68,7 +65,7 @@ function SignupForm({ formChoice, handleSubmit }) {
         {formChoice === 'signup' && 'Create Your Account'}
       </h4>
       <form
-        onSubmit={(event) => handleSubmit(event, credentialsData)}
+        onSubmit={(event) => handleSubmit(event)}
         className={styles.SignupForm}
       >
         <div className={styles['SignupForm__input-container']}>
@@ -77,16 +74,16 @@ function SignupForm({ formChoice, handleSubmit }) {
             aria-label="Your Name"
             placeholder="Your Name"
             name="name"
-            value={credentials.name}
+            value={inputValues.name}
             onChange={(event) => handleInput(event)}
             className={styles.SignupForm__input}
             required
           />
           <img src={userIcon} alt="user" className={styles.SignupForm__icon} />
-          {formChoice === 'signup' && credentials.formErrors.name
+          {formChoice === 'signup' && errors.name
             ? (
               <span className={styles.SignupForm__error}>
-                {credentials.formErrors.name}
+                {errors.name}
               </span>
             ) : null}
         </div>
@@ -98,16 +95,16 @@ function SignupForm({ formChoice, handleSubmit }) {
                 aria-label="Your Email"
                 placeholder="Your Email"
                 name="email"
-                value={credentials.email}
+                value={inputValues.email}
                 onChange={(event) => handleInput(event)}
                 className={styles.SignupForm__input}
                 required
               />
               <img src={emailIcon} alt="email" className={styles.SignupForm__icon} />
-              {credentials.formErrors.email
+              {errors.email
                 ? (
                   <span className={styles.SignupForm__error}>
-                    {credentials.formErrors.email}
+                    {errors.email}
                   </span>
                 ) : null}
             </div>
@@ -118,20 +115,20 @@ function SignupForm({ formChoice, handleSubmit }) {
             aria-label="Your Password"
             placeholder="Your Password"
             name="password"
-            value={credentials.password}
+            value={inputValues.password}
             onChange={(event) => handleInput(event)}
             className={styles.SignupForm__input}
             required
           />
           <img src={passwordIcon} alt="password" className={styles.SignupForm__icon} />
-          {formChoice === 'signup' && credentials.formErrors.password
+          {formChoice === 'signup' && errors.password
             ? (
               <span className={styles.SignupForm__error}>
-                {credentials.formErrors.password}
+                {errors.password}
               </span>
             ) : null}
         </div>
-        <SignupFormButton choice={formChoice} type="submit" disabled={formChoice === 'signup' && !credentials.isValidForm} className={styles.SignupForm__button} />
+        <SignupFormButton choice={formChoice} type="submit" className={styles.SignupForm__button} />
       </form>
     </div>
   )
