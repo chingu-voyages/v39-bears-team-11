@@ -23,6 +23,10 @@ function SignupFormField({
         required
       />
       <img src={iconSrc} alt={name} className={styles.SignupFormField__icon} />
+
+      {/* We only show an error in the signup mode therefore we first have to check
+      if we are in the signup mode. Then we have to check if the error exists.
+      If both statements are true the error will be presented. */}
       {formChoice === 'signup' && error
         ? (
           <span className={styles.SignupFormField__error}>
