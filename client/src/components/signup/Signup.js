@@ -11,7 +11,12 @@ function Signup() {
   const handleFormChoiceClick = (choice) => (setFormChoice(choice))
 
   const onValidatedSubmit = (validatedCredentials) => {
-    console.log(validatedCredentials)
+    if (formChoice === 'login') {
+      console.log('login with ', validatedCredentials)
+    }
+    if (formChoice === 'signup') {
+      console.log('signup with ', validatedCredentials)
+    }
   }
 
   return (
