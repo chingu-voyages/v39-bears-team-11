@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import SignupFormButton from '../button/SignupFormButton'
-import Field from './Field'
+import SignupFormField from './SignupFormField'
 import userIcon from '../../icons/signup/signup-user-icon.png'
 import emailIcon from '../../icons/signup/signup-email-icon.png'
 import passwordIcon from '../../icons/signup/signup-password-icon.png'
-import styles from '../../styles/SignupForm.module.css'
+import styles from '../../styles/Signup-styles/SignupForm.module.css'
 
 function SignupForm({ formChoice, onValidatedSubmit }) {
   // create state variable to store:
@@ -69,12 +69,10 @@ function SignupForm({ formChoice, onValidatedSubmit }) {
         onSubmit={(event) => handleSubmit(event)}
         className={styles.SignupForm}
       >
-        <Field
+        <SignupFormField
           type="text"
-          aria-label="Your Name"
-          placeholder="Your Name"
           name="username"
-          iconAlt="user"
+          placeholder="Your Name"
           iconSrc={userIcon}
           handleInput={handleInput}
           formChoice={formChoice}
@@ -84,12 +82,10 @@ function SignupForm({ formChoice, onValidatedSubmit }) {
 
         {(formChoice === 'signup')
           ? (
-            <Field
+            <SignupFormField
               type="text"
-              aria-label="Your Email"
-              placeholder="Your Email"
               name="email"
-              iconAlt="email"
+              placeholder="Your Email"
               iconSrc={emailIcon}
               handleInput={handleInput}
               formChoice={formChoice}
@@ -98,12 +94,10 @@ function SignupForm({ formChoice, onValidatedSubmit }) {
             />
           ) : null}
 
-        <Field
+        <SignupFormField
           type="password"
-          aria-label="Your Password"
-          placeholder="Password"
           name="password"
-          iconAlt="password"
+          placeholder="Password"
           iconSrc={passwordIcon}
           handleInput={handleInput}
           formChoice={formChoice}

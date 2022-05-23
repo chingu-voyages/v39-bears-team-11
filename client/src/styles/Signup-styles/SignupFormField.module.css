@@ -1,32 +1,11 @@
 /* ************* Mobile View ************* */
-.SignupForm__container {
-    min-width: 244px;
-}
-
-.SignupForm {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-.SignupForm__heading {
-    margin-top: 50px;
-    text-align: left;
-    font-family:  var(--ff-text);
-    font-size: 20.42px;
-    color: white;
-}
-
-.SignupForm__input-container {
+.SignupFormField__input-container {
     position: relative;
 }
 
-.SignupForm__input, .SignupForm__button {
+.SignupFormField__input {
     height:46px;
     border-radius: 10px;
-}
-
-.SignupForm__input {
     width: 100%;
     border: none;
     outline: none;
@@ -37,7 +16,7 @@
     padding-left: 51px;
 }
 
-.SignupForm__icon {
+.SignupFormField__icon {
     position: absolute;
     top: 50%;  
     left: 4%; 
@@ -46,7 +25,7 @@
     width: 26.55px;
 }
 
-.SignupForm__error {
+.SignupFormField__error {
     position: absolute;
     left: 0;
     left: 50%;
@@ -56,35 +35,25 @@
     color:var(--clr-light-grey);    
 }
 
-.SignupForm__input::placeholder {
+.SignupFormField__input::placeholder {
     color: var(--clr-light-grey);
 }
 
 /* ************* Tablet and Laptop View ************* */
 @media (min-width: 500px) {
-    .SignupForm__heading {
-        font-size: 30px
-    }
-    
-    .SignupForm__container {
-        max-width: min(360px, 99.9%);
-    } 
 
-    .SignupForm__input, .SignupForm__button {
+    .SignupFormField__input {
         height:68px;
-    }
-
-    .SignupForm__input {
         font-size: 26px;
         padding-left: 75px;
     }
 
-    .SignupForm__icon {
+    .SignupFormField__icon {
        height: 41px;
        width: 41px;
     }
 
-    .SignupForm__error {
+    .SignupFormField__error {
         font-size: 15px;    
     }
 }
