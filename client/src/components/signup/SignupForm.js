@@ -94,6 +94,7 @@ function SignupForm({ formChoice, onValidatedSubmit }) {
           value={inputValues.name}
         />
 
+        {/* Only show the email field in the Signup mode */}
         {(formChoice === 'signup')
           ? (
             <SignupFormField
