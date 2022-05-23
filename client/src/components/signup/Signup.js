@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Logo from '../logo/Logo'
 import Illustration from '../../icons/signup/signup-illustration.png'
 import ChoiceButton from '../button/ChoiceButton'
@@ -7,21 +7,12 @@ import styles from '../../styles/Signup.module.css'
 
 function Signup() {
   const [formChoice, setFormChoice] = useState('signup')
-  const handleFormChoiceClick = (choice) => (setFormChoice(choice))
-  const [credentials, setCredentials] = useState({
-    name: '',
-    email: '',
-    password: '',
-  })
 
-  useEffect(() => {
-    // Run everytime when validated [credentials] have been updated.
-    //
-    // if statement to prevent useEffect running on first render with empty data
-    if (credentials.name && credentials.password) {
-      console.log('Here are validated credentials: ', credentials)
-    }
-  }, [credentials])
+  const handleFormChoiceClick = (choice) => (setFormChoice(choice))
+
+  const onValidatedSubmit = (validatedCredentials) => {
+    console.log(validatedCredentials)
+  }
 
   return (
     <div id="signup" className={styles.Signup}>
@@ -37,7 +28,7 @@ function Signup() {
           <ChoiceButton choice="login" isActive={formChoice === 'login'} handleFormChoiceClick={handleFormChoiceClick} />
           <ChoiceButton choice="signup" isActive={formChoice === 'signup'} handleFormChoiceClick={handleFormChoiceClick} />
         </div>
-        <SignupForm formChoice={formChoice} setCredentials={setCredentials} />
+        <SignupForm formChoice={formChoice} onValidatedSubmit={onValidatedSubmit} />
       </div>
     </div>
   )
