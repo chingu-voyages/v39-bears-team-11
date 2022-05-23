@@ -6,8 +6,8 @@ import SignupForm from './SignupForm'
 import styles from '../../styles/Signup-styles/Signup.module.css'
 
 function Signup() {
-  // Set up formChoice variable to control status on corrently clicked
-  // form option which is Login or Signup.
+  // Set up formChoice variable to control status of the currently clicked
+  // form option which sets the Login Mode or the Signup Mode
   const [formChoice, setFormChoice] = useState('signup')
 
   // Create function that handles the choices click and updates the
