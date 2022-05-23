@@ -3,7 +3,7 @@ import Logo from '../logo/Logo'
 import Illustration from '../../icons/signup/signup-illustration.png'
 import ChoiceButton from '../button/ChoiceButton'
 import SignupForm from './SignupForm'
-import styles from '../../styles/Signup.module.css'
+import styles from '../../styles/Signup-styles/Signup.module.css'
 
 function Signup() {
   const [formChoice, setFormChoice] = useState('signup')
