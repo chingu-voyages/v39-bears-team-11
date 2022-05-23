@@ -63,12 +63,12 @@ function SignupForm({ formChoice, onValidatedSubmit }) {
   // handleSubmit function activates onSubmit when the submit button is pressed.
   const handleSubmit = (e) => {
     e.preventDefault()
-    // If we are in the Signup mode and the signup form is valid
+    // Check if we are in the Signup mode and the signup form is valid
     // OR
     // If we are in the Login mode
-    // Run the onValidateSubmit function which is the function passed from the
-    // parent component as a prop. This function delivers the validated credentials.
     if ((formChoice === 'signup' && isFormValid()) || (formChoice === 'login')) {
+      // Run the onValidateSubmit function which is the function passed from the
+      // parent component as a prop. This function delivers the validated credentials.
       onValidatedSubmit({ ...inputValues })
     }
   }
