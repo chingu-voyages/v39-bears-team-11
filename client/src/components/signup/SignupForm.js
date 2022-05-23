@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import SignupFormButton from '../button/SignupFormButton'
+import Field from './Field'
 import userIcon from '../../icons/signup/signup-user-icon.png'
 import emailIcon from '../../icons/signup/signup-email-icon.png'
 import passwordIcon from '../../icons/signup/signup-password-icon.png'
@@ -9,30 +10,30 @@ function SignupForm({ formChoice, onValidatedSubmit }) {
   // create state variable to store:
   //    -current credentials from inputs in string (name, email, password)
   const [inputValues, setInputValues] = useState({
-    name: '',
+    username: '',
     email: '',
     password: '',
   })
   //    -current error message for each field in a form of a object of strings
   const [errors, setErrors] = useState({
-    name: '',
+    username: '',
     email: '',
     password: '',
   })
 
   const isFormValid = () => {
     const fieldValidationErrors = {}
-    const isValidName = inputValues.name.length >= 5
+    const isValidUsername = inputValues.username.length >= 5
     const isValidEmail = (/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i).test(inputValues.email)
     const isValidPassword = inputValues.password.length >= 5
 
-    fieldValidationErrors.name = isValidName ? '' : 'minimum 5 characters'
+    fieldValidationErrors.username = isValidUsername ? '' : 'minimum 5 characters'
     fieldValidationErrors.email = isValidEmail ? '' : 'invalid email address'
     fieldValidationErrors.password = isValidPassword ? '' : 'minimum 5 characters'
 
     setErrors({ ...fieldValidationErrors })
 
-    if (isValidName && isValidEmail && isValidPassword) { return true }
+    if (isValidUsername && isValidEmail && isValidPassword) { return true }
     return false
   }
 
@@ -68,66 +69,48 @@ function SignupForm({ formChoice, onValidatedSubmit }) {
         onSubmit={(event) => handleSubmit(event)}
         className={styles.SignupForm}
       >
-        <div className={styles['SignupForm__input-container']}>
-          <input
-            type="text"
-            aria-label="Your Name"
-            placeholder="Your Name"
-            name="name"
-            value={inputValues.name}
-            onChange={(event) => handleInput(event)}
-            className={styles.SignupForm__input}
-            required
-          />
-          <img src={userIcon} alt="user" className={styles.SignupForm__icon} />
-          {formChoice === 'signup' && errors.name
-            ? (
-              <span className={styles.SignupForm__error}>
-                {errors.name}
-              </span>
-            ) : null}
-        </div>
+        <Field
+          type="text"
+          aria-label="Your Name"
+          placeholder="Your Name"
+          name="username"
+          iconAlt="user"
+          iconSrc={userIcon}
+          handleInput={handleInput}
+          formChoice={formChoice}
+          error={errors.username}
+          value={inputValues.name}
+        />
+
         {(formChoice === 'signup')
           ? (
-            <div className={styles['SignupForm__input-container']}>
-              <input
-                type="text"
-                aria-label="Your Email"
-                placeholder="Your Email"
-                name="email"
-                value={inputValues.email}
-                onChange={(event) => handleInput(event)}
-                className={styles.SignupForm__input}
-                required
-              />
-              <img src={emailIcon} alt="email" className={styles.SignupForm__icon} />
-              {errors.email
-                ? (
-                  <span className={styles.SignupForm__error}>
-                    {errors.email}
-                  </span>
-                ) : null}
-            </div>
+            <Field
+              type="text"
+              aria-label="Your Email"
+              placeholder="Your Email"
+              name="email"
+              iconAlt="email"
+              iconSrc={emailIcon}
+              handleInput={handleInput}
+              formChoice={formChoice}
+              error={errors.email}
+              value={inputValues.email}
+            />
           ) : null}
-        <div className={styles['SignupForm__input-container']}>
-          <input
-            type="password"
-            aria-label="Your Password"
-            placeholder="Your Password"
-            name="password"
-            value={inputValues.password}
-            onChange={(event) => handleInput(event)}
-            className={styles.SignupForm__input}
-            required
-          />
-          <img src={passwordIcon} alt="password" className={styles.SignupForm__icon} />
-          {formChoice === 'signup' && errors.password
-            ? (
-              <span className={styles.SignupForm__error}>
-                {errors.password}
-              </span>
-            ) : null}
-        </div>
+
+        <Field
+          type="password"
+          aria-label="Your Password"
+          placeholder="Password"
+          name="password"
+          iconAlt="password"
+          iconSrc={passwordIcon}
+          handleInput={handleInput}
+          formChoice={formChoice}
+          error={errors.password}
+          value={inputValues.password}
+        />
+
         <SignupFormButton choice={formChoice} type="submit" className={styles.SignupForm__button} />
       </form>
     </div>
