@@ -16,8 +16,8 @@ function Signup() {
 
   // onValidateSubmit function is a function that is being passed as prop
   // to the SignupForm component. This function gathers the data from the form
-  // and comes back to this component with validated credentials ready to
-  // perform Login or Signup functions.
+  // component and comes back to this Signup component with validated credentials
+  // that are ready to be passed onto the Login or Signup functions.
   const onValidatedSubmit = (validatedCredentials) => {
     if (formChoice === 'login') {
       console.log('login with: ', validatedCredentials)
