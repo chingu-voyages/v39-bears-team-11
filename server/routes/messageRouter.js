@@ -1,6 +1,8 @@
 // import the router function from the express module
 const { Router } = require('express')
-
+const multer  = require('multer')
+const multerStorage = multer.memoryStorage();
+const upload = multer({ storage: multerStorage, });
 // import the message route controllers
 const {
   getMessageController,
@@ -14,7 +16,7 @@ const router = Router()
 router.get('/:user_id', getMessageController)
 
 // set up a post route
-router.post('/', postMessageController)
+router.post('/', upload.single('image'), postMessageController)
 
 // export messageRouter module
 module.exports = router
