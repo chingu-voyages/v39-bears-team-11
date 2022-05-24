@@ -1,7 +1,6 @@
 /* eslint-disable object-curly-newline */
 import { forwardRef, useRef, useState } from 'react'
 import Button from '../button/Button'
-// import profilePicture from '../../icons/profile/profile-user-icon.svg'
 import styles from '../../styles/ImageModal.module.css'
 import UploadPictureModal from './UploadPictureModal'
 import UseCameraModal from './UseCameraModal'
@@ -19,6 +18,9 @@ const ImageModal = forwardRef(({
 
   const uploadPictureModalRef = useRef()
   const useCameraModalRef = useRef()
+
+  /* Upload picture and use camera button handlers open */
+  /* their respective modals and close image modal.     */
 
   const handleUploadPicture = () => {
     uploadPictureModalRef.current.showModal()
@@ -40,18 +42,20 @@ const ImageModal = forwardRef(({
 
         <div className={styles.imageModal__heading}>
           <h3>{title}</h3>
-          <Button text="X" onClick={() => ref.current.close()} />
+          <Button text="x" onClick={() => ref.current.close()} />
         </div>
 
         <img src={defaultPicture} alt={imageAlt} />
-        <Button
-          text={uploadButtonText}
-          onClick={handleUploadPicture}
-        />
-        <Button
-          text={useCameraButtonText}
-          onClick={handleUseCamera}
-        />
+        <div className={styles['imageModal__btn-container']}>
+          <Button
+            text={useCameraButtonText}
+            onClick={handleUseCamera}
+          />
+          <Button
+            text={uploadButtonText}
+            onClick={handleUploadPicture}
+          />
+        </div>
       </dialog>
 
       <UploadPictureModal
