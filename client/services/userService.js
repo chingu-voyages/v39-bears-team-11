@@ -1,7 +1,7 @@
 /* eslint-disable import/no-import-module-exports */
 /* eslint-disable consistent-return */
 import axios from 'axios'
-import axiosConfig from '../src/utils/config'
+import axiosConfigObject from '../src/utils/config'
 
 /**
  * @description The api endpoint for the user service request. It is set in the
@@ -43,7 +43,7 @@ const baseSignupUrl = process.env.REACT_APP_BASE_SIGNUP_URL
  * @returns The current user object with the updated list of the friends
  */
 const addFriend = async (user, id, token) => {
-  const config = axiosConfig(token)
+  const config = axiosConfigObject(token)
   try {
     // make a post request to the backend
     const response = await axios.put(`${baseUserUrl}/:${id}`, user, config)
@@ -73,7 +73,7 @@ const addFriend = async (user, id, token) => {
  * @returns The current user object with the updated list of the friends
  */
 const unFriend = async (user, id, token) => {
-  const config = axiosConfig(token)
+  const config = axiosConfigObject(token)
   try {
     // make a post request to the backend
     const response = await axios.put(`${baseUserUrl}/:${id}`, user, config)
@@ -97,7 +97,7 @@ const unFriend = async (user, id, token) => {
  * @returns The updated user object with the new username and email address
  */
 const updateUserProfile = async (user, id, token) => {
-  const config = axiosConfig(token)
+  const config = axiosConfigObject(token)
   try {
     // make a put request to the backend
     const response = await axios.put(`${baseUserUrl}/:${id}`, user, config)
@@ -120,7 +120,7 @@ const updateUserProfile = async (user, id, token) => {
  * @returns The status of the operation
  */
 const deleteUserAccount = async (id, token) => {
-  const config = axiosConfig(token)
+  const config = axiosConfigObject(token)
   try {
     // make a delete request to the backend
     const response = await axios.delete(`${baseUserUrl}/:${id}`, config)
@@ -143,7 +143,7 @@ const deleteUserAccount = async (id, token) => {
  * @returns The user object updated with the new photo
  */
 const updateUserPicture = async (user, id, token) => {
-  const config = axiosConfig(token)
+  const config = axiosConfigObject(token)
   try {
     // make an upload request to the backend
     const response = await axios.put(`${baseUserUrl}/:${id}`, user, config)
