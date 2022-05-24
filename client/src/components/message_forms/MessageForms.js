@@ -1,16 +1,19 @@
 import { useRef } from 'react'
-import styles from '../../styles/MessageForms.module.css'
+import { useDispatch } from 'react-redux'
+import styles from '../../styles/ChatRoom-styles/MessageForms.module.css'
 import NewMessageForm from '../new_message_form/NewMessageForm'
 import NewPictureButton from '../button/NewPictureButton'
 import defaultPicture from '../../icons/img-file-placeholder.png'
 import ImageModal from '../modal/ImageModal'
+import { addPictureMessage } from '../../store/features/messages/messagesSlice'
 
 function MessageForms() {
   const imageModalRef = useRef()
+  const dispatch = useDispatch()
+
   const SendPictureFormHandler = (imgFile) => {
-    // handle sending a picture
-    // dispatch a addPictureMessage action
     console.log(imgFile)
+    dispatch(addPictureMessage(imgFile))
   }
 
   return (
