@@ -39,7 +39,7 @@ function SignupForm({ formChoice, onValidatedSubmit }) {
     fieldValidationErrors.email = isValidEmail ? '' : 'invalid email address'
     fieldValidationErrors.password = isValidPassword ? '' : 'minimum 5 characters'
 
-    // Assign the saved errors (fieldValidationErrors) to the errors state variable.
+    // Assign the message status of errros (fieldValidationErrors) to the errors state variable.
     setErrors({ ...fieldValidationErrors })
 
     // If all the vields passed the validation return true, otherwise return false.
