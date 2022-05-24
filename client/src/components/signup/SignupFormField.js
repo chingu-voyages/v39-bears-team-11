@@ -18,7 +18,7 @@ function SignupFormField({
         placeholder={placeholder}
         name={name}
         value={value}
-        onChange={(event) => handleInput(event)}
+        onChange={handleInput}
         className={styles.SignupFormField__input}
         required
       />
