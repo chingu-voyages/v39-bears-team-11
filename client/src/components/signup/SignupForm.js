@@ -80,7 +80,7 @@ function SignupForm({ formChoice, onValidatedSubmit }) {
         {formChoice === 'signup' && 'Create Your Account'}
       </h4>
       <form
-        onSubmit={(event) => handleSubmit(event)}
+        onSubmit={handleSubmit}
         className={styles.SignupForm}
       >
         <SignupFormField
