@@ -1,0 +1,28 @@
+#chatroom {
+  height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  gap: 42px;
+}
+
+#chatroom dialog img {
+  border-radius: 10px;
+  width: 320px;
+  height: 240px;
+  object-fit: cover;
+}
+
+@media(max-width: 768px) {
+  #chatroom {
+    height: calc(100vh - 125px);
+    gap: 10px;
+  }
+}
+
+
+@media screen and (max-width: 468px) {
+  #chatroom dialog img {
+    width: 260px;
+    height: 196px;
+}
+}

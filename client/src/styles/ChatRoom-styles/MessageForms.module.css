@@ -1,0 +1,84 @@
+.message-forms {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.message-form {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  padding: .4rem .8rem;
+  border: 1px solid var(--clr-royal-blue);
+  border-radius: 25px;
+  background-color: var(--clr-white);
+  box-shadow: 1px 1px 2px var(--clr-royal-blue);
+}
+
+.message-form textarea {
+  display: inline-block;
+  background: none;
+  outline: none;
+  resize: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  padding-left: .5rem;
+  padding-top: 0.7rem;
+  height: min(39px, 150px);
+  font-family: inherit;
+  font-weight: 300;
+  font-size: 1.5rem;
+  width: 90%;
+}
+
+.message-form textarea::-webkit-input-placeholder {
+  color: var(--clr-royal-blue);
+}
+
+.message-form__btn {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--clr-royal-blue);
+  border-radius: 50%;
+  width: 38px;
+  height: 39px;
+}
+
+.message-form__btn:active {
+  box-shadow: inset 0 0 0.2rem var(--clr-black);
+}
+
+.message-form__btn img {
+  width: 22px;
+  height: 22px;
+}
+
+@media(max-width: 768px) {
+  .message-forms {
+    margin-top: 8px;
+  }
+
+  .message-forms > button {
+    order: -1;
+  }
+
+  .message-form textarea {
+    height: min(32px, 100px);
+  }
+
+  .message-form__btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .message-form__btn img {
+    width: 20px;
+    height: 20px;
+  }
+}
