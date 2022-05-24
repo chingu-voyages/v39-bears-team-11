@@ -46,6 +46,7 @@
         display: flex;
         justify-content: center;
         background-color: white;
+        overflow-y: hidden;
     }    
 /* ------------- Side section ------------ */
     .Signup__side {
