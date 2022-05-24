@@ -1,4 +1,4 @@
-import styles from '../../styles/Messages.module.css'
+import styles from '../../styles/ChatRoom-styles/Messages.module.css'
 import defaultPicture from '../../icons/default-user-profile-image.png'
 
 function MessageHead({
@@ -7,16 +7,20 @@ function MessageHead({
   name,
   time,
 }) {
+  /* Take a timestamp and return a properly formatted date string */
   const formatTime = (timestamp) => {
     const date = new Date(timestamp)
     let hours = date.getHours()
     let minutes = date.getMinutes()
     const ampm = hours >= 12 ? 'PM' : 'AM'
-    hours %= 12 /* hours = hours % 12 */
-    hours = hours || 12 // the hour '0' should be '12'
-    minutes = minutes < 10 ? `0 ${minutes}` : `${minutes}`
+    /* hours = hours % 12 (the syntax below is required by eslint) */
+    hours %= 12
+    /* the hour '0' should be '12' */
+    hours = hours || 12
+    minutes = minutes < 10 ? `0${minutes}` : `${minutes}`
     const strTime = `${hours}:${minutes} ${ampm}`
 
+    /* Returns the date on the format dd/mm/yyyy hh:mm AM/PM */
     return `
     ${date.getDate()}/${new Intl.DateTimeFormat('en', { month: 'short' }).format(date)}/${date.getFullYear()}
       ${strTime}

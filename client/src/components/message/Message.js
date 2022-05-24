@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 import { useSelector } from 'react-redux'
-import styles from '../../styles/Messages.module.css'
+import styles from '../../styles/ChatRoom-styles/Messages.module.css'
 import MessageHead from '../message_head/MessageHead'
 import MessageBody from '../message_body/MessageBody'
 
@@ -14,6 +14,8 @@ const Message = forwardRef(({
   const { username, picture } = userState
 
   const isFriendMessage = senderId === currentFriend.id
+
+  /* Select message components' classes and user info based on sender id */
   const messageClass = isFriendMessage ? 'message--friend' : 'message--user'
   const messageHeadClass = isFriendMessage ? 'message__head--friend' : 'message__head--user'
   const messageBodyClass = isFriendMessage ? 'message__body--friend' : 'message__body--user'
