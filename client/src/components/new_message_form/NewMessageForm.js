@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux'
-import styles from '../../styles/MessageForms.module.css'
+import styles from '../../styles/ChatRoom-styles/MessageForms.module.css'
 import sendIcon from '../../icons/chat-room/chatroom-send-icon.png'
 import { addTextMessage } from '../../store/features/messages/messagesSlice'
 

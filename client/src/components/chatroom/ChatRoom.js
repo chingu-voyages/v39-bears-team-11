@@ -1,6 +1,6 @@
 import Messages from '../messages/Messages'
 import MessageForms from '../message_forms/MessageForms'
-import styles from '../../styles/MessageForms.module.css'
+import styles from '../../styles/ChatRoom-styles/ChatRoom.module.css'
 
 function ChatRoom() {
   return (
