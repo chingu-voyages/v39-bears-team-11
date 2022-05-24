@@ -18,9 +18,9 @@ const UploadPictureModal = forwardRef(({
     setPreviewPicture(null)
   }
 
+  /* If file size exceeds 2MB, display an alert to user */
+  /* else, create an image url from file and set state. */
   const handleImgFileSelect = (event) => {
-    console.log('a file was selected')
-    console.log(event.target.files[0])
     if (event.target.files.length) {
       if (event.target.files[0].size > 2048000) alert('File size must not exceed 2MB')
 
@@ -33,17 +33,24 @@ const UploadPictureModal = forwardRef(({
     }
   }
 
+  const handleXButton = () => {
+    resetState()
+    ref.current.close()
+  }
+
+  const handleSubmit = () => {
+    formHandler(selectedFile)
+    resetState()
+  }
+
   return (
-    <dialog ref={ref} className={`${styles.imageModal} ${styles['upload-picture-modal']}`}>
+    <dialog ref={ref} className={styles.imageModal}>
 
       <div className={styles.imageModal__heading}>
         <h3>Upload Picture</h3>
         <Button
           text="X"
-          onClick={() => {
-            resetState()
-            ref.current.close()
-          }}
+          onClick={handleXButton}
         />
       </div>
 
@@ -51,11 +58,7 @@ const UploadPictureModal = forwardRef(({
 
       <form
         method="dialog"
-        onSubmit={() => {
-          // Check selected file first
-          formHandler(selectedFile)
-          resetState()
-        }}
+        onSubmit={handleSubmit}
       >
         <label htmlFor="image">
           <input
@@ -71,15 +74,19 @@ const UploadPictureModal = forwardRef(({
           />
         </label>
 
-        <Button
-          text="choose file"
-          onClick={() => imgFileInputRef.current.click()}
-        />
+        <div className={styles['imageModal__btn-container']}>
+          <Button
+            text="choose file"
+            onClick={() => imgFileInputRef.current.click()}
+          />
 
-        <ConfirmButton
-          text={confirmButtonText}
-          disabled={selectedFile === null}
-        />
+          {selectedFile
+            && (
+              <ConfirmButton
+                text={confirmButtonText}
+              />
+            )}
+        </div>
       </form>
     </dialog>
   )
