@@ -96,7 +96,7 @@ const unFriend = async (user, id, token) => {
  * @param {string} token The token of the current user to authenticate the request
  * @returns The updated user object with the new username and email address
  */
-const updateUserProfile = async (user, id, token) => {
+const updateProfile = async (user, id, token) => {
   const config = axiosConfigObject(token)
   try {
     // make a put request to the backend
@@ -119,7 +119,7 @@ const updateUserProfile = async (user, id, token) => {
  * @param {string} token The token to authenticate the current user
  * @returns The status of the operation
  */
-const deleteUserAccount = async (id, token) => {
+const deleteProfile = async (id, token) => {
   const config = axiosConfigObject(token)
   try {
     // make a delete request to the backend
@@ -209,8 +209,8 @@ const logIn = async (username, password) => {
 module.exports = {
   addFriend,
   unFriend,
-  deleteUserAccount,
-  updateUserProfile,
+  deleteProfile,
+  updateProfile,
   updateUserPicture,
   signUp,
   logIn,
