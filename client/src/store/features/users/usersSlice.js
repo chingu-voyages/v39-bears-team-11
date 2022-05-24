@@ -2,7 +2,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import dummyManPic from '../../../icons/profile-picture-man-unsplash.jpg'
 import dummyWomanPic from '../../../icons/profile-picture-woman-unsplash.jpg'
-// import userService from '../../../../services/user'
+import userService from '../../../../services/userService'
 
 /* dummy user state */
 const initialState = {
@@ -36,7 +36,6 @@ const initialState = {
     },
   ],
   isOnline: false,
-  isOffline: true,
 }
 
 export const usersSlice = createSlice({
@@ -48,7 +47,6 @@ export const usersSlice = createSlice({
       id: action.payload.id,
       username: action.payload.username,
       isOnline: true,
-      isOffline: false,
     }),
     logout: (state) => ({
       ...state,
@@ -62,7 +60,6 @@ export const usersSlice = createSlice({
       picture: null,
       friends: [],
       isOnline: false,
-      isOffline: true,
     }),
     appendFriend: (state, action) => ({
       ...state,
@@ -151,7 +148,6 @@ export function deleteUserProfile(userId, token) {
        * The status of the delete operation.
        * @type {string}
        */
-      // eslint-disable-next-line no-undef
       const response = await userService.deleteProfile(userId, token)
       console.log(response)
       // logout user on success
@@ -193,7 +189,6 @@ export function updateUserProfile(userId, userToken) {
        * token: string
        * }}
        */
-      // eslint-disable-next-line no-undef
       const response = await userService.updateProfile(userId, userToken)
       console.log(response)
       /**
