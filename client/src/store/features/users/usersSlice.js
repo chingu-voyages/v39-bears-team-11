@@ -156,6 +156,10 @@ export function deleteUserProfile(userId, token) {
       console.log(response)
       // logout user on success
       dispatch(logout)
+      // access the Location object and replace the current location
+      // by redirecting the user to the '/' route.
+      // eslint-disable-next-line no-undef
+      globalThis.location.replace('/')
     } catch (error) {
       // handle error on failure
       console.log(error.message)
