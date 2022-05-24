@@ -17,6 +17,7 @@
 .user.open .user__dropdown {
   border: 1px solid var(--clr-light-grey);
   position: absolute;
+  z-index: 99;
   right: -5.7rem;
   top: 4.7rem;
   width: 170px;
