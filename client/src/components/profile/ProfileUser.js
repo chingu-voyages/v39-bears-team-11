@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import ImageModal from '../modal/ImageModal'
 import ProfileButton from './ProfileButton'
-import profilePicture from '../../icons/profile/profile-user-icon.svg'
+import defaultPicture from '../../icons/default-user-profile-image.png'
 import updateIcon from '../../icons/profile/profile-picture-update-icon.svg'
 import styles from '../../styles/Profile-styles/ProfileUser.module.css'
 
@@ -16,7 +16,7 @@ function ProfileUser({ user }) {
   return (
     <div className={styles.Profile__imgContainer}>
       <img
-        src={user.picture || profilePicture}
+        src={user.picture || defaultPicture}
         alt="profile user icon"
         className={`${styles.Profile__icons} ${styles.Profile__picture}`}
       />
@@ -30,11 +30,12 @@ function ProfileUser({ user }) {
       <ImageModal
         ref={imageModalRef}
         title="Update Your Profile Picture"
-        photo={user.picture}
-        cameraButtonText="use camera"
-        uploadButtonText="upload photo"
+        defaultPicture={user.picture || defaultPicture}
+        imageAlt="user picture"
         formHandler={handleChangePhoto}
-        close={() => imageModalRef.current.close()}
+        confirmButtonText="save"
+        uploadButtonText="upload photo"
+        useCameraButtonText="use camera"
       />
     </div>
   )

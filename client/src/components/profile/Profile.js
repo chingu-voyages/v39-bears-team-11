@@ -31,7 +31,7 @@ function Profile() {
       actions buttons */}
       <header className={styles.Profile__heading}>
         <h2 className={styles.Profile__headText}>Profile</h2>
-        <div>
+        <div className={styles.Profile__cta}>
           <Link to="/edit">
             <ProfileButton imgSrc={editIcon} altText="edit icon" />
           </Link>
