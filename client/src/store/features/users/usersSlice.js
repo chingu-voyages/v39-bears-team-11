@@ -5,11 +5,11 @@ import dummyWomanPic from '../../../icons/profile-picture-woman-unsplash.jpg'
 
 /* dummy user state */
 const initialState = {
-  id: '61cdd39a5a14f24e4f2f89c7',
-  username: 'adalovelace',
-  email: 'adalove@gamilcom',
+  id: '626ab1b0ed757f9e9a7e961c',
+  username: 'rulesplayer',
+  email: 'rulesplayer@gmailcom',
   token:
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjYyMDEyM2UwMjg1ZDI2MWIwNWQ1OWY2NyIsImlhdCI6MTY0NDI1NzM3MywiZXhwIjoxNjQ0NTE2NTczfQ.VPUWHlYqzhOkU9UsyfWdhpkH3pS3GMeNkpFVct8Mtms',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyN2IwMTFiMTkzMTllMWY0ODVhZDE2NyIsInVzZXJuYW1lIjoicnVsZXNwbGF5ZXIiLCJpYXQiOiIxNjUzMjY4MjQyIn0.jkhHC3SQp8Yx4W4VgHY1JMdrAmqQ4HirXuOzt26Sqw4',
   picture: null,
   friends: [
     {
