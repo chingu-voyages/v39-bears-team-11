@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { sortArrayOfObjects } from '../../utils/helper'
 // *********************************************************
 //
@@ -44,6 +45,9 @@ function Chats() {
   // Get the modal ref
   const modalRef = useRef()
 
+  // Use the navigation hook from react-router-dom
+  const navigate = useNavigate()
+
   // Functions for opening and closing the modal
   const onOpenModal = () => modalRef.current.showModal()
   const onCloseModal = () => modalRef.current.close()
@@ -59,6 +63,8 @@ function Chats() {
     // *********************************************************
     // temporary console functionality check:
     console.log('Friend Clicked: ', currentFriendId)
+    // navigate to the chatroom page
+    navigate('/chatroom')
   }
 
   // Get the list of the latest messages, one message per contact

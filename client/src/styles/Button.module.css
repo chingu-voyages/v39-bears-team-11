@@ -78,14 +78,43 @@
   color: var(--clr-pampas-pink); 
   text-transform: none;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
-  
-  
   font-size: 26px;
   font-family: var(--ff-text);
   /* For some reason font-weight: 400, the same as on figma is too bold in browser.
      That's why I had to lower it to 300 to achieve the same effect as in figma*/
   font-weight: 300;
-  
+}
+
+.button--choice {
+  padding: 0;
+  width: 127px;
+  height: 48px;
+  color: var(--clr-royal-blue);
+  background-color: var(--clr-pampas-pink);
+  border-radius: 10.21px;
+  font-size: 22px;
+}
+
+.button--choice:hover   {
+  color: var(--clr-pampas-pink);
+  background-color: var(--clr-apricot);
+}
+
+.button--choice-isactive {
+  color: var(--clr-pampas-pink);
+  background-color: var(--clr-apricot);
+}
+
+.button--signup-form-submit {
+  text-transform: capitalize;
+  font-size: 17.7px;
+  font-weight: 400;
+  color: var(--clr-pampas-pink);
+  background-color: var(--clr-apricot)
+}
+
+.button--signup-form-submit:hover {
+    filter: brightness(95%);
 }
 
 @media(max-width:668px) {
@@ -93,7 +122,6 @@
     font-size: 14px;
     margin: 0 auto;
   }
-
   .button--confirm,
   .button--cancel {
     bottom: 3rem;
@@ -103,6 +131,14 @@
   }
   .button--cancel {
     right: 2rem;
+  }
+  .button--choice {
+    width: 86.46px;
+    height:  32.68px;
+    margin: 0;
+  }
+  .button--signup-form-submit {
+    margin: 20px 0px 0px 0px;
   }
 }
 
@@ -127,5 +163,12 @@
     /* I put it little bit further from the edge (compared to figma design) to not cover the footer */
     bottom: 80px;
     right: 15px;
+  }
+}
+
+@media(min-width: 500px) {
+  .button--signup-form-submit {
+    font-size: 26px;
+    margin-top: 30px;
   }
 }

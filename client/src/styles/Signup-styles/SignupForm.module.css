@@ -1,0 +1,40 @@
+/* ************* Mobile View ************* */
+.SignupForm__container {
+    min-width: 244px;
+}
+
+.SignupForm {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.SignupForm__heading {
+    margin-top: 40px;
+    text-align: left;
+    font-family:  var(--ff-text);
+    font-size: 20.42px;
+    color: white;
+}
+
+.SignupForm__button {
+    height:46px;
+    border-radius: 10px;
+}
+
+/* ************* Tablet and Laptop View ************* */
+@media (min-width: 500px) {
+    
+    .SignupForm__heading {
+        font-size: 30px
+    }
+    
+    .SignupForm__container {
+        max-width: min(360px, 99.9%);
+    } 
+
+    .SignupForm__button {
+        height:68px;
+    }
+
+}

@@ -1,11 +1,12 @@
 import styles from '../../styles/Button.module.css'
 
 function Button({
-  text, className, icon, iconAlt, ...props
+  type, text, className, icon, iconAlt, ...props
 }) {
   return (
+    /* eslint-disable react/button-has-type */
     <button
-      type="button"
+      type={type || 'button'}
       className={`${styles.button} ${className}`}
       {...props}
     >
@@ -17,6 +18,7 @@ function Button({
       {/* Check if the button contains an icon. If yes then include the icon inside the button. */}
       {icon && <img src={icon} alt={iconAlt} />}
     </button>
+    /* eslint-enable react/button-has-type */
   )
 }
 

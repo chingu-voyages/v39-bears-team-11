@@ -19,8 +19,8 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route element={<MainPage />}>
-            <Route path="/" element={isLoggedIn() ? <Chats /> : <Signup />} />
+          <Route element={isLoggedIn() ? <MainPage /> : <Signup />}>
+            <Route path="/" element={<Chats />} />
             <Route path="chats" element={<Chats />} />
             <Route path="chatroom" element={<ChatRoom />} />
             <Route path="search" element={<Search />} />
