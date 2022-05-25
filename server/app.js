@@ -5,6 +5,7 @@ require('express-async-errors')
 
 // Require routers here
 const messageRouter = require('./routes/messageRouter')
+const userRouter = require('./routes/userRouter')
 
 // Import middlewares
 const { MONGODB_URI } = require('./utils/config')
@@ -34,6 +35,7 @@ app.use(middleware.requestLogger)
 
 // use routers here //
 app.use('/message', messageRouter)
+app.use('/user', userRouter)
 
 /* These two middleware must be used last */
 app.use(middleware.unknownEndpoint)
