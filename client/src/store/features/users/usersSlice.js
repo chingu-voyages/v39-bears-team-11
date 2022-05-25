@@ -2,7 +2,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import dummyManPic from '../../../icons/profile-picture-man-unsplash.jpg'
 import dummyWomanPic from '../../../icons/profile-picture-woman-unsplash.jpg'
-import userService from '../../../../services/userService'
+import * as userService from '../../../../services/userService'
 
 /* dummy user state */
 const initialState = {
