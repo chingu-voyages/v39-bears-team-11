@@ -197,7 +197,7 @@ export function updateUserProfile(userId, userToken) {
        * @constant token The new token created and sent with the response
        */
       const { username, email, token } = response
-      dispatch(login(username, email, token))
+      dispatch(updateUser(username, email, token))
     } catch (error) {
       // todo: add better error handling
       console.log(error.message)
@@ -213,7 +213,7 @@ export const signupUser = createAsyncThunk(
       const data = await response.json()
 
       if (response.status === 200) {
-        // dispatch(login(username, email, token))
+        // dispatch(login({username, email, token}))
         return { ...data, username, email }
       }
 
