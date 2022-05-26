@@ -204,25 +204,18 @@ export function updateUserProfile(userId, userToken) {
     }
   }
 }
-
-export const signupUser = createAsyncThunk(
-  'users/signupUser',
-  async (dispatch, { username, email, password }, thunkAPI) => {
+export function signUpUser({ username, email, password }) {
+  // return the async action that will call the dispatch function
+  return async (dispatch) => {
     try {
+      // make the fetch request using the appropriate userService function
       const response = await userService.signUp(username, email, password)
-      const data = await response.json()
-
-      if (response.status === 200) {
-        dispatch(login(data.username, data.email, data.token))
-        return { ...data, username, email }
-      }
-
-      return thunkAPI.rejectWithValue(data)
-    } catch (e) {
-      console.log('Error', e.response.data)
-      return thunkAPI.rejectWithValue(e.response.data)
+      return response.data
+    } catch (error) {
+      // handle error
+      console.log(error.message)
     }
-  },
-)
+  }
+}
 
 export default usersSlice.reducer

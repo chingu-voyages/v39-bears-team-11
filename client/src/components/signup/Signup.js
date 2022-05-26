@@ -1,9 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
-import {
-  signupUser, loginUser, userSelector, clearState,
-} from '../../store/features/users/usersSlice'
+import { useDispatch } from 'react-redux'
+import { signUpUser } from '../../store/features/users/usersSlice'
 import Logo from '../logo/Logo'
 import Illustration from '../../icons/signup/signup-illustration.png'
 import ChoiceButton from '../button/ChoiceButton'
@@ -22,38 +20,20 @@ function Signup() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const {
-    isFetching, isSuccess, isError, errorMessage,
-  } = useSelector(userSelector)
-
   // onValidateSubmit function is a function that is being passed as prop
   // to the SignupForm component. This function gathers the data from the form
   // component and comes back to this Signup component with validated credentials
   // that are ready to be passed onto the Login or Signup functions.
   const onValidatedSubmit = (validatedCredentials) => {
     if (formChoice === 'login') {
-      dispatch(signupUser(validatedCredentials))
+      // login under constraction
+      // dispatch(loginUser(validatedCredentials))
     }
     if (formChoice === 'signup') {
-      dispatch(loginUser(validatedCredentials))
+      dispatch(signUpUser(validatedCredentials))
     }
+    navigate('/')
   }
-
-  useEffect(() => () => {
-    dispatch(clearState())
-  }, [])
-
-  useEffect(() => {
-    if (isSuccess) {
-      dispatch(clearState())
-      navigate('/')
-    }
-
-    if (isError) {
-      console.log(errorMessage)
-      dispatch(clearState())
-    }
-  }, [isSuccess, isError])
 
   return (
     <div id="signup" className={styles.Signup}>
@@ -62,7 +42,6 @@ function Signup() {
         <img src={Illustration} alt="Chats comming out of the computer screen. Conversation between 2 people." className={styles.Signup__side__illustration} />
       </div>
       <div className={styles.Signup__main}>
-        {isFetching ? 'LOADING...' : null}
         <div className={styles['Signup__main__logo-container']}>
           <Logo isWhite />
         </div>
