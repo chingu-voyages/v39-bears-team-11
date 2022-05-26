@@ -16,10 +16,16 @@
  * headers: {Authorization: '8jdnoake100343jdnsokelselsue1soq' }
  * }
  */
-const axiosConfigObject = (token) => {
+const axiosConfigObject = (token, contentType = '') => {
   const config = {
-    headers: { Authorization: `${token}` },
+    headers: {
+      Authorization: `bearer ${token}`,
+    },
   }
+  if (contentType !== '') {
+    config.ContentType = contentType
+  }
+
   return config
 }
 
