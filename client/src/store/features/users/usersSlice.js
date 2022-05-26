@@ -197,12 +197,32 @@ export function updateUserProfile(userId, userToken) {
        * @constant token The new token created and sent with the response
        */
       const { username, email, token } = response
-      dispatch(updateUser(username, email, token))
+      dispatch(login(username, email, token))
     } catch (error) {
       // todo: add better error handling
       console.log(error.message)
     }
   }
 }
+
+export const signupUser = createAsyncThunk(
+  'users/signupUser',
+  async ({ username, email, password }, thunkAPI) => {
+    try {
+      const response = await userService.signUp(username, email, password)
+      const data = await response.json()
+
+      if (response.status === 200) {
+        // dispatch(login(username, email, token))
+        return { ...data, username, email }
+      }
+
+      return thunkAPI.rejectWithValue(data)
+    } catch (e) {
+      console.log('Error', e.response.data)
+      return thunkAPI.rejectWithValue(e.response.data)
+    }
+  },
+)
 
 export default usersSlice.reducer
