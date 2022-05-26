@@ -207,13 +207,13 @@ export function updateUserProfile(userId, userToken) {
 
 export const signupUser = createAsyncThunk(
   'users/signupUser',
-  async ({ username, email, password }, thunkAPI) => {
+  async (dispatch, { username, email, password }, thunkAPI) => {
     try {
       const response = await userService.signUp(username, email, password)
       const data = await response.json()
 
       if (response.status === 200) {
-        // dispatch(login({username, email, token}))
+        dispatch(login(data.username, data.email, data.token))
         return { ...data, username, email }
       }
 
