@@ -12,7 +12,7 @@ function MessageBody({ classes, content }) {
   const imgToDataUrl = () => {
     const binaryString = getBinaryStringFromByteArray(content.data.data)
     /* create a Base64-encoded ASCII string from a binary string */
-    const image = btoa(binaryString)
+    const image = window.btoa(binaryString)
     return `data:${content.contentType};base64,${image}`
   }
 
