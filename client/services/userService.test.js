@@ -1,7 +1,7 @@
 /* eslint-disable function-paren-newline */
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable no-undef */
-const userService = require('./userService')
+import * as userService from './userService'
 
 // mock the userService.js module effectively
 // turning every function in it into jest.fn()
