@@ -19,12 +19,12 @@
 }
 
 .Profile__editPicture {
-  background-color: var(--clr-pampas-pink);
+  background-color: var(--clr-light-blue);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
   border: none;
   border-radius: 50%;
   height: 3rem;
   width: 3rem;
-
   position: absolute;
   left: 10.5rem;
   top: 15rem;

@@ -2,7 +2,7 @@
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { deleteProfile } from '../../store/features/users/usersSlice'
+import { deleteUserProfile } from '../../store/features/users/usersSlice'
 import ProfileForm from './ProfileForm'
 import ProfileButton from './ProfileButton'
 import ProfileUser from './ProfileUser'
@@ -22,7 +22,7 @@ function Profile() {
   const handleDeleteProfile = () => {
     // dispatch delete profile action
     // after confirmation
-    dispatch(deleteProfile(currentUser.id))
+    dispatch(deleteUserProfile(currentUser.id))
   }
 
   return (
@@ -31,7 +31,7 @@ function Profile() {
       actions buttons */}
       <header className={styles.Profile__heading}>
         <h2 className={styles.Profile__headText}>Profile</h2>
-        <div>
+        <div className={styles.Profile__cta}>
           <Link to="/edit">
             <ProfileButton imgSrc={editIcon} altText="edit icon" />
           </Link>

@@ -21,6 +21,19 @@
   color: var(--clr-pampas-pink);
 }
 
+.button--send-picture {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  transition: transform .2s ease-out;
+}
+
+.button--send-picture:hover,
+.button--send-picture:active {
+  transform: scale(1.1);
+}
+
 .button--unfriend {
   color: var(--clr-danger-red);
   background-color: transparent;
@@ -51,7 +64,7 @@
 .button--danger {
   background-color: var(--clr-danger-red);
 }
-
+ 
 .button--start-a-chat {
   display: flex;
   align-items: center;
@@ -130,6 +143,11 @@
 }
 
 @media(max-width:768px) {
+  .button--send-picture {
+    width: 28px;
+    height: 28px;
+  }
+ 
   .button--start-a-chat > span {
     display: none;
   }

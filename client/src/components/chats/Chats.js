@@ -17,8 +17,9 @@ import LatestChats from './LatestChats'
 
 // temporary mock data that will be replaced with data from chats store
 import { chatsMockData } from './mock_messages'
+
 // temporaralily the chatsData will equal to the imported MockData
-const chatsData = chatsMockData
+const chatsData = [...chatsMockData]
 
 function Chats() {
   // Get friends list from the user state slice
@@ -28,6 +29,7 @@ function Chats() {
 
   // get the reducer action dispatch function
   const dispatch = useDispatch()
+  console.log(dispatch)
 
   // *********************************************************
   //

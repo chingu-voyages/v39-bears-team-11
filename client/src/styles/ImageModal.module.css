@@ -1,13 +1,12 @@
 .imageModal {
-  width: 40rem;
-  height: 38rem;
+  width: 400px;
   top: 15%;
   left: 35%;
   border: 0;
   border-radius: 15px;
   background-color: var(--clr-white);
   box-shadow: 2px 2px 1em rgba(0, 0, 0, 0.3);
-  padding: 1rem 3rem;
+  padding: 1rem 2rem;
   text-align: center;
 }
 
@@ -15,23 +14,34 @@
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-.imageModal__heading {
+.imageModal[open] {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  position: relative;
+}
+
+.imageModal__heading {
   padding: 2rem 0;
 }
 
 .imageModal h3 {
   color: var(--clr-black);
   display: inline-block;
-  font-size: 2rem;
+  font-size: 18px;
 }
 
 .imageModal__heading > button {
   background-color: var(--clr-danger-red);
+  box-shadow: none;
+  border-radius: 50%;
   color: var(--clr-white);
+  text-transform: lowercase;
   margin: 0;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  padding: .2rem .6rem;
 }
 
 .imageModal img {
@@ -44,43 +54,57 @@
   width: 15rem;
 }
 
-.imageModal form {
+.imageModal__btn-container {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
+  gap: 36px;
 }
 
-.imageModal form button {
-  border-radius: 0.5rem;
+.imageModal__btn-container button {
+  background-color: var(--clr-light-blue);
+  color: var(--clr-royal-blue);
+  border-radius: 5px;
+  text-transform: lowercase;
+  position: static;
 }
 
-.imageModal form button:last-of-type {
+.imageModal__btn-container button:nth-of-type(2),
+ .imageModal__btn-container form button {
   background-color: var(--clr-royal-blue);
   color: var(--clr-white);
+}
+
+.imageModal video,
+.imageModal canvas {
+  width: 320px;
+  height: 240px;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  border: 2px solid var(--clr-royal-blue);
+  box-shadow: 2px 2px 4px var(--clr-royal-blue);
 }
 
 @media screen and (max-width: 768px) {
   .imageModal {
     width: 70vw;
-    height: 40rem;
     left: 15%;
     padding: 2rem 5rem;
   }
 
   .imageModal h3 {
     font-size: 2.5rem;
+  } 
+}
+
+@media screen and (max-width: 668px) {
+  .imageModal__btn-container button {
+    padding: 1rem;
   }
 
-  .imageModal form {
-    justify-content: space-evenly;
-    padding-bottom: 1.5rem;
-  }
 }
 
 @media screen and (max-width: 580px) {
   .imageModal {
-    height: 30rem;
-    padding: 1rem 2rem;
+    padding: 2rem;
     width: 80vw;
     left: 10%;
   }
@@ -93,30 +117,17 @@
     padding: 1.3rem 0;
   }
 
-  .imageModal__heading > button {
-    background-color: var(--clr-danger-red);
-    color: var(--clr-white);
-    margin: 0;
-  }
-
   .imageModal img {
     margin: 1.5rem 0;
     height: 12rem;
     width: 12rem;
-  }
+  } 
+}
 
-  .imageModal form {
-    padding-bottom: 1.5rem;
-  }
-
-  .imageModal form button {
-    font-size: 1.3rem;
-    padding: 0.8rem 1.4rem;
-    width: 12rem;
-  }
-
-  .imageModal form button:last-of-type {
-    background-color: var(--clr-royal-blue);
-    color: var(--clr-white);
+@media screen and (max-width: 468px) {
+  .imageModal video,
+  .imageModal canvas {
+    width: 260px;
+    height: 196px;
   }
 }

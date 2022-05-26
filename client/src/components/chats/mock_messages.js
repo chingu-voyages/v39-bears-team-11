@@ -1,4 +1,5 @@
-const chatsMockData = [
+// eslint-disable-next-line import/prefer-default-export
+export const chatsMockData = [
   {
     id: '3',
     messages: [
@@ -64,5 +65,3 @@ const chatsMockData = [
     ],
   },
 ]
-
-export { chatsMockData }

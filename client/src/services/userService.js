@@ -1,7 +1,7 @@
 /* eslint-disable import/no-import-module-exports */
 /* eslint-disable consistent-return */
 import axios from 'axios'
-import axiosConfigObject from '../src/utils/config'
+import axiosConfigObject from '../utils/config'
 
 /**
  * @description The api endpoint for the user service request. It is set in the
