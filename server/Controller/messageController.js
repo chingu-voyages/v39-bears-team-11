@@ -49,7 +49,13 @@ const getMessageController = async (req, res, next) => {
 const postMessageController = async (req, res, next) => {
   // get the request payload
   // eslint-disable-next-line object-curly-newline
-  const { userId, friendId, content, timestamp } = req.body
+  const { userId, friendId, timestamp } = req.body
+  
+  // content is either a string or an image file
+  const content = req.body.content || {
+    data: new Buffer.from(req.file.buffer, 'base64'),
+    contentType: req.file.mimetype
+  }
 
   // check if there is no message,
   // and if so pass control to the error handling middleware
@@ -67,7 +73,7 @@ const postMessageController = async (req, res, next) => {
     // create messageSchema object
     const message = {
       content,
-      reciever: friendId,
+      receiver: friendId,
       sender: userId,
       timestamp,
     }

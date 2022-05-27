@@ -3,6 +3,7 @@ import { useRef } from 'react'
 import styles from '../../styles/User.module.css'
 import { ReactComponent as UserIcon } from '../../icons/profile/profile-user-icon.svg'
 import { ReactComponent as LogoutIcon } from '../../icons/profile/profile-logout-icon.svg'
+import defaultPicture from '../../icons/default-user-profile-image.png'
 
 function User() {
   const userState = useSelector(({ user }) => user)
@@ -25,7 +26,7 @@ function User() {
         onKeyDown={handleUserClick}
         tabIndex={0}
       >
-        <img src={picture} alt={username} />
+        <img src={picture || defaultPicture} alt={username} />
       </div>
 
       <div className={styles.user__dropdown}>

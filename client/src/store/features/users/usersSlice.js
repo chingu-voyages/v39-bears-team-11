@@ -1,7 +1,8 @@
+/* eslint-disable object-curly-newline */
 import { createSlice } from '@reduxjs/toolkit'
-import dummyManPic from '../../../icons/profile-picture-man-unsplash.jpg'
+// import dummyManPic from '../../../icons/profile-picture-man-unsplash.jpg'
 import dummyWomanPic from '../../../icons/profile-picture-woman-unsplash.jpg'
-// import userService from '../../../../services/user'
+import * as userService from '../../../services/userService'
 
 /* dummy user state */
 const initialState = {
@@ -10,8 +11,8 @@ const initialState = {
   username: false,
   email: 'adalove@gamilcom',
   token:
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjYyMDEyM2UwMjg1ZDI2MWIwNWQ1OWY2NyIsImlhdCI6MTY0NDI1NzM3MywiZXhwIjoxNjQ0NTE2NTczfQ.VPUWHlYqzhOkU9UsyfWdhpkH3pS3GMeNkpFVct8Mtms',
-  picture: dummyManPic,
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyN2IwMTFiMTkzMTllMWY0ODVhZDE2NyIsInVzZXJuYW1lIjoicnVsZXNwbGF5ZXIiLCJpYXQiOiIxNjUzMjY4MjQyIn0.jkhHC3SQp8Yx4W4VgHY1JMdrAmqQ4HirXuOzt26Sqw4',
+  picture: null,
   friends: [
     {
       id: 3,
@@ -35,7 +36,6 @@ const initialState = {
     },
   ],
   isOnline: false,
-  isOffline: true,
 }
 
 export const usersSlice = createSlice({
@@ -47,12 +47,19 @@ export const usersSlice = createSlice({
       id: action.payload.id,
       username: action.payload.username,
       isOnline: true,
-      isOffline: false,
     }),
     logout: (state) => ({
       ...state,
+      id: null,
+      username: null,
+      email: null,
+      token: null,
+      refreshToken: null,
+      createdAt: null,
+      updatedAt: null,
+      picture: null,
+      friends: [],
       isOnline: false,
-      isOffline: true,
     }),
     appendFriend: (state, action) => ({
       ...state,
@@ -62,11 +69,17 @@ export const usersSlice = createSlice({
       ...state,
       friends: state.friends.filter((f) => f.id !== action.payload),
     }),
+    updateUser: (state, action) => ({
+      ...state,
+      ...action.payload,
+    }),
   },
 })
 
 // eslint-disable-next-line object-curly-newline
-export const { login, logout, appendFriend, removeFriend } = usersSlice.actions
+// eslint-disable-next-line operator-linebreak
+export const { login, logout, appendFriend, removeFriend, updateUser } =
+  usersSlice.actions
 
 export function addFriend(userToUpdate, id, token) {
   return async (dispatch, getState) => {
@@ -115,22 +128,78 @@ export function unFriend(userToUpdate, id, token) {
 }
 
 // todo: consider using the createAsyncThunk middleware
-// async thunk to send delete user request
-export function deleteProfile(userId, token) {
-  // return async function that takes dispatch function
-  // as parameters
+/**
+ * @name deleteUserProfile
+ * @summary A thunk action to delete a user from the database.
+ * @param {string} userId The id of the current user
+ * @param {string} token The token of the current user
+ * @returns A thunk action that makes a delete request to the server and removes a
+ * user.
+ */
+export function deleteUserProfile(userId, token) {
+  /**
+   * @param {function} dispatch The redux dispatch function
+   * @returns void
+   */
   return async (dispatch) => {
-    console.log(userId)
-    // make the request to the server
     try {
-      // eslint-disable-next-line no-undef
+      /**
+       * @constant response The response from the delete request to the server.
+       * The status of the delete operation.
+       * @type {string}
+       */
       const response = await userService.deleteProfile(userId, token)
-      // do something with the response
       console.log(response)
       // logout user on success
       dispatch(logout)
+      // access the Location object and replace the current location
+      // by redirecting the user to the '/' route.
+      // eslint-disable-next-line no-undef
+      globalThis.location.replace('/')
     } catch (error) {
       // handle error on failure
+      console.log(error.message)
+    }
+  }
+}
+
+// todo: consider using the createAsyncThunk middleware
+/**
+ * @name updateUserProfile
+ * @summary A thunk action that sends a put request to update the user on the
+ * server and update the user state with the response.
+ * @param {string} userId The id of the current user
+ * @param {string} userToken The token of the current user
+ * @returns A thunk action that makes a put request to update the user on the
+ * server and dispatch the updateUser action the received response to update
+ * the user state.
+ */
+export function updateUserProfile(userId, userToken) {
+  /**
+   * @param {Function} dispatch The redux dispatch function
+   * @returns void
+   */
+  return async (dispatch) => {
+    try {
+      /**
+       * @constant response The response from the put request to the server
+       * @type {{
+       * username: string,
+       * email: string,
+       * token: string
+       * }}
+       */
+      const response = await userService.updateProfile(userId, userToken)
+      console.log(response)
+      /**
+       * @constant username The updated username from the server
+       * @constant email The updated email from the server
+       * @constant token The new token created and sent with the response
+       */
+      const { username, email, token } = response
+      dispatch(updateUser(username, email, token))
+    } catch (error) {
+      // todo: add better error handling
       console.log(error.message)
     }
   }

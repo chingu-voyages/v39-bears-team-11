@@ -6,13 +6,14 @@
   padding: 2rem 2rem 0;
 }
 
-.Profile button {
+.Profile__cta button {
   background-color: transparent;
   border: none;
+  transition: all .2s ease-out
 }
 
-.Profile button:hover {
-  background-color: var(--clr-light-grey);
+.Profile__cta button:hover {
+  transform: scale(1.1);
 } 
 
 .Profile__heading {

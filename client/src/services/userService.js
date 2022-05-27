@@ -1,7 +1,7 @@
 /* eslint-disable import/no-import-module-exports */
 /* eslint-disable consistent-return */
 import axios from 'axios'
-import axiosConfigObject from '../src/utils/config'
+import axiosConfigObject from '../utils/config'
 
 /**
  * @description The api endpoint for the user service request. It is set in the
@@ -42,7 +42,7 @@ const baseSignupUrl = process.env.REACT_APP_BASE_SIGNUP_URL
  * @param {string} token This is token to authenticate the user before handling request
  * @returns The current user object with the updated list of the friends
  */
-const addFriend = async (user, id, token) => {
+export const addFriend = async (user, id, token) => {
   const config = axiosConfigObject(token)
   try {
     // make a post request to the backend
@@ -72,7 +72,7 @@ const addFriend = async (user, id, token) => {
  * @param {string} token The token used to authenticate the current user before handling request
  * @returns The current user object with the updated list of the friends
  */
-const unFriend = async (user, id, token) => {
+export const unFriend = async (user, id, token) => {
   const config = axiosConfigObject(token)
   try {
     // make a post request to the backend
@@ -96,7 +96,7 @@ const unFriend = async (user, id, token) => {
  * @param {string} token The token of the current user to authenticate the request
  * @returns The updated user object with the new username and email address
  */
-const updateUserProfile = async (user, id, token) => {
+export const updateProfile = async (user, id, token) => {
   const config = axiosConfigObject(token)
   try {
     // make a put request to the backend
@@ -119,7 +119,7 @@ const updateUserProfile = async (user, id, token) => {
  * @param {string} token The token to authenticate the current user
  * @returns The status of the operation
  */
-const deleteUserAccount = async (id, token) => {
+export const deleteProfile = async (id, token) => {
   const config = axiosConfigObject(token)
   try {
     // make a delete request to the backend
@@ -142,7 +142,7 @@ const deleteUserAccount = async (id, token) => {
  * @param {string} token
  * @returns The user object updated with the new photo
  */
-const updateUserPicture = async (user, id, token) => {
+export const updateUserPicture = async (user, id, token) => {
   const config = axiosConfigObject(token)
   try {
     // make an upload request to the backend
@@ -166,7 +166,7 @@ const updateUserPicture = async (user, id, token) => {
  * @returns The user object if the registration is successful. The user object contains
  * the username, email, id, picture, contacts, token, refreshToken, and timestamps.
  */
-const signUp = async (username, email, password) => {
+export const signUp = async (username, email, password) => {
   try {
     // make a post request to the server with user credentials
     const response = await axios.post(baseSignupUrl, {
@@ -193,7 +193,7 @@ const signUp = async (username, email, password) => {
  * The user object contains the username, email, id, picture, contacts, token,
  * refreshToken, and timestamps.
  */
-const logIn = async (username, password) => {
+export const logIn = async (username, password) => {
   try {
     // make a post request to the server with username and password
     const response = await axios.post(baseLoginUrl, { username, password })
@@ -204,14 +204,4 @@ const logIn = async (username, password) => {
     // log the error message to the browser console
     console.log(error)
   }
-}
-
-module.exports = {
-  addFriend,
-  unFriend,
-  deleteUserAccount,
-  updateUserProfile,
-  updateUserPicture,
-  signUp,
-  logIn,
 }

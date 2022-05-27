@@ -84,31 +84,32 @@ function SignupForm({ formChoice, onValidatedSubmit }) {
         onSubmit={handleSubmit}
         className={styles.SignupForm}
       >
-        <SignupFormField
-          type="text"
-          name="username"
-          placeholder="Your Name"
-          iconSrc={userIcon}
-          handleInput={handleInput}
-          formChoice={formChoice}
-          error={errors.username}
-          value={inputValues.name}
-        />
 
-        {/* Show the email field only if the Signup Mode is on */}
+        {/* Show Name Field only when the Sign Up Mode is on */}
         {(formChoice === 'signup')
           ? (
             <SignupFormField
               type="text"
-              name="email"
-              placeholder="Your Email"
-              iconSrc={emailIcon}
+              name="username"
+              placeholder="Your Name"
+              iconSrc={userIcon}
               handleInput={handleInput}
               formChoice={formChoice}
-              error={errors.email}
-              value={inputValues.email}
+              error={errors.username}
+              value={inputValues.name}
             />
           ) : null}
+
+        <SignupFormField
+          type="text"
+          name="email"
+          placeholder="Your Email"
+          iconSrc={emailIcon}
+          handleInput={handleInput}
+          formChoice={formChoice}
+          error={errors.email}
+          value={inputValues.email}
+        />
 
         <SignupFormField
           type="password"
