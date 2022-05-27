@@ -84,6 +84,8 @@ function SignupForm({ formChoice, onValidatedSubmit }) {
         onSubmit={handleSubmit}
         className={styles.SignupForm}
       >
+
+        {/* Show Name Field only when the Sign Up Mode is on */}
         {(formChoice === 'signup')
           ? (
             <SignupFormField
