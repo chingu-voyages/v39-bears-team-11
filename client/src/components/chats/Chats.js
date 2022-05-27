@@ -129,7 +129,14 @@ function Chats() {
       </div>
     )
   } return (
-    <div>Temporary message: Add contacts first to start a chat.</div>
+    <div id="chats" className="container main">
+      <h1>Soon this page will be filled with your messages!</h1>
+      <h4>Why don&apos;t you add a friend and say hello to them?</h4>
+      <h5>
+        To look for your friends and add them to your contacts list
+        simply press the magnifying glass icon.
+      </h5>
+    </div>
   )
 }
 
