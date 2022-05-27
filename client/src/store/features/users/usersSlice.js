@@ -23,7 +23,7 @@ export const usersSlice = createSlice({
       ...state,
       id: action.payload.id,
       username: action.payload.username,
-      email: action.payload.username,
+      email: action.payload.email,
       token: action.payload.token,
       isOnline: true,
     }),
