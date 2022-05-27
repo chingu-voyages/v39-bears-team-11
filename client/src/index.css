@@ -90,6 +90,10 @@ button {
     padding-top: 42px;
 }
 
+.italic {
+  font-style: italic;
+}
+
 @media (max-width: 1024px) {
   .container {
     margin: 0 80px;

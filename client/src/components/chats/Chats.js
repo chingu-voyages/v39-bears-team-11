@@ -22,8 +22,11 @@ import { chatsMockData } from './mock_messages'
 const chatsData = [...chatsMockData]
 
 function Chats() {
-  // Get friends list from the user state slice
-  const friends = useSelector(({ user }) => user.friends)
+  // Get the current user state
+  const userState = useSelector(({ user }) => user)
+
+  // Assign friends and name of the user
+  const { username, friends } = userState
 
   // Define latestChatsSorted variable that later will be used for holding
   // the latestChats data only if the latestChats data and friends exist
@@ -130,8 +133,15 @@ function Chats() {
     )
   } return (
     <div id="chats" className="container main">
-      <h1>Soon this page will be filled with your messages!</h1>
-      <h4>Why don&apos;t you add a friend and say hello to them?</h4>
+      <h1>
+        {`Hello ${username}! Welcome to LiteTalk!`}
+      </h1>
+      <h2>
+        Only few more
+        <span className="italic"> lite </span>
+        steps...
+      </h2>
+      <h4>...to tell your friends how much breathtaking they are!</h4>
       <h5>
         To look for your friends and add them to your contacts list
         simply press the magnifying glass icon.
