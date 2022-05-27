@@ -210,7 +210,8 @@ export function signUpUser({ username, email, password }) {
     try {
       // make the fetch request using the appropriate userService function
       const response = await userService.signUp(username, email, password)
-      return response.data
+      // under construction:
+      // dispatch(login(response.username, response.email, response.token))
     } catch (error) {
       // handle error
       console.log(error.message)
