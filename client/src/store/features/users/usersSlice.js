@@ -6,35 +6,12 @@ import * as userService from '../../../services/userService'
 
 /* dummy user state */
 const initialState = {
-  id: '61cdd39a5a14f24e4f2f89c7',
-  // username: 'adalovelace',
-  username: false,
-  email: 'adalove@gamilcom',
-  token:
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyN2IwMTFiMTkzMTllMWY0ODVhZDE2NyIsInVzZXJuYW1lIjoicnVsZXNwbGF5ZXIiLCJpYXQiOiIxNjUzMjY4MjQyIn0.jkhHC3SQp8Yx4W4VgHY1JMdrAmqQ4HirXuOzt26Sqw4',
+  id: '',
+  username: '',
+  email: '',
+  token: '',
   picture: null,
-  friends: [
-    {
-      id: 3,
-      username: 'jredmille2',
-      picture: dummyWomanPic,
-    },
-    {
-      id: 6,
-      username: 'gleband5',
-      picture: dummyWomanPic,
-    },
-    {
-      id: 33,
-      username: 'marymille',
-      picture: dummyWomanPic,
-    },
-    {
-      id: 66,
-      username: 'bandwidth7',
-      picture: dummyWomanPic,
-    },
-  ],
+  friends: null,
   isOnline: false,
 }
 
@@ -46,6 +23,8 @@ export const usersSlice = createSlice({
       ...state,
       id: action.payload.id,
       username: action.payload.username,
+      email: action.payload.username,
+      token: action.payload.token,
       isOnline: true,
     }),
     logout: (state) => ({
@@ -200,6 +179,38 @@ export function updateUserProfile(userId, userToken) {
       dispatch(updateUser(username, email, token))
     } catch (error) {
       // todo: add better error handling
+      console.log(error.message)
+    }
+  }
+}
+
+// that action will require also password as paramenter, removed for now
+// as we have commented out the request from the server that requires password
+export function signUpUser({ username, email }) {
+  // return the async action that will call the dispatch function
+  return async (dispatch) => {
+    try {
+      // make the fetch request using the appropriate userService function
+      // const response = await userService.signUp(username, email, password)
+
+      // The successfuly user object returned from the server contains
+      // the username, email, id, picture, contacts, token, refreshToken, and timestamps.
+      /// This is a mock returned data
+      const returnedUserObject = {
+        id: '61cdd39a5a14f24e4f2f89c7',
+        username,
+        email,
+        token:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyN2IwMTFiMTkzMTllMWY0ODVhZDE2NyIsInVzZXJuYW1lIjoicnVsZXNwbGF5ZXIiLCJpYXQiOiIxNjUzMjY4MjQyIn0.jkhHC3SQp8Yx4W4VgHY1JMdrAmqQ4HirXuOzt26Sqw4',
+        picture: null,
+        refreshToken: '12312fgfsdg',
+        timestamp: 1653655303,
+        friends: [],
+      }
+
+      dispatch(login(returnedUserObject))
+    } catch (error) {
+      // handle error
       console.log(error.message)
     }
   }

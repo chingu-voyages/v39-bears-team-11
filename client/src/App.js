@@ -12,7 +12,7 @@ import EditProfilePage from './components/profile/EditProfilePage'
 
 function App() {
   const currentUser = useSelector(({ user }) => user)
-  console.log(currentUser)
+  console.log('Current User: ', currentUser)
   const isLoggedIn = () => currentUser.username && currentUser.token
 
   return (
