@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { signUpUser } from '../../store/features/users/usersSlice'
+import { signUpUser, loginUser } from '../../store/features/users/usersSlice'
 import Logo from '../logo/Logo'
 import Illustration from '../../icons/signup/signup-illustration.png'
 import ChoiceButton from '../button/ChoiceButton'
@@ -13,12 +13,12 @@ function Signup() {
   // form option which sets the Login Mode or the Signup Mode
   const [formChoice, setFormChoice] = useState('signup')
 
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
   // Create function that handles the choices click and updates the
   // state formChoice variable accordingly
   const handleFormChoiceClick = (choice) => (setFormChoice(choice))
-
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
 
   // onValidateSubmit function is a function that is being passed as prop
   // to the SignupForm component. This function gathers the data from the form
@@ -26,8 +26,7 @@ function Signup() {
   // that are ready to be passed onto the Login or Signup functions.
   const onValidatedSubmit = (validatedCredentials) => {
     if (formChoice === 'login') {
-      // login under constraction
-      // dispatch(loginUser(validatedCredentials))
+      dispatch(loginUser(validatedCredentials))
     }
     if (formChoice === 'signup') {
       dispatch(signUpUser(validatedCredentials))

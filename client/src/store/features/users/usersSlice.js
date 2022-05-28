@@ -216,4 +216,39 @@ export function signUpUser({ username, email }) {
   }
 }
 
+export function loginUser({ email, password }) {
+  // return the async action that will call the dispatch function
+  return async (dispatch) => {
+    try {
+      console.log(email, password)
+      // make the fetch request using the appropriate userService function
+      // const response = await userService.logIn(username, email, password)
+
+      // The successfuly user object returned from the server contains:
+      // the username, email, id, picture, contacts, token, refreshToken, and timestamps.
+      const returnedUserObject = {
+        id: '61cdd39a5a14f24e4f2f89c7',
+        username: '_RulesPlayer',
+        email,
+        token: 'eyJhbGci',
+        refreshToken: 'asdasd',
+        picture: null,
+        timestamp: 1653655303,
+        friends: [
+          {
+            id: 3,
+            username: 'Andromeda',
+            picture: dummyWomanPic,
+          },
+        ],
+      }
+
+      dispatch(login(returnedUserObject))
+    } catch (error) {
+      // handle error
+      console.log(error.message)
+    }
+  }
+}
+
 export default usersSlice.reducer
