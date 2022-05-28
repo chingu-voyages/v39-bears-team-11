@@ -1,14 +1,22 @@
 const { Router } = require('express')
+const multer  = require('multer')
+const multerStorage = multer.memoryStorage()
+const upload = multer({ storage: multerStorage, })
 
-// import the message route controllers
+// import the user route controllers
 const {
   getUsersController,
   postUserController,
-} = require('../Controller/usersController')
+  putUserController,
+  deleteUserController,
+} = require('../Controller/userController')
 
 const router = Router()
 
 router.get('/', getUsersController)
 router.post('/', postUserController)
+router.put('/:id', upload.single('image'), putUserController)
+router.delete('/:id', deleteUserController)
 
 module.exports = router
+
