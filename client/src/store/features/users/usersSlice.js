@@ -25,6 +25,7 @@ export const usersSlice = createSlice({
       username: action.payload.username,
       email: action.payload.email,
       token: action.payload.token,
+      friends: action.payload.friends,
       isOnline: true,
     }),
     logout: (state) => ({
@@ -205,7 +206,7 @@ export function signUpUser({ username, email }) {
         picture: null,
         refreshToken: '12312fgfsdg',
         timestamp: 1653655303,
-        friends: [],
+        friends: null,
       }
 
       dispatch(login(returnedUserObject))
