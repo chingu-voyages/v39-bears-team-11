@@ -1,0 +1,6 @@
+POST http://localhost:3001/people
+Content-Type: application/json
+
+{
+  "searchKeywords": "k"
+}

@@ -1,0 +1,10 @@
+PUT http://localhost:3001/user/6291671cc0e15487fe207d32
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTE2NzFjYzBlMTU0ODdmZTIwN2QzMiIsInVzZXJuYW1lIjoia2hhZGo5OTkiLCJlbWFpbCI6ImtoYWRqOTk5QGdtYWlsLmNvbSIsImlhdCI6MTY1MzY5ODEwMywiZXhwIjoxNjUzNjk5MDAzfQ.XaizJKWiyPRB8ZqqmpoAilzJE6lYqLhUuOQDYBKg0Gw
+
+{
+  "username": "khadj999",
+  "email": "khadj999@gmail.com",
+  "picture": null,
+  "friends": []
+}
