@@ -26,14 +26,14 @@ const getMessageController = async (req, res, next) => {
     // query the database for every messages where user is sender or receiver
     const userMessages = await Message.find().or([
       { sender: id },
-      { reciever: id },
+      { receiver: id },
     ])
     // get user friends
     const userFriends = await User.findById(id).contacts
     // map the userFriends array into objects with friend_id and messages for each friend
     const userChats = userFriends.map((friend) => {
       const chats = userMessages.filter(
-        (message) => message.sender === friend || message.reciever === friend,
+        (message) => message.sender === friend || message.receiver === friend,
       )
       return { friend_id: friend, messages: chats }
     })
