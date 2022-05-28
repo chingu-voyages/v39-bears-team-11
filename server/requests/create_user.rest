@@ -1,0 +1,28 @@
+POST http://localhost:3001/user
+Content-Type: application/json
+
+{
+  "username": "khadj999",
+  "email": "khadj999@gmail.com",
+  "password": "salainen"
+}
+
+###
+POST http://localhost:3001/user
+Content-Type: application/json
+
+{
+  "username": "root_user",
+  "email": "root@gmail.com",
+  "password": "secretpassword"
+}
+
+###
+POST http://localhost:3001/user
+Content-Type: application/json
+
+{
+  "username": "banyaz",
+  "email": "banyaz@gmail.com",
+  "password": "bunnies"
+}
