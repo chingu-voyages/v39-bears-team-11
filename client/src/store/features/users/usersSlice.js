@@ -206,7 +206,7 @@ export function signUpUser({ username, email }) {
         picture: null,
         refreshToken: '12312fgfsdg',
         timestamp: 1653655303,
-        friends: null,
+        friends: [],
       }
 
       dispatch(login(returnedUserObject))

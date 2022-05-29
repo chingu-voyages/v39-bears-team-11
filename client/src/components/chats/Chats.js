@@ -119,7 +119,7 @@ function Chats() {
     latestChatsSorted = sortArrayOfObjects(latestChats, 'timestamp', 'desc', 'array')
   }
 
-  if (friends) {
+  if (friends.length) {
     return (
       <div id="chats" className="container main">
         <StartAChatButton handleOnClick={onOpenModal} />
