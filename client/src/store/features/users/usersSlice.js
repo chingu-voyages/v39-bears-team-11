@@ -25,6 +25,7 @@ export const usersSlice = createSlice({
       username: action.payload.username,
       email: action.payload.email,
       token: action.payload.token,
+      // friends are here temporary
       friends: action.payload.friends,
       isOnline: true,
     }),
