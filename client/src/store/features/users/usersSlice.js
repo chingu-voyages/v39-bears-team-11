@@ -223,7 +223,7 @@ export function loginUser({ email, password }) {
     try {
       console.log(email, password)
       // make the fetch request using the appropriate userService function
-      // const response = await userService.logIn(username, email, password)
+      // const response = await userService.logIn(email, password)
 
       // The successfuly user object returned from the server contains:
       // the username, email, id, picture, contacts, token, refreshToken, and timestamps.
