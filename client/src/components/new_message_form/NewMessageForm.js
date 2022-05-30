@@ -3,7 +3,7 @@ import styles from '../../styles/ChatRoom-styles/MessageForms.module.css'
 import sendIcon from '../../icons/chat-room/chatroom-send-icon.png'
 import { addTextMessage } from '../../store/features/messages/messagesSlice'
 
-function NewMessageForm() {
+function NewMessageForm({ socketSendHandler }) {
   const dispatch = useDispatch()
 
   const handleSubmit = (event) => {
@@ -11,6 +11,7 @@ function NewMessageForm() {
     const message = event.target.message.value
     dispatch(addTextMessage(message))
     event.target.message.value = '' // eslint-disable-line no-param-reassign
+    socketSendHandler(message)
   }
 
   return (
