@@ -193,10 +193,10 @@ export const signUp = async (username, email, password) => {
  * The user object contains the username, email, id, picture, contacts, token,
  * refreshToken, and timestamps.
  */
-export const logIn = async (username, password) => {
+export const logIn = async (email, password) => {
   try {
     // make a post request to the server with username and password
-    const response = await axios.post(baseLoginUrl, { username, password })
+    const response = await axios.post(baseLoginUrl, { email, password })
     // return the user object if login succeeds
     return response.data
   } catch (error) {

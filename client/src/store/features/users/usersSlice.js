@@ -10,6 +10,7 @@ const initialState = {
   username: '',
   email: '',
   token: '',
+  refreshToken: '',
   picture: null,
   friends: null,
   isOnline: false,
@@ -25,6 +26,7 @@ export const usersSlice = createSlice({
       username: action.payload.username,
       email: action.payload.email,
       token: action.payload.token,
+      refreshToken: action.payload.refreshToken,
       isOnline: true,
     }),
     logout: (state) => ({
@@ -184,31 +186,34 @@ export function updateUserProfile(userId, userToken) {
   }
 }
 
-// that action will require also password as paramenter, removed for now
-// as we have commented out the request from the server that requires password
-export function signUpUser({ username, email }) {
+export function signUpUser({ userUsername, userEmail, userPassword }) {
+  // return the async action that will call the dispatch function
+  return async (dispatch) => {
+    try {
+      const response = await userService.signUp(userUsername, userEmail, userPassword)
+
+      // The successfuly user object (response) returned from the server contains
+      // the username, email, id, picture, contacts, token, refreshToken, and timestamps.
+
+      dispatch(login(response))
+    } catch (error) {
+      // handle error
+      console.log(error.message)
+    }
+  }
+}
+
+export function loginUser({ userEmail, userPassword }) {
   // return the async action that will call the dispatch function
   return async (dispatch) => {
     try {
       // make the fetch request using the appropriate userService function
-      // const response = await userService.signUp(username, email, password)
+      const response = await userService.logIn(userEmail, userPassword)
 
-      // The successfuly user object returned from the server contains
+      // The successfuly user object (response) returned from the server contains:
       // the username, email, id, picture, contacts, token, refreshToken, and timestamps.
-      /// This is a mock returned data
-      const returnedUserObject = {
-        id: '61cdd39a5a14f24e4f2f89c7',
-        username,
-        email,
-        token:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyN2IwMTFiMTkzMTllMWY0ODVhZDE2NyIsInVzZXJuYW1lIjoicnVsZXNwbGF5ZXIiLCJpYXQiOiIxNjUzMjY4MjQyIn0.jkhHC3SQp8Yx4W4VgHY1JMdrAmqQ4HirXuOzt26Sqw4',
-        picture: null,
-        refreshToken: '12312fgfsdg',
-        timestamp: 1653655303,
-        friends: [],
-      }
 
-      dispatch(login(returnedUserObject))
+      dispatch(login(response))
     } catch (error) {
       // handle error
       console.log(error.message)

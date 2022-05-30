@@ -16,10 +16,13 @@ import ModalStartAChat from '../modal/ModalStartAChat'
 import LatestChats from './LatestChats'
 
 // temporary mock data that will be replaced with data from chats store
-import { chatsMockData } from './mock_messages'
+// import { chatsMockData } from './mock_messages'
 
 // temporaralily the chatsData will equal to the imported MockData
-const chatsData = [...chatsMockData]
+// const chatsData = [...chatsMockData]
+
+// temporary chatsData equals null
+const chatsData = null
 
 function Chats() {
   // Get the current user state
@@ -27,6 +30,7 @@ function Chats() {
 
   // Assign friends and name of the user
   const { username, friends } = userState
+  console.log(friends)
 
   // Define latestChatsSorted variable that later will be used for holding
   // the latestChats data only if the latestChats data and friends exist
@@ -75,7 +79,7 @@ function Chats() {
   }
 
   // Check if the contact has friends or chats to start with
-  if (friends && chatsData) {
+  if (chatsData) {
   // Get the list of the latest messages, one message per contact
     const latestChats = chatsData.reduce(
       (newArr, currentChat) => {
@@ -115,7 +119,7 @@ function Chats() {
     latestChatsSorted = sortArrayOfObjects(latestChats, 'timestamp', 'desc', 'array')
   }
 
-  if (friends && chatsData) {
+  if (friends.length) {
     return (
       <div id="chats" className="container main">
         <StartAChatButton handleOnClick={onOpenModal} />
@@ -125,10 +129,13 @@ function Chats() {
           onCloseModal={onCloseModal}
           onOpenAChatClick={onOpenAChatClick}
         />
-        <LatestChats
-          chats={latestChatsSorted}
-          onOpenAChatClick={onOpenAChatClick}
-        />
+        {chatsData
+          ? (
+            <LatestChats
+              chats={latestChatsSorted}
+              onOpenAChatClick={onOpenAChatClick}
+            />
+          ) : null}
       </div>
     )
   } return (
