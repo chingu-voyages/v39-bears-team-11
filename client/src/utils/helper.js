@@ -1,3 +1,5 @@
+import imageType from 'image-type'
+
 // *******************
 // sortArrayOfObjects
 // *******************
@@ -35,4 +37,29 @@ export const sortArrayOfObjects = (
   if (receive === 'firstItem') return sortedArr[0]
   if (receive === 'lastItem') return sortedArr[sortedArr.length - 1]
   return 'error: wrong _receive_ argument'
+}
+
+/* Convert image byte array into an image url */
+export const imgToDataUrl = (content) => {
+  const bufferFromData = (data) => new Uint8Array(data)
+
+  /* Create a binary string, i.e., a string object in which each */
+  /* character in the string is treated as a byte of binary data */
+  const getBinaryStringFromByteArray = (buffer) => (
+    buffer.reduce((data, byte) => (
+      data + String.fromCharCode(byte)), ''))
+
+  const isArrayBuffer = content.byteLength !== undefined
+  const buffer = isArrayBuffer
+    ? bufferFromData(content)
+    : bufferFromData(content.data.data)
+  const contentType = isArrayBuffer
+    ? imageType(buffer).mime
+    : content.contentType
+
+  const binaryString = getBinaryStringFromByteArray(buffer)
+
+  /* create a Base64-encoded ASCII string from a binary string */
+  const image = window.btoa(binaryString)
+  return `data:${contentType};base64,${image}`
 }
