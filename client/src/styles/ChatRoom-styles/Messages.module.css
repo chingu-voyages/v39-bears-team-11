@@ -128,10 +128,12 @@
 }
 
 .message__body img {
+  --img-bg-url: url('../../icons/chat-room/message-body-bg.png');
   max-width: 320px;
   max-height: 240px;
   border-radius: 15px;
   object-fit: contain;
+  background-image: var(--img-bg-url);
 }
 
 @media(max-width: 768px) {
