@@ -1,6 +1,7 @@
 /* eslint-disable import/no-import-module-exports */
 /* eslint-disable consistent-return */
 import axios from 'axios'
+import getAuthAxios, { detachInterceptors } from '../utils/getAuthAxios'
 import axiosConfigObject from '../utils/config'
 
 /**
@@ -20,14 +21,6 @@ const baseUserUrl = process.env.REACT_APP_BASE_USER_URL
 const baseLoginUrl = process.env.REACT_APP_BASE_LOGIN_URL
 
 /**
- * @description The api endpoint for the user service sign up requests imported
- * from the dot env file.
- * @constant baseSignupUrl
- * @type string
- */
-const baseSignupUrl = process.env.REACT_APP_BASE_SIGNUP_URL
-
-/**
  * @name addFriend
  * @summary The addFriend function adds a new friend to a user's friends array. The
  * function accepts three parameters---user, id, and token. The request is sent to
@@ -42,11 +35,13 @@ const baseSignupUrl = process.env.REACT_APP_BASE_SIGNUP_URL
  * @param {string} token This is token to authenticate the user before handling request
  * @returns The current user object with the updated list of the friends
  */
-export const addFriend = async (user, id, token) => {
+export const addFriend = async (user, id, token, RToken) => {
+  const authAxios = await getAuthAxios(RToken)
   const config = axiosConfigObject(token)
   try {
     // make a post request to the backend
-    const response = await axios.put(`${baseUserUrl}/:${id}`, user, config)
+    const response = await authAxios.put(`${baseUserUrl}/${id}`, user, config)
+    detachInterceptors()
     // return the response
     return response.data
   } catch (error) {
@@ -72,11 +67,13 @@ export const addFriend = async (user, id, token) => {
  * @param {string} token The token used to authenticate the current user before handling request
  * @returns The current user object with the updated list of the friends
  */
-export const unFriend = async (user, id, token) => {
+export const unFriend = async (user, id, token, RToken) => {
+  const authAxios = await getAuthAxios(RToken)
   const config = axiosConfigObject(token)
   try {
     // make a post request to the backend
-    const response = await axios.put(`${baseUserUrl}/:${id}`, user, config)
+    const response = await authAxios.put(`${baseUserUrl}/${id}`, user, config)
+    detachInterceptors()
     // return the response data
     return response.data
   } catch (error) {
@@ -96,11 +93,13 @@ export const unFriend = async (user, id, token) => {
  * @param {string} token The token of the current user to authenticate the request
  * @returns The updated user object with the new username and email address
  */
-export const updateProfile = async (user, id, token) => {
+export const updateProfile = async (user, id, token, RToken) => {
+  const authAxios = await getAuthAxios(RToken)
   const config = axiosConfigObject(token)
   try {
     // make a put request to the backend
-    const response = await axios.put(`${baseUserUrl}/:${id}`, user, config)
+    const response = await authAxios.put(`${baseUserUrl}/${id}`, user, config)
+    detachInterceptors()
     // return the response data
     return response.data
   } catch (error) {
@@ -119,11 +118,13 @@ export const updateProfile = async (user, id, token) => {
  * @param {string} token The token to authenticate the current user
  * @returns The status of the operation
  */
-export const deleteProfile = async (id, token) => {
+export const deleteProfile = async (id, token, RToken) => {
+  const authAxios = await getAuthAxios(RToken)
   const config = axiosConfigObject(token)
   try {
     // make a delete request to the backend
-    const response = await axios.delete(`${baseUserUrl}/:${id}`, config)
+    const response = await authAxios.delete(`${baseUserUrl}/${id}`, config)
+    detachInterceptors()
     // return the response status
     return response.status
   } catch (error) {
@@ -142,11 +143,13 @@ export const deleteProfile = async (id, token) => {
  * @param {string} token
  * @returns The user object updated with the new photo
  */
-export const updateUserPicture = async (user, id, token) => {
+export const updateUserPicture = async (user, id, token, RToken) => {
+  const authAxios = await getAuthAxios(RToken)
   const config = axiosConfigObject(token)
   try {
     // make an upload request to the backend
-    const response = await axios.put(`${baseUserUrl}/:${id}`, user, config)
+    const response = await authAxios.put(`${baseUserUrl}/${id}`, user, config)
+    detachInterceptors()
     // return the response data
     return response.data
   } catch (error) {
@@ -169,7 +172,7 @@ export const updateUserPicture = async (user, id, token) => {
 export const signUp = async (username, email, password) => {
   try {
     // make a post request to the server with user credentials
-    const response = await axios.post(baseSignupUrl, {
+    const response = await axios.post(baseUserUrl, {
       username,
       email,
       password,
