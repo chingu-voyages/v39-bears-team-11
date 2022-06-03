@@ -1,10 +1,9 @@
-import axios from 'axios'
 import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import SearchBox from '../searchbox/SearchBox'
 import SearchResults from '../search_results/SearchResults'
 import { addFriend } from '../../store/features/users/usersSlice'
-// import peopleService from '../../services/people'
+import peopleService from '../../services/people'
 
 function Search() {
   const userState = useSelector(({ user }) => user)
@@ -19,15 +18,10 @@ function Search() {
   const handleSearch = async (event) => {
     event.preventDefault()
     const searchKeywords = event.target.search.value
-    console.log(searchKeywords)
-
-    /* Test search with json server */
-    const response = await axios.get('http://localhost:5000/users')
-    setCurrentResults(response.data.slice(0, 10))
-
-    /* Send request to backend using peopleService */
-    // results = await peopleService.search(searchKeywords)
-    // setCurrentResults(results)
+    const results = await peopleService.search({
+      searchKeywords,
+    })
+    setCurrentResults(results)
   }
 
   const handleAdd = (personId) => {
