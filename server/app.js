@@ -17,9 +17,6 @@ const middleware = require('./utils/middleware')
 
 const app = express()
 
-// Point to the client build
-app.use(express.static('../build'))
-
 /* Database Connection */
 infoLogger('connecting to', MONGODB_URI)
 
@@ -33,6 +30,9 @@ mongoose.connect(MONGODB_URI, {
   .catch((error) => {
     errorLogger('error connecting to database:', error.message)
   })
+
+// Use app to point express to the client build which is in the root folder
+app.use(express.static('../build'))
 
 /* Use app middleware in this order */
 app.use(cors())
