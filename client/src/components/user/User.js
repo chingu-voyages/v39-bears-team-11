@@ -1,17 +1,24 @@
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useRef } from 'react'
+import { Link } from 'react-router-dom'
 import styles from '../../styles/User.module.css'
 import { ReactComponent as UserIcon } from '../../icons/profile/profile-user-icon.svg'
 import { ReactComponent as LogoutIcon } from '../../icons/profile/profile-logout-icon.svg'
 import defaultPicture from '../../icons/default-user-profile-image.png'
+import { logout } from '../../store/features/users/usersSlice'
 
 function User() {
   const userState = useSelector(({ user }) => user)
   const { username, picture } = userState
   const userRef = useRef()
+  const dispatch = useDispatch()
 
   const handleUserClick = () => {
     userRef.current.classList.toggle('open')
+  }
+
+  const handleLogout = () => {
+    dispatch(logout())
   }
 
   return (
@@ -32,16 +39,17 @@ function User() {
       <div className={styles.user__dropdown}>
         <h5>{username}</h5>
         <div className={styles.user__links}>
-          <a
+          <Link
             className={styles.user__link}
-            href="/profile"
+            to="profile"
           >
             <UserIcon className={styles['user__link-icon']} />
             My Profile
-          </a>
+          </Link>
           <button
-            className={styles.user__link}
             type="button"
+            className={styles.user__link}
+            onClick={handleLogout}
           >
             <LogoutIcon className={styles['user__link-icon']} />
             Logout
