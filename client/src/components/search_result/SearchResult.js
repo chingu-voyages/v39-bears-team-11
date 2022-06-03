@@ -5,6 +5,7 @@ import AddFriendButton from '../button/AddFriendButton'
 import UnfriendButton from '../button/UnfriendButton'
 import FriendTag from '../friend_tag/FriendTag'
 import Modal from '../modal/Modal'
+import defaultPicture from '../../icons/default-user-profile-image.png'
 
 function SearchResult({
   result,
@@ -42,7 +43,7 @@ function SearchResult({
     <div className={styles['search-result']} data-id={result.id}>
       <div className={styles['search-result__description']}>
         <div className={styles['search-result__image']}>
-          <img src={result.picture} alt={result.username} />
+          <img src={result.picture || defaultPicture} alt={result.username} />
         </div>
         <div className={styles['search-result__text']}>
           <p>{result.username}</p>
