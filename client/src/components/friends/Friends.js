@@ -47,12 +47,16 @@ function Friends() {
   /* containing user info and a list of all friend */
   /* ids except for the id of the unfriended friend  */
   const handleUnfriend = async (friendId) => {
+    const getNewFriends = () => {
+      const friendsIds = friends.map((friend) => friend.id)
+      friendsIds.splice(friendsIds.indexOf(friendId), 1)
+      return friendsIds
+    }
     dispatch(unFriend({
       username,
       email,
       picture,
-      friends: friends.map((friend) => friend.id)
-        .splice(friends.indexOf(friendId), 1),
+      friends: getNewFriends(),
     }, id, token))
   }
 

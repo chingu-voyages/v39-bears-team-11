@@ -3,7 +3,7 @@ import { imgToDataUrl } from '../../utils/helper'
 
 function MessageBody({ classes, content }) {
   const showContent = () => {
-    /* A message can be of type string or byte array */
+    /* A message can be of type string or object */
     if (typeof content === 'string') {
       return (
         <p>{content}</p>
