@@ -1,7 +1,5 @@
 /* eslint-disable object-curly-newline */
 import { createSlice } from '@reduxjs/toolkit'
-// import dummyManPic from '../../../icons/profile-picture-man-unsplash.jpg'
-import dummyWomanPic from '../../../icons/profile-picture-woman-unsplash.jpg'
 import * as userService from '../../../services/userService'
 
 /* dummy user state */
@@ -12,7 +10,7 @@ const initialState = {
   token: '',
   refreshToken: '',
   picture: null,
-  friends: null,
+  friends: [],
   isOnline: false,
 }
 
@@ -25,6 +23,7 @@ export const usersSlice = createSlice({
       id: action.payload.id,
       username: action.payload.username,
       email: action.payload.email,
+      friends: action.payload.contacts,
       token: action.payload.token,
       refreshToken: action.payload.refreshToken,
       isOnline: true,
@@ -36,8 +35,6 @@ export const usersSlice = createSlice({
       email: null,
       token: null,
       refreshToken: null,
-      createdAt: null,
-      updatedAt: null,
       picture: null,
       friends: [],
       isOnline: false,
@@ -52,7 +49,9 @@ export const usersSlice = createSlice({
     }),
     updateUser: (state, action) => ({
       ...state,
-      ...action.payload,
+      username: action.payload.username,
+      email: action.payload.email,
+      token: action.paylod.token,
     }),
   },
 })
@@ -62,22 +61,13 @@ export const usersSlice = createSlice({
 export const { login, logout, appendFriend, removeFriend, updateUser } =
   usersSlice.actions
 
-export function addFriend(userToUpdate, id, token) {
+export function addFriend(userToUpdate, id) {
   return async (dispatch, getState) => {
-    console.log(id, token)
-    // const updatedUser = await userService.addFriend(userToUpdate, id, token)
+    const { token, refreshToken } = getState().user
+    const updatedUser = await userService.addFriend(userToUpdate, id, token, refreshToken)
     const currentFriends = getState().user.friends
 
-    /* Dummy updatedUser for testing */
-    const updatedUser = {
-      ...userToUpdate,
-      friends: currentFriends.concat({
-        id: 1,
-        username: 'marywoo',
-        picture: dummyWomanPic,
-      }),
-    }
-    const updatedFriends = updatedUser.friends
+    const updatedFriends = updatedUser.contacts
 
     /* Find the friend that is in updatedFriends but not in currentFriends */
     const newFriend = updatedFriends.find(
@@ -87,18 +77,13 @@ export function addFriend(userToUpdate, id, token) {
   }
 }
 
-export function unFriend(userToUpdate, id, token) {
+export function unFriend(userToUpdate, id) {
   return async (dispatch, getState) => {
-    console.log(id, token)
-    // const updatedUser = await userService.unFriend(userToUpdate, id, token)
+    const { token, refreshToken } = getState().user
+    const updatedUser = await userService.unFriend(userToUpdate, id, token, refreshToken)
     const currentFriends = getState().user.friends
 
-    /* Dummy updatedUser for testing */
-    const updatedUser = {
-      ...userToUpdate,
-      friends: currentFriends.map((f) => f.id !== 3),
-    }
-    const updatedFriends = updatedUser.friends
+    const updatedFriends = updatedUser.contacts
 
     /* Find the friend that is in currentFriends but not in updatedFriends */
     const friendToRemove = currentFriends.find(
@@ -117,22 +102,22 @@ export function unFriend(userToUpdate, id, token) {
  * @returns A thunk action that makes a delete request to the server and removes a
  * user.
  */
-export function deleteUserProfile(userId, token) {
+export function deleteUserProfile(userId) {
   /**
    * @param {function} dispatch The redux dispatch function
    * @returns void
    */
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     try {
       /**
        * @constant response The response from the delete request to the server.
        * The status of the delete operation.
        * @type {string}
        */
-      const response = await userService.deleteProfile(userId, token)
-      console.log(response)
+      const { token, refreshToken } = getState().user
+      await userService.deleteProfile(userId, token, refreshToken)
       // logout user on success
-      dispatch(logout)
+      dispatch(logout())
       // access the Location object and replace the current location
       // by redirecting the user to the '/' route.
       // eslint-disable-next-line no-undef
@@ -155,12 +140,12 @@ export function deleteUserProfile(userId, token) {
  * server and dispatch the updateUser action the received response to update
  * the user state.
  */
-export function updateUserProfile(userId, userToken) {
+export function updateUserProfile(userToUpdate, userId) {
   /**
    * @param {Function} dispatch The redux dispatch function
    * @returns void
    */
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     try {
       /**
        * @constant response The response from the put request to the server
@@ -170,15 +155,15 @@ export function updateUserProfile(userId, userToken) {
        * token: string
        * }}
        */
-      const response = await userService.updateProfile(userId, userToken)
+      const { token, refreshToken } = getState().user
+      const response = await userService.updateProfile(userToUpdate, userId, token, refreshToken)
       console.log(response)
       /**
        * @constant username The updated username from the server
        * @constant email The updated email from the server
        * @constant token The new token created and sent with the response
        */
-      const { username, email, token } = response
-      dispatch(updateUser(username, email, token))
+      dispatch(updateUser({ ...response }))
     } catch (error) {
       // todo: add better error handling
       console.log(error.message)
@@ -186,11 +171,11 @@ export function updateUserProfile(userId, userToken) {
   }
 }
 
-export function signUpUser({ userUsername, userEmail, userPassword }) {
+export function signUpUser({ username, email, password }) {
   // return the async action that will call the dispatch function
   return async (dispatch) => {
     try {
-      const response = await userService.signUp(userUsername, userEmail, userPassword)
+      const response = await userService.signUp(username, email, password)
 
       // The successfuly user object (response) returned from the server contains
       // the username, email, id, picture, contacts, token, refreshToken, and timestamps.
@@ -203,12 +188,12 @@ export function signUpUser({ userUsername, userEmail, userPassword }) {
   }
 }
 
-export function loginUser({ userEmail, userPassword }) {
+export function loginUser({ email, password }) {
   // return the async action that will call the dispatch function
   return async (dispatch) => {
     try {
       // make the fetch request using the appropriate userService function
-      const response = await userService.logIn(userEmail, userPassword)
+      const response = await userService.logIn(email, password)
 
       // The successfuly user object (response) returned from the server contains:
       // the username, email, id, picture, contacts, token, refreshToken, and timestamps.
