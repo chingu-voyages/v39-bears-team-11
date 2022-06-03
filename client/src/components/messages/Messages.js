@@ -12,7 +12,7 @@ function Messages() {
   /* Get the chat object that corresponds to the      */
   /* currently selected friend from the messages state */
   const currentFriendChat = chats.find((chat) => chat.friendId === currentFriendId)
-  const currentFriendMessages = currentFriendChat.messages
+  const currentFriendMessages = currentFriendChat?.messages
 
   /* Get the user information of the currently selected */
   /* user from the friends array in the user store      */
@@ -25,11 +25,11 @@ function Messages() {
   /* Auto scroll to bottom on each successfully-added message */
   useEffect(() => {
     scrollRef.current?.scrollIntoView(false, { behavior: 'smooth' })
-  }, [currentFriendMessages])
+  }, [chats])
 
   return (
     <div className={styles.messages}>
-      { currentFriendMessages.map((message) => (
+      { currentFriendMessages?.map((message) => (
         <Message
           ref={scrollRef}
           key={nanoid()}
