@@ -17,6 +17,9 @@ const middleware = require('./utils/middleware')
 
 const app = express()
 
+// Point to the client build
+app.use(express.static('../build'))
+
 /* Database Connection */
 infoLogger('connecting to', MONGODB_URI)
 
