@@ -41,25 +41,44 @@ export const sortArrayOfObjects = (
 
 /* Convert image byte array into an image url */
 export const imgToDataUrl = (content) => {
-  const bufferFromData = (data) => new Uint8Array(data)
+  let image = ''
+  let contentType = ''
 
-  /* Create a binary string, i.e., a string object in which each */
-  /* character in the string is treated as a byte of binary data */
-  const getBinaryStringFromByteArray = (buffer) => (
-    buffer.reduce((data, byte) => (
-      data + String.fromCharCode(byte)), ''))
+  if (typeof content.data === 'string') {
+    image = content.data
+    contentType = content.contentType
+  } else {
+    const bufferFromData = (data) => new Uint8Array(data)
 
-  const isArrayBuffer = content.byteLength !== undefined
-  const buffer = isArrayBuffer
-    ? bufferFromData(content)
-    : bufferFromData(content.data.data)
-  const contentType = isArrayBuffer
-    ? imageType(buffer).mime
-    : content.contentType
+    const getBuffer = (isArrayBuffer) => (
+      isArrayBuffer
+        ? bufferFromData(content)
+        : bufferFromData(content.data.data)
+    )
 
-  const binaryString = getBinaryStringFromByteArray(buffer)
+    const getContentType = (isArrayBuffer, buffer) => (
+      isArrayBuffer
+        ? imageType(buffer).mime
+        : content.contentType
+    )
 
-  /* create a Base64-encoded ASCII string from a binary string */
-  const image = window.btoa(binaryString)
+    /* Create a binary string, i.e., a string object in which each */
+    /* character in the string is treated as a byte of binary data */
+    const getBinaryStringFromByteArray = (buffer) => (
+      buffer.reduce((data, byte) => (
+        data + String.fromCharCode(byte)), ''))
+
+    /* create a Base64-encoded ASCII string from a binary string */
+    const getImgUrlFromBinaryString = (binaryString) => (
+      window.btoa(binaryString)
+    )
+
+    const isArrayBuffer = content.byteLength !== undefined
+    const buffer = getBuffer(isArrayBuffer)
+    const binaryString = getBinaryStringFromByteArray(buffer)
+    image = getImgUrlFromBinaryString(binaryString)
+    contentType = getContentType(isArrayBuffer, buffer)
+  }
+
   return `data:${contentType};base64,${image}`
 }
