@@ -5,6 +5,10 @@ import defaultPicture from '../../icons/default-user-profile-image.png'
 function LatestChat({
   username, picture, message, timestamp, id, onOpenAChatClick,
 }) {
+  const dateToUnixTimestamp = () => (
+    Math.floor(timestamp.getTime() / 1000)
+  )
+
   const showContent = () => (
     typeof message === 'string'
       ? message
@@ -23,7 +27,7 @@ function LatestChat({
         </span>
       </div>
       <span className={styles['latest-chat__time']}>
-        <Moment unix fromNow>{Math.floor(timestamp.getTime() / 1000)}</Moment>
+        <Moment unix fromNow>{dateToUnixTimestamp()}</Moment>
       </span>
     </button>
   )
