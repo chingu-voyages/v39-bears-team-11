@@ -1,5 +1,5 @@
 {
-  "name": "litetalk",
+  "name": "server",
   "version": "1.0.0",
   "description": "a lightweight app for connecting with friends",
   "main": "app.js",

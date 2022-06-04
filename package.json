@@ -1,0 +1,17 @@
+{
+    "name": "litetalk",
+    "version": "1.0.0",
+    "description": "a lightweight app for connecting with friends",
+    "main": "index.js",
+    "scripts": {
+          "build": "yarn workspace client build",
+          "start": "yarn workspace server start"
+     },
+    "author": "v39-bears-team-11",
+    "license": "MIT",
+    "private": true,
+    "workspaces": [
+          "server",
+          "client"
+      ]
+  }

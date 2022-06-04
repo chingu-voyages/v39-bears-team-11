@@ -1,5 +1,5 @@
 {
-  "name": "litetalk",
+  "name": "client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,6 +12,7 @@
     "concurrently": "^7.1.0",
     "image-type": "^4.1.0",
     "json-server": "^0.17.0",
+    "moment": "^2.29.3",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-moment": "^1.1.2",
@@ -25,6 +26,7 @@
     "start": "react-scripts start",
     "server": "json-server --port 5000 --watch data/MOCK_DATA.json",
     "build": "react-scripts build",
+    "postbuild": "node postbuild.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint . --fix",
