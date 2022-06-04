@@ -54,7 +54,7 @@ export const imgToDataUrl = (content) => {
     contentType = content.contentType
   } else {
     const bufferFromData = (data) => new Uint8Array(data)
-    
+
     /* The input for bufferFromArray differs depending on    */
     /* whether content.data is a byte array or an ArrayBuffer */
     const getBuffer = (isArrayBuffer) => (
