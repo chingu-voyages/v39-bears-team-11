@@ -61,7 +61,6 @@ const postUserController = async (req, res) => {
 /* Controller to update user profile */
 const putUserController = async (req, res) => {
   const user = await User.findById(req.params.id)
-  console.log(user)
   if (!user) {
     return res.status(404).end()
   }

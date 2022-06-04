@@ -1,6 +1,8 @@
 // import the models
 const Message = require('../models/message')
 const User = require('../models/user')
+const jwt = require('jsonwebtoken')
+const { getTokenFromHeader } = require('../utils/helper')
 
 // import helper function
 const errorConfig = require('../utils/helper')
@@ -20,6 +22,28 @@ const getMessageController = async (req, res, next) => {
     )
     next(error)
   }
+  
+  const user = await User.findById(id)
+  if (!user) {
+    return res.status(404).end()
+  }
+  
+  const token = getTokenFromHeader(req)
+  /* use the stored secret to validate the token */
+  const decodedToken = jwt.verify(token, process.env.TOKEN_SECRET)
+  if (!decodedToken.id) {
+    return res.status(401).json({
+      error: 'token missing or invalid'
+    })
+  }
+
+  /* If the id from the decoded token and the id from  */
+  /* the user document do not match, return auth error */
+  if (!( decodedToken.id.toString() === user.id.toString() )) {
+    return res.status(401).json({
+      error: 'Access Denied'
+    })
+  }
 
   // if there is an id, then
   try {
@@ -29,14 +53,20 @@ const getMessageController = async (req, res, next) => {
       { receiver: id },
     ])
     // get user friends
-    const userFriends = await User.findById(id).contacts
+    const user = await User.findById(id)
+    const userFriends = user.contacts
     // map the userFriends array into objects with friend_id and messages for each friend
-    const userChats = userFriends.map((friend) => {
+    const userChats = userFriends.reduce((arr, friend) => {
       const chats = userMessages.filter(
-        (message) => message.sender === friend || message.receiver === friend,
+        (message) => message.sender.toString() === friend.toString()
+          || message.receiver.toString() === friend.toString(),
       )
-      return { friend_id: friend, messages: chats }
-    })
+      arr.push({
+        friendId: friend,
+        messages: chats
+      })
+      return arr
+    }, [])
     // if there is a match, send 200 status with result
     res.status(200).send(userChats)
   } catch (error) {
@@ -47,6 +77,15 @@ const getMessageController = async (req, res, next) => {
 
 // controller to send user messages
 const postMessageController = async (req, res, next) => {
+  const token = getTokenFromHeader(req)
+  /* use the stored secret to validate the token */
+  const decodedToken = jwt.verify(token, process.env.TOKEN_SECRET)
+  if (!decodedToken.id) {
+    return res.status(401).json({
+      error: 'token missing or invalid'
+    })
+  }
+
   // get the request payload
   // eslint-disable-next-line object-curly-newline
   const { userId, friendId, timestamp } = req.body
