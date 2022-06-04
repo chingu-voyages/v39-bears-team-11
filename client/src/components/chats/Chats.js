@@ -1,57 +1,39 @@
-import { useRef } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { sortArrayOfObjects } from '../../utils/helper'
-// *********************************************************
-//
-//            to be uncommented once the message store is completed:
-//
-//  import { setCurrentFriendId } from '../../store/features/messages/messagesSlice'
-//  import { getAll } from '../../services/messages'
-//  import { setMessages } from '../../store/features/messages/messagesSlice'
-//
-// *********************************************************
+import { setCurrentFriendId, setMessages } from '../../store/features/messages/messagesSlice'
+import messagesService from '../../services/messages'
 import StartAChatButton from '../button/StartAChatButton'
 import ModalStartAChat from '../modal/ModalStartAChat'
 import LatestChats from './LatestChats'
 
-// temporary mock data that will be replaced with data from chats store
-// import { chatsMockData } from './mock_messages'
-
-// temporaralily the chatsData will equal to the imported MockData
-// const chatsData = [...chatsMockData]
-
-// temporary chatsData equals null
-const chatsData = null
-
 function Chats() {
   // Get the current user state
   const userState = useSelector(({ user }) => user)
-
-  // Assign friends and name of the user
-  const { username, friends } = userState
-  console.log(friends)
-
+  const {
+    id,
+    token,
+    refreshToken,
+    username,
+    friends,
+  } = userState
+  const [chatsData, setChatsData] = useState([])
   // Define latestChatsSorted variable that later will be used for holding
   // the latestChats data only if the latestChats data and friends exist
   let latestChatsSorted = null
 
-  // Get messages
-
   // get the reducer action dispatch function
   const dispatch = useDispatch()
-  console.log(dispatch)
 
-  // *********************************************************
-  //
-  //   to be uncommented once the message store is completed:
-  //
-  //           useEffect(() => {
-  //             chatsData = await getAll(id, token)
-  //             dispatch(setMessages(chatsData))
-  //           }, [])
-  //
-  // *********************************************************
+  // Get messages
+  useEffect(() => {
+    (async () => {
+      const messages = await messagesService.getAll(id, token, refreshToken)
+      setChatsData(messages)
+      dispatch(setMessages(messages))
+    })()
+  }, [])
 
   // Get the modal ref
   const modalRef = useRef()
@@ -65,52 +47,57 @@ function Chats() {
 
   // Handling the click on the selected chat or friend
   const onOpenAChatClick = (currentFriendId) => {
-    // *********************************************************
-    //
-    //   to be uncomented when the message store is completed:
-    //
-    //       dispatch(setCurrentFriendId(currentFriendId))
-    //
-    // *********************************************************
-    // temporary console functionality check:
-    console.log('Friend Clicked: ', currentFriendId)
+    dispatch(setCurrentFriendId(currentFriendId))
     // navigate to the chatroom page
     navigate('/chatroom')
   }
 
-  // Check if the contact has friends or chats to start with
+  // Check if the contact has friends
   if (chatsData) {
   // Get the list of the latest messages, one message per contact
     const latestChats = chatsData.reduce(
       (newArr, currentChat) => {
       //  Use provided friend id (from user messages) to get the friend from the friends data
-        const friendId = currentChat.id
+        const { friendId } = currentChat
         const friend = friends.find((contact) => contact.id.toString() === friendId)
-        //  Use friend (from user friends array) to get friend's picture and username
-        const messagePicture = friend.picture
-        const messageUsername = friend.username
-        //  Use all the messages from the current friend
-        const allMessages = currentChat.messages
-        //  Use helper function to sort these messages and return only the latest message
-        //  sortArrayOfObjects arguments:
-        //     -array of objects
-        //     -object's property which the sorting will be based on
-        //     -choice of either ascending or descending order
-        //     -choice of returning either first item, last item, or the whole array
-        const latestMessage = sortArrayOfObjects(allMessages, 'timestamp', 'desc', 'firstItem')
-        // Use the latest message to get the timestamp and the message content
-        const messageContent = latestMessage.content
-        const messageTimestamp = latestMessage.timestamp
-        // Define new object with all prepared data
-        const newInstance = {
-          id: friendId,
-          picture: messagePicture,
-          username: messageUsername,
-          message: messageContent,
-          timestamp: messageTimestamp,
+
+        // This check is to handle the case where someone
+        // whose not in our friends list sent us messages
+        if (friend) {
+          const messagePicture = friend.picture
+          const messageUsername = friend.username
+          // Get all the messages from the current friend and substitute
+          // the timestamp string with a Date object for comparison
+          const allMessages = currentChat.messages.map((message) => ({
+            ...message,
+            timestamp: new Date(message.timestamp),
+          }))
+          //  Use helper function to sort these messages and return only the latest message
+          //  sortArrayOfObjects arguments:
+          //     -array of objects
+          //     -object's property which the sorting will be based on
+          //     -choice of either ascending or descending order
+          //     -choice of returning either first item, last item, or the whole array
+          const latestMessage = sortArrayOfObjects(allMessages, 'timestamp', 'desc', 'firstItem')
+
+          // This check is for handling the case of a no messages
+          if (latestMessage) {
+            // Use the latest message to get the timestamp and the message content
+            const messageContent = latestMessage.content
+            const messageTimestamp = latestMessage.timestamp
+            // Define new object with all prepared data
+            const newInstance = {
+              id: friendId,
+              picture: messagePicture,
+              username: messageUsername,
+              message: messageContent,
+              timestamp: messageTimestamp,
+            }
+            // Add the above object to the list of objects that is
+            // being created in this reduce function
+            newArr.push(newInstance)
+          }
         }
-        // Add the above object to the list of objects that is being created in this reduce function
-        newArr.push(newInstance)
         return newArr
       },
       [],
