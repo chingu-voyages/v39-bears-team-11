@@ -11,10 +11,8 @@ const server = http.createServer(app)
 const io = require('socket.io')(server, {
   /* Limit message size to 2MB */
   maxHttpBufferSize: 2e6,
-  /* The cors field is only necessary in dev mode since the entire app will have one   */
-  /* url, and requests coming from frontend share the same origin as the socket server */
   cors: {
-    origin: process.env.CLIENT_APP_URL,
+    origin: '*',
   },
 })
 
