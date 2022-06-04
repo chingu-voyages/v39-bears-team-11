@@ -40,22 +40,31 @@ export const sortArrayOfObjects = (
 }
 
 /* Convert image byte array into an image url */
+/* Recieves an object and Handles three types of data: */
+/* a url string, a byte array and an ArrayBuffer.      */
 export const imgToDataUrl = (content) => {
+  /* image and contentType are the variables which will */
+  /* hold the data necessary to create our image url    */
   let image = ''
   let contentType = ''
 
+  /* In case of a url string, no further processing is required */
   if (typeof content.data === 'string') {
     image = content.data
     contentType = content.contentType
   } else {
     const bufferFromData = (data) => new Uint8Array(data)
-
+    
+    /* The input for bufferFromArray differs depending on    */
+    /* whether content.data is a byte array or an ArrayBuffer */
     const getBuffer = (isArrayBuffer) => (
       isArrayBuffer
         ? bufferFromData(content)
         : bufferFromData(content.data.data)
     )
 
+    /* In case content.data is an ArrayBuffer, contentType is not available */
+    /* and must be detected manually, here using the imageType package      */
     const getContentType = (isArrayBuffer, buffer) => (
       isArrayBuffer
         ? imageType(buffer).mime

@@ -11,16 +11,26 @@ import { addPictureMessage, appendMessage } from '../../store/features/messages/
 function MessageForms() {
   const userState = useSelector(({ user }) => user)
   const currentFriendId = useSelector(({ messages }) => messages.currentFriendId)
+
+  /* Create the socket client */
   const socket = useRef()
+
   const imageModalRef = useRef()
   const dispatch = useDispatch()
 
   useEffect(() => {
+    /* Initialize the socket-io-client instance */
     socket.current = io(process.env.REACT_APP_SOCKET_URL)
+    /* add a function to our socket client to handle      */
+    /* the 'welcome' event sent by socket server for test */
     socket.current.on('welcome', (message) => {
       console.log(message)
     })
+
+    /* Add a function to handle the 'getMessage' event received from socket server */
     socket.current.on('getMessage', ({ senderId, message }) => (
+      /* Add a check to make sure that the received message   */
+      /* was from the friend we are chatting with in Chatroom */
       senderId === currentFriendId
       && dispatch(appendMessage({
         sender: senderId,
@@ -32,12 +42,16 @@ function MessageForms() {
   }, [])
 
   useEffect(() => {
+    /* Dispatch an addUser event to add current user   */
+    /* to the users connected to the socket server now */
     socket.current.emit('addUser', userState.id)
+    /* Add a function to handle the 'getUsers' event received from the socket sever */
     socket.current.on('getUsers', (users) => {
       console.log(users)
     })
   }, [userState])
 
+  /* Dispatch a 'sendMessage' event to send message to socket server */
   const sendMessagetoSocket = (message) => {
     socket.current.emit('sendMessage', ({
       senderId: userState.id,
