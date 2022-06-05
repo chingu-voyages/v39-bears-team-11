@@ -32,7 +32,7 @@ mongoose.connect(MONGODB_URI, {
   })
 
 // Use app to point express to the client build which is in the root folder
-// app.use(express.static('../build'))
+app.use(express.static('./build'))
 
 /* Use app middleware in this order */
 app.use(cors())
