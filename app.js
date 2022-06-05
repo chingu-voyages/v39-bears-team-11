@@ -34,6 +34,30 @@ mongoose.connect(MONGODB_URI, {
 // Use app to point express to the client build which is in the root folder
 app.use(express.static('./client/build'))
 
+const whitelist = ["https://litetalk.herokuapp.com/:3000"]
+
+const corsOptions = {
+
+  origin: function (origin, callback) {
+
+    if (!origin || whitelist.indexOf(origin) !== -1) {
+
+      callback(null, true)
+
+    } else {
+
+      callback(new Error("Not allowed by CORS"))
+
+    }
+
+  },
+
+  credentials: true,
+
+}
+
+app.use(cors(corsOptions))
+
 /* Use app middleware in this order */
 app.use(cors())
 app.use(express.json())
