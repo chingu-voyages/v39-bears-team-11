@@ -1,1 +1,0 @@
-web: yarn --cwd "server" node index.js
