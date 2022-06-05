@@ -1,6 +1,5 @@
 const http = require('http')
 const app = require('./app')
-require('dotenv').config()
 const { infoLogger } = require('./utils/logger')
 const { PORT } = require('./utils/config')
 const SetSocketServer = require('./socket/index')
