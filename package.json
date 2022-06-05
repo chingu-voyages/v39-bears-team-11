@@ -4,8 +4,8 @@
     "description": "a lightweight app for connecting with friends",
     "main": "index.js",
     "scripts": {
-          "build": "yarn workspace client build",
-          "start": "yarn workspace server start"
+          "build": "npm run build workspace=client",
+          "start": "npm start workspace=server"
      },
     "author": "v39-bears-team-11",
     "license": "MIT",
