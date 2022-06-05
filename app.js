@@ -33,25 +33,11 @@ mongoose.connect(MONGODB_URI, {
 
 // Use app to point express to the client build which is in the root folder
 app.use(express.static('./client/build'))
-app.use(express.methodOverride());
-
-// ## CORS middleware
-// 
-var allowCrossDomain = function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-      
-    // intercept OPTIONS method
-    if ('OPTIONS' == req.method) {
-      res.send(200);
-    }
-    else {
-      next();
-    }
-};
-app.use(allowCrossDomain);
-app.use(cors)
+app.all('*', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+});
 
 /* Use app middleware in this order */
 app.use(cors())
