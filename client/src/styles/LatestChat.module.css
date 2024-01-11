@@ -49,6 +49,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   flex-shrink: 1;
+  align-items: start;
 }
 
 .latest-chat__time {
@@ -59,7 +60,6 @@
 .latest-chat__username-and-message-container {
   display: flex;
   min-width: 0;
-  align-items: start;
 }
 
 @media (max-width: 810px) {
